@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Tuttoitalia Stays — Airbnb-faithful UI
+   Tokens & components per DESIGN.md (Airbnb): white canvas, single Rausch
+   accent, modest type, soft radii, one shadow tier.
+   ========================================================================== */
+
+:root {
+  --rausch:        #ff385c;
+  --rausch-active: #e00b41;
+  --rausch-disabled:#ffd1da;
+
+  --canvas:        #ffffff;
+  --surface-soft:  #f7f7f7;
+  --surface-strong:#f2f2f2;
+
+  --hairline:      #dddddd;
+  --hairline-soft: #ebebeb;
+  --border-strong: #c1c1c1;
+
+  --ink:    #222222;
+  --body:   #3f3f3f;
+  --muted:  #6a6a6a;
+  --muted-soft:#929292;
+  --error:  #c13515;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-xl: 32px;
+  --r-full: 9999px;
+
+  --shadow: rgba(0,0,0,.02) 0 0 0 1px, rgba(0,0,0,.04) 0 2px 6px 0, rgba(0,0,0,.1) 0 4px 8px 0;
+
+  --abnb-sans: Inter, Circular, -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+  --maxw: 1280px;
+}
+
+.abnb * { box-sizing: border-box; }
+.abnb {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font-family: var(--abnb-sans); -webkit-font-smoothing: antialiased; line-height: 1.5;
+}
+.abnb img { display: block; max-width: 100%; }
+.abnb a { color: inherit; text-decoration: none; }
+.abnb button { font-family: inherit; cursor: pointer; }
+.abnb-wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+
+.tile {
+  display: flex; align-items: flex-end; justify-content: flex-start; padding: 14px;
+  color: #fff; font-weight: 600; text-shadow: 0 1px 8px rgba(0,0,0,.4); background: #767676;
+}
+
+/* ---- Top nav ------------------------------------------------------- */
+.abnb-nav { border-bottom: 1px solid var(--hairline); background: var(--canvas); position: sticky; top: 0; z-index: 30; }
+.abnb-nav__inner { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.abnb-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--rausch); font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+.abnb-logo svg { width: 30px; height: 30px; }
+
+.abnb-tabs { display: flex; gap: 8px; align-items: center; }
+.abnb-tab {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  background: none; border: 0; padding: 8px 12px; color: var(--muted);
+  font-size: 16px; font-weight: 600;
+}
+.abnb-tab .ico { font-size: 22px; line-height: 1; }
+.abnb-tab[aria-selected="true"] { color: var(--ink); }
+.abnb-tab[aria-selected="true"]::after {
+  content: ""; position: absolute; left: 12px; right: 12px; bottom: -2px; height: 2px; background: var(--ink); border-radius: 2px;
+}
+.abnb-new {
+  background: var(--rausch); color: #fff; font-size: 8px; font-weight: 700; letter-spacing: .32px;
+  text-transform: uppercase; padding: 2px 6px; border-radius: var(--r-full); transform: translateY(-8px);
+}
+.abnb-utils { display: flex; align-items: center; gap: 6px; }
+.abnb-util { padding: 12px; border-radius: var(--r-full); font-size: 14px; font-weight: 600; color: var(--ink); background: none; border: 0; }
+.abnb-util:hover { background: var(--surface-soft); }
+.abnb-globe { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--r-full); }
+.abnb-globe:hover { background: var(--surface-soft); }
+.abnb-account {
+  display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--hairline);
+  border-radius: var(--r-full); padding: 5px 5px 5px 14px;
+}
+.abnb-account:hover { box-shadow: var(--shadow); }
+.abnb-account .av { width: 30px; height: 30px; border-radius: var(--r-full); background: var(--ink); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
+
+/* ---- Search pill --------------------------------------------------- */
+.abnb-searchwrap { display: flex; justify-content: center; padding: 18px 0 6px; }
+.abnb-search {
+  display: flex; align-items: stretch; background: var(--canvas);
+  border: 1px solid var(--hairline); border-radius: var(--r-full); box-shadow: var(--shadow);
+  height: 64px; max-width: 850px; width: 100%;
+}
+.abnb-seg { display: flex; flex-direction: column; justify-content: center; padding: 10px 22px; border-radius: var(--r-full); position: relative; flex: 1; }
+.abnb-seg:hover { background: var(--surface-soft); }
+.abnb-seg + .abnb-seg::before { content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; width: 1px; background: var(--hairline); }
+.abnb-seg label { font-size: 12px; font-weight: 600; color: var(--ink); }
+.abnb-seg input { border: 0; outline: 0; background: none; font: inherit; font-size: 14px; color: var(--ink); padding: 2px 0 0; width: 100%; }
+.abnb-seg input::placeholder { color: var(--muted); }
+.abnb-seg--who { display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.abnb-orb {
+  align-self: center; margin: 0 8px 0 4px; flex: none;
+  width: 48px; height: 48px; border-radius: var(--r-full); background: var(--rausch); color: #fff;
+  border: 0; display: inline-flex; align-items: center; justify-content: center;
+}
+.abnb-orb:hover { background: var(--rausch-active); }
+
+/* ---- Category strip ------------------------------------------------ */
+.abnb-cats { border-bottom: 1px solid var(--hairline); }
+.abnb-cats__inner { display: flex; gap: 28px; overflow-x: auto; padding: 14px 0; scrollbar-width: none; }
+.abnb-cats__inner::-webkit-scrollbar { display: none; }
+.abnb-cat {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; flex: none;
+  background: none; border: 0; padding: 6px 2px 12px; color: var(--muted); font-size: 12px; font-weight: 600;
+  border-bottom: 2px solid transparent; opacity: .85;
+}
+.abnb-cat .ico { font-size: 24px; }
+.abnb-cat:hover { color: var(--ink); opacity: 1; }
+.abnb-cat[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); opacity: 1; }
+
+/* ---- Listing grid -------------------------------------------------- */
+.abnb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px 16px; padding: 28px 0 64px; }
+.abnb-card { display: flex; flex-direction: column; gap: 8px; }
+.abnb-card__media {
+  position: relative; aspect-ratio: 1 / 1; border-radius: var(--r-md); overflow: hidden;
+}
+.abnb-card__media .tile { position: absolute; inset: 0; width: 100%; height: 100%; font-size: 13px; }
+.abnb-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.abnb-gallery .tile { position: relative; }
+.abnb-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 2; background: #fff; color: var(--ink);
+  font-size: 11px; font-weight: 600; padding: 6px 10px; border-radius: var(--r-full); box-shadow: var(--shadow);
+}
+.abnb-heart {
+  position: absolute; top: 10px; right: 10px; z-index: 2; width: 32px; height: 32px; border: 0; background: none;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+}
+.abnb-heart svg { width: 24px; height: 24px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.4)); }
+.abnb-heart[aria-pressed="true"] svg { fill: var(--rausch); stroke: var(--rausch); }
+.abnb-dots { position: absolute; left: 0; right: 0; bottom: 10px; z-index: 2; display: flex; gap: 5px; justify-content: center; }
+.abnb-dots span { width: 6px; height: 6px; border-radius: var(--r-full); background: rgba(255,255,255,.6); }
+.abnb-dots span.is-on { background: #fff; width: 7px; height: 7px; }
+
+.abnb-card__row { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.abnb-card__title { font-size: 15px; font-weight: 600; color: var(--ink); }
+.abnb-card__rating { font-size: 14px; color: var(--ink); display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.abnb-card__meta { font-size: 14px; color: var(--muted); }
+.abnb-card__price { font-size: 14px; color: var(--ink); margin-top: 2px; }
+.abnb-card__price b { font-weight: 600; }
+
+/* Section heads */
+.abnb-h2 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; margin: 32px 0 4px; }
+.abnb-hero { padding: 28px 0 4px; }
+.abnb-hero h1 { font-size: 28px; font-weight: 700; line-height: 1.4; margin: 0; }
+
+/* ---- Buttons ------------------------------------------------------- */
+.abnb-btn { border: 0; border-radius: var(--r-sm); font-size: 16px; font-weight: 500; padding: 14px 24px; }
+.abnb-btn--primary { background: var(--rausch); color: #fff; }
+.abnb-btn--primary:hover { background: var(--rausch-active); }
+.abnb-btn--grad { background: linear-gradient(90deg,#e61e4d,#e31c5f 50%,#bd1e59); color:#fff; }
+.abnb-btn--block { width: 100%; }
+.abnb-btn--secondary { background: #fff; color: var(--ink); border: 1px solid var(--ink); }
+
+/* ---- Footer -------------------------------------------------------- */
+.abnb-foot { border-top: 1px solid var(--hairline); background: var(--surface-soft); padding: 48px 0 24px; }
+.abnb-foot__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.abnb-foot__head { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.abnb-foot__link { font-size: 14px; color: var(--body); padding: 5px 0; display: block; }
+.abnb-foot__link:hover { text-decoration: underline; }
+.abnb-legal { border-top: 1px solid var(--hairline); margin-top: 32px; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+.abnb-legal a { color: var(--muted); }
+
+/* ==========================================================================
+   Listing detail (modal/overlay)
+   ========================================================================== */
+.abnb-detail[hidden] { display: none; }
+.abnb-detail { position: fixed; inset: 0; background: var(--canvas); z-index: 60; overflow-y: auto; }
+.abnb-detail__bar {
+  position: sticky; top: 0; background: rgba(255,255,255,.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hairline); display: flex; align-items: center; justify-content: space-between; padding: 14px 0; z-index: 2;
+}
+.abnb-back { display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; font-size: 14px; font-weight: 600; color: var(--ink); }
+.abnb-back:hover { text-decoration: underline; }
+.abnb-detail h1 { font-size: 26px; font-weight: 600; letter-spacing: -.02em; margin: 24px 0 6px; }
+.abnb-detail__sub { font-size: 14px; color: var(--ink); margin-bottom: 16px; }
+.abnb-gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; border-radius: var(--r-md); overflow: hidden; aspect-ratio: 3/1.4; }
+.abnb-gallery > :first-child { grid-row: 1 / 3; }
+.abnb-gallery .tile { width: 100%; height: 100%; }
+.abnb-detail__body { display: grid; grid-template-columns: 1fr 372px; gap: 64px; padding: 32px 0 64px; align-items: start; }
+.abnb-detail__main h2 { font-size: 21px; font-weight: 600; margin: 0 0 16px; }
+.abnb-sec { padding: 28px 0; border-top: 1px solid var(--hairline); }
+.abnb-amenities { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.abnb-amenities li { list-style: none; display: flex; gap: 12px; align-items: center; font-size: 16px; color: var(--body); }
+
+/* rating-display — the single loud moment */
+.abnb-rating { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 8px 0 4px; }
+.abnb-rating__num { font-size: 64px; font-weight: 700; line-height: 1.1; letter-spacing: -1px; }
+.abnb-rating__laurel { font-size: 48px; }
+.abnb-rating__tag { text-align: center; font-size: 18px; font-weight: 600; }
+
+/* reservation card */
+.abnb-resv { position: sticky; top: 100px; border: 1px solid var(--hairline); border-radius: var(--r-md); box-shadow: var(--shadow); padding: 24px; }
+.abnb-resv__price { font-size: 22px; font-weight: 600; }
+.abnb-resv__price small { font-size: 15px; font-weight: 400; color: var(--muted); }
+.abnb-resv__dates { border: 1px solid var(--hairline); border-radius: var(--r-md); margin: 16px 0; overflow: hidden; }
+.abnb-resv__dates .cell { padding: 10px 12px; }
+.abnb-resv__dates .grid2 { display: grid; grid-template-columns: 1fr 1fr; }
+.abnb-resv__dates .grid2 > div + div { border-left: 1px solid var(--hairline); }
+.abnb-resv__dates .cell + .cell { border-top: 1px solid var(--hairline); }
+.abnb-resv__dates label { display: block; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.abnb-resv__dates input, .abnb-resv__dates select { border: 0; outline: 0; width: 100%; font: inherit; font-size: 14px; background: none; color: var(--ink); padding: 2px 0 0; }
+.abnb-resv__fees { margin-top: 16px; font-size: 16px; color: var(--body); }
+.abnb-resv__fees div { display: flex; justify-content: space-between; padding: 7px 0; }
+.abnb-resv__fees .total { border-top: 1px solid var(--hairline); margin-top: 8px; padding-top: 14px; font-weight: 600; color: var(--ink); }
+.abnb-resv__note { text-align: center; font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+/* ---- Toast --------------------------------------------------------- */
+.abnb-toast {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: #fff; padding: 14px 22px; border-radius: var(--r-sm); font-size: 14px; font-weight: 500;
+  box-shadow: 0 8px 30px rgba(0,0,0,.25); opacity: 0; pointer-events: none; transition: all .2s; z-index: 90;
+}
+.abnb-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1128px) {
+  .abnb-grid { grid-template-columns: repeat(3, 1fr); }
+  .abnb-detail__body { grid-template-columns: 1fr; gap: 0; }
+  .abnb-resv { position: static; margin-top: 24px; }
+}
+@media (max-width: 860px) {
+  .abnb-wrap { padding: 0 24px; }
+  .abnb-tabs { display: none; }
+  .abnb-grid { grid-template-columns: repeat(2, 1fr); }
+  .abnb-search { height: 58px; max-width: 100%; }
+  .abnb-seg--when { display: none; }
+  .abnb-gallery { grid-template-columns: 1fr; grid-template-rows: none; aspect-ratio: 16/10; }
+  .abnb-gallery > :first-child { grid-row: auto; }
+  .abnb-gallery > :not(:first-child) { display: none; }
+}
+@media (max-width: 560px) {
+  .abnb-wrap { padding: 0 16px; }
+  .abnb-grid { grid-template-columns: 1fr; }
+  .abnb-amenities { grid-template-columns: 1fr; }
+  .abnb-search { flex-wrap: nowrap; }
+  .abnb-seg label { font-size: 11px; }
+}

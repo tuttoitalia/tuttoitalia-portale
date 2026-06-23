@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary SEO -->
+  <title>Tuttoitalia.ch — L'Italia, ovunque siano gli italiani</title>
+  <meta name="description" content="Il media italiano in Svizzera dal 2003. Concerti ed eventi italiani in Svizzera, attualità, cinema, musica, motori e turismo. Media partner ufficiale dei grandi tour italiani.">
+  <meta name="author" content="Tuttoitalia GmbH">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#0B5132">
+  <link rel="canonical" href="https://www.tuttoitalia.ch/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tuttoitalia.ch">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="de_CH">
+  <meta property="og:locale:alternate" content="fr_CH">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:title" content="Tuttoitalia.ch — L'Italia, ovunque siano gli italiani">
+  <meta property="og:description" content="Il media italiano in Svizzera dal 2003. Concerti, eventi, attualità, cinema e cultura italiana in Svizzera.">
+  <meta property="og:url" content="https://www.tuttoitalia.ch/">
+  <meta property="og:image" content="https://www.tuttoitalia.ch/assets/og-cover.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tuttoitalia.ch — L'Italia, ovunque siano gli italiani">
+  <meta name="twitter:description" content="Il media italiano in Svizzera dal 2003.">
+  <meta name="twitter:image" content="https://www.tuttoitalia.ch/assets/og-cover.png">
+
+  <!-- Security: baseline Content-Security-Policy. Scripts are self-hosted only.
+       (For production, prefer setting these as HTTP response headers — see README.) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/portale.css">
+
+  <!-- Icons -->
+  <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/icon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <!-- Structured data: helps Google & AI assistants understand the site -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "NewsMediaOrganization",
+        "@id": "https://www.tuttoitalia.ch/#org",
+        "name": "Tuttoitalia.ch",
+        "alternateName": "Tuttoitalia GmbH",
+        "url": "https://www.tuttoitalia.ch/",
+        "slogan": "L'Italia, ovunque siano gli italiani.",
+        "foundingDate": "2003",
+        "description": "Il media italiano in Svizzera: concerti ed eventi italiani, attualità, cinema, musica, motori e turismo.",
+        "areaServed": "CH",
+        "knowsLanguage": ["it", "de", "fr", "en"],
+        "address": { "@type": "PostalAddress", "addressLocality": "Zurigo", "addressCountry": "CH" },
+        "sameAs": [
+          "https://www.instagram.com/tuttoitalia.ch",
+          "https://www.facebook.com/tuttoitalia.ch",
+          "https://www.youtube.com/@tuttoitalia",
+          "https://www.linkedin.com/company/tuttoitalia"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.tuttoitalia.ch/#website",
+        "url": "https://www.tuttoitalia.ch/",
+        "name": "Tuttoitalia.ch",
+        "inLanguage": "it-CH",
+        "publisher": { "@id": "https://www.tuttoitalia.ch/#org" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://www.tuttoitalia.ch/?s={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ====================================================== UTILITY BAR -->
+  <div class="utility">
+    <div class="container utility__inner">
+      <div class="utility__meta">
+        <span class="utility__date" id="js-date">—</span>
+        <span class="utility__sep">·</span>
+        <span class="utility__time" id="js-time">—</span>
+        <span class="utility__sep">·</span>
+        <span class="utility__temp">Zurigo 18°C</span>
+      </div>
+      <div class="utility__actions">
+        <a class="utility__link" href="./portale.html">Portale</a>
+        <span class="utility__divider">|</span>
+        <a class="utility__link" href="./portale.html#concorsi">Concorsi</a>
+        <span class="utility__divider">|</span>
+        <div class="langs" role="group" aria-label="Lingua">
+          <button class="lang" type="button" aria-pressed="true">IT</button>
+          <button class="lang" type="button" aria-pressed="false">EN</button>
+          <button class="lang" type="button" aria-pressed="false">DE</button>
+          <button class="lang" type="button" aria-pressed="false">FR</button>
+        </div>
+        <span class="utility__divider">|</span>
+        <span data-acct-slot></span>
+        <button class="btn-newsletter" type="button" data-auth="register">Registrati</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================== MASTHEAD -->
+  <header class="container masthead">
+    <div class="masthead__side masthead__tagline-left">
+      <div class="masthead__since">Dal 2003</div>
+      <div>Il media italiano<br>in Svizzera.</div>
+    </div>
+    <div class="masthead__center">
+      <a href="/" class="wordmark" aria-label="Tuttoitalia.ch — home">Tuttoitalia<span class="tld">.ch</span></a>
+      <div class="masthead__motto">L'Italia, ovunque siano gli italiani.</div>
+    </div>
+    <div class="masthead__side masthead__search">
+      <form class="search" role="search" action="/" method="get">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" name="s" placeholder="Cerca" aria-label="Cerca sul sito">
+      </form>
+    </div>
+  </header>
+
+  <!-- ====================================================== SECTION NAV -->
+  <nav class="sectionnav" aria-label="Sezioni">
+    <div class="container sectionnav__inner">
+      <button class="navitem" type="button" aria-current="page">Home</button>
+      <a class="navitem" href="./portale.html" style="color:var(--green)">Portale ✦</a>
+      <button class="navitem" type="button">Attualità</button>
+      <button class="navitem" type="button">Cinema</button>
+      <button class="navitem" type="button">Eventi</button>
+      <button class="navitem" type="button">Gastronomia</button>
+      <button class="navitem" type="button">Imprese</button>
+      <button class="navitem" type="button">Motori</button>
+      <button class="navitem" type="button">Musica</button>
+      <button class="navitem" type="button">Sport</button>
+      <button class="navitem" type="button">Turismo</button>
+      <button class="navitem" type="button">Wellness &amp; Salute</button>
+    </div>
+  </nav>
+
+  <!-- ====================================================== BREAKING TICKER -->
+  <div class="ticker">
+    <div class="ticker__inner">
+      <div class="ticker__label">
+        <span class="ticker__dot" aria-hidden="true"></span>
+        <span class="ticker__tag">ULTIM'ORA</span>
+      </div>
+      <div class="ticker__track">
+        <div class="ticker__marquee">
+          <span class="ticker__group">
+            <span>Zucchero, seconda data all'Hallenstadion di Zurigo: Tuttoitalia c'è</span>
+            <span>Enrico Brignano porta «Bello di mamma!» a Berna e Zurigo nel 2027</span>
+            <span>Lorenzo Jovanotti alla 60ª edizione del Montreux Jazz Festival</span>
+            <span>Il Gala Giuseppe Verdi fa tappa in Svizzera a fine dicembre 2026</span>
+          </span>
+          <span class="ticker__group" aria-hidden="true">
+            <span>Zucchero, seconda data all'Hallenstadion di Zurigo: Tuttoitalia c'è</span>
+            <span>Enrico Brignano porta «Bello di mamma!» a Berna e Zurigo nel 2027</span>
+            <span>Lorenzo Jovanotti alla 60ª edizione del Montreux Jazz Festival</span>
+            <span>Il Gala Giuseppe Verdi fa tappa in Svizzera a fine dicembre 2026</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AD · leaderboard -->
+  <div class="adwrap adwrap--band">
+    <div class="container adwrap" style="padding:0">
+      <span class="adwrap__label">Pubblicità</span>
+      <div class="adslot" data-ad-slot="home-top" data-format="leaderboard"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================================================== HERO GRID -->
+    <div class="container hero">
+
+      <!-- Lead -->
+      <article class="lead" data-article
+        data-section="Eventi" data-author="Antonio De Luca" data-time="24 minuti fa"
+        data-label="Zucchero · Hallenstadion Zurigo"
+        data-bg="linear-gradient(180deg,#3a1d12,#7a3a1a 55%,#0B5132)"
+        data-deck="Tuttoitalia.ch era presente come media partner ufficiale, con uno stand che ha accolto numerosi visitatori. Una presenza che si rinnova anche stasera, per la seconda data zurighese del tour.">
+        <div class="lead__media tile" style="background:linear-gradient(180deg,#3a1d12,#7a3a1a 55%,#0B5132)">
+          <span class="badge-tag">Media Partner</span>
+          <span class="tile-label">Zucchero · Hallenstadion Zurigo</span>
+        </div>
+        <div class="kicker lead__kicker">Eventi</div>
+        <h2 class="lead__title">Zucchero infiamma l'Hallenstadion: Tuttoitalia c'è, ieri e oggi</h2>
+        <p class="lead__deck">Tuttoitalia.ch era presente come media partner ufficiale, con uno stand che ha accolto numerosi visitatori. Una presenza che si rinnova anche stasera, per la seconda data zurighese del tour.</p>
+        <div class="byline">di Antonio De Luca · 24 minuti fa</div>
+      </article>
+
+      <!-- Latest -->
+      <section class="latest" aria-label="Ultime news">
+        <h2 class="col-heading">Ultime News</h2>
+
+        <article class="latest__item" data-article
+          data-section="Turismo" data-author="Redazione" data-time="oggi"
+          data-label="Salento" data-bg="linear-gradient(180deg,#d6c5a8,#8a6a3f)"
+          data-deck="Borgoterra, l'albergo diffuso nel cuore della Grecìa Salentina">
+          <div class="latest__media tile" style="background:linear-gradient(180deg,#d6c5a8,#8a6a3f)"><span class="tile-label">Salento</span></div>
+          <div>
+            <div class="eyebrow" style="color:#0B5132">Turismo</div>
+            <h3>Borgoterra, l'albergo diffuso nel cuore della Grecìa Salentina</h3>
+            <div class="latest__byline">di Redazione</div>
+          </div>
+        </article>
+
+        <article class="latest__item" data-article
+          data-section="Turismo" data-author="Cirano Tondi" data-time="oggi"
+          data-label="Calabria" data-bg="linear-gradient(180deg,#5d7a8a,#2a3a48)"
+          data-deck="La Calabria ti paga fino a 28.000 euro per trasferirti? Ecco cosa c'è di vero">
+          <div class="latest__media tile" style="background:linear-gradient(180deg,#5d7a8a,#2a3a48)"><span class="tile-label">Calabria</span></div>
+          <div>
+            <div class="eyebrow" style="color:#0B5132">Turismo</div>
+            <h3>La Calabria ti paga fino a 28.000 euro per trasferirti? Ecco cosa c'è di vero</h3>
+            <div class="latest__byline">di Cirano Tondi</div>
+          </div>
+        </article>
+
+        <article class="latest__item" data-article
+          data-section="Eventi" data-author="Redazione" data-time="oggi"
+          data-label="Verdi Gala" data-bg="linear-gradient(160deg,#0B5132,#063019)"
+          data-deck="Il grande Gala Giuseppe Verdi fa tappa in Svizzera a fine dicembre 2026">
+          <div class="latest__media tile" style="background:linear-gradient(160deg,#0B5132,#063019)"><span class="tile-label">Verdi Gala</span></div>
+          <div>
+            <div class="eyebrow" style="color:#CE2B37">Eventi</div>
+            <h3>Il grande Gala Giuseppe Verdi fa tappa in Svizzera a fine dicembre 2026</h3>
+            <div class="latest__byline">di Redazione</div>
+          </div>
+        </article>
+
+        <article class="latest__item" data-article
+          data-section="Attualità" data-author="Redazione" data-time="oggi"
+          data-label="CIE" data-bg="linear-gradient(160deg,#7a2a2f,#3d1418)"
+          data-deck="Carta d'Identità Elettronica: novità per gli italiani all'estero dal 2026">
+          <div class="latest__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)"><span class="tile-label">CIE</span></div>
+          <div>
+            <div class="eyebrow" style="color:#B8860B">Attualità</div>
+            <h3>Carta d'Identità Elettronica: novità per gli italiani all'estero dal 2026</h3>
+            <div class="latest__byline">di Redazione</div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Aside: most read + partner box -->
+      <aside class="aside">
+        <section aria-label="I più letti">
+          <h2 class="col-heading" style="padding-bottom:10px;margin-bottom:6px">I più letti</h2>
+          <ol class="mostread__list">
+            <li class="mostread__item" data-article data-section="Più letti" data-author="Redazione" data-time="oggi" data-label="Bello di mamma" data-bg="linear-gradient(160deg,#0B5132,#063019)" data-deck="Enrico Brignano porta «Bello di mamma!» in Svizzera: le date">
+              <span class="mostread__n">1</span><span class="mostread__title">Enrico Brignano porta «Bello di mamma!» in Svizzera: le date</span>
+            </li>
+            <li class="mostread__item" data-article data-section="Più letti" data-author="Redazione" data-time="oggi" data-label="Montreux Jazz" data-bg="linear-gradient(160deg,#0B5132,#063019)" data-deck="Lorenzo Jovanotti alla 60ª edizione del Montreux Jazz Festival">
+              <span class="mostread__n">2</span><span class="mostread__title">Lorenzo Jovanotti alla 60ª edizione del Montreux Jazz Festival</span>
+            </li>
+            <li class="mostread__item" data-article data-section="Più letti" data-author="Redazione" data-time="oggi" data-label="Turismo delle" data-bg="linear-gradient(160deg,#0B5132,#063019)" data-deck="Turismo delle Radici: il programma della Farnesina che riguarda anche te">
+              <span class="mostread__n">3</span><span class="mostread__title">Turismo delle Radici: il programma della Farnesina che riguarda anche te</span>
+            </li>
+            <li class="mostread__item" data-article data-section="Più letti" data-author="Redazione" data-time="oggi" data-label="Da Zurigo" data-bg="linear-gradient(160deg,#0B5132,#063019)" data-deck="Da Zurigo a Rimini in treno senza cambi: il nuovo Eurocity estivo">
+              <span class="mostread__n">4</span><span class="mostread__title">Da Zurigo a Rimini in treno senza cambi: il nuovo Eurocity estivo</span>
+            </li>
+            <li class="mostread__item" data-article data-section="Più letti" data-author="Redazione" data-time="oggi" data-label="Ligabue" data-bg="linear-gradient(160deg,#0B5132,#063019)" data-deck="Ligabue porta «Certe Notti in Europa» a Zurigo">
+              <span class="mostread__n">5</span><span class="mostread__title">Ligabue porta «Certe Notti in Europa» a Zurigo</span>
+            </li>
+          </ol>
+        </section>
+
+        <section class="partnerbox">
+          <div class="partnerbox__label">⭐ OFFICIAL MEDIA PARTNER ⭐</div>
+          <div class="partnerbox__title">Tour italiani 2026 in Svizzera</div>
+          <div class="partnerbox__desc">Da Eros Ramazzotti a Ligabue: tutte le date, prevendite e foto esclusive.</div>
+          <button class="partnerbox__btn" type="button" data-scroll="eventi">Vedi il calendario →</button>
+        </section>
+
+        <!-- AD · sidebar rectangle -->
+        <div class="adwrap">
+          <span class="adwrap__label">Pubblicità</span>
+          <div class="adslot" data-ad-slot="home-mid" data-format="mpu"></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ==================================================== EVENTS RAIL -->
+    <section class="events" id="eventi" aria-label="Concerti ed eventi">
+      <div class="container">
+        <div class="events__head">
+          <div>
+            <div class="events__kicker">Media Partner ufficiale</div>
+            <h2 class="events__title">Concerti &amp; Eventi italiani in Svizzera</h2>
+          </div>
+          <button class="events__all" type="button">Tutti gli eventi →</button>
+        </div>
+      </div>
+      <div class="rail">
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#3a4d2a,#1c2614)">
+            <span class="eventcard__partner">MEDIA PARTNER</span><span class="tile-label">Angelo Branduardi</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">10</span><span class="eventcard__month">Mar</span></div>
+            <div class="eventcard__venue">Volkshaus · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)">
+            <span class="eventcard__partner">MEDIA PARTNER</span><span class="tile-label">Eros Ramazzotti</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">16</span><span class="eventcard__month">Mar</span></div>
+            <div class="eventcard__venue">Hallenstadion · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#21477f,#0e1f3d)">
+            <span class="eventcard__partner">MEDIA PARTNER</span><span class="tile-label">NEK</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">11</span><span class="eventcard__month">Apr</span></div>
+            <div class="eventcard__venue">X-TRA · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#8a6a3f,#3a2a18)">
+            <span class="tile-label">Max Pezzali</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">19</span><span class="eventcard__month">Apr</span></div>
+            <div class="eventcard__venue">Hallenstadion · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#5a1d1d,#2a0c0c)">
+            <span class="eventcard__partner">MEDIA PARTNER</span><span class="tile-label">Ligabue</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">16</span><span class="eventcard__month">Mag</span></div>
+            <div class="eventcard__venue">The Hall · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#e8631f,#7a2e0c)">
+            <span class="eventcard__partner">MEDIA PARTNER</span><span class="tile-label">Zucchero</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">18</span><span class="eventcard__month">Giu</span></div>
+            <div class="eventcard__venue">Hallenstadion · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+        <article class="eventcard">
+          <div class="eventcard__media tile" style="background:linear-gradient(160deg,#3a4452,#1a2028)">
+            <span class="tile-label">Jack Savoretti</span>
+          </div>
+          <div class="eventcard__body">
+            <div class="eventcard__date"><span class="eventcard__day">14</span><span class="eventcard__month">Ott</span></div>
+            <div class="eventcard__venue">Kaufleuten · Zurigo</div>
+            <button class="eventcard__btn" type="button">Acquista biglietti →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================================================== CINEMA + VIDEO -->
+    <div class="container duo">
+      <section aria-label="Al cinema">
+        <div class="block-head">
+          <h2>Al cinema</h2>
+          <button class="block-head__more" type="button">Tutti i film →</button>
+        </div>
+        <div class="cinema-grid">
+          <article class="cinema-card" data-article data-section="Cinema" data-author="Redazione" data-time="questa settimana" data-label="La Grazia" data-bg="linear-gradient(180deg,#1f3a52,#0a1722)" data-deck="LA GRAZIA: il dubbio nel nuovo cinema di Paolo Sorrentino">
+            <div class="cinema-card__media tile" style="background:linear-gradient(180deg,#1f3a52,#0a1722)"><span class="tile-label">La Grazia</span></div>
+            <div class="kicker cinema-card__kicker">Cinema</div>
+            <h3>LA GRAZIA: il dubbio nel nuovo cinema di Paolo Sorrentino</h3>
+          </article>
+          <article class="cinema-card" data-article data-section="Cinema" data-author="Redazione" data-time="questa settimana" data-label="Fratello Sole" data-bg="linear-gradient(180deg,#7a5a2a,#3a2810)" data-deck="«Fratello sole, sorella luna» torna al cinema in Svizzera">
+            <div class="cinema-card__media tile" style="background:linear-gradient(180deg,#7a5a2a,#3a2810)"><span class="tile-label">Fratello Sole</span></div>
+            <div class="kicker cinema-card__kicker">Cinema</div>
+            <h3>«Fratello sole, sorella luna» torna al cinema in Svizzera</h3>
+          </article>
+          <article class="cinema-card" data-article data-section="Cinema" data-author="Redazione" data-time="questa settimana" data-label="Agata Christian" data-bg="linear-gradient(180deg,#3a4a5a,#161e26)" data-deck="Agata Christian — Delitto sulle nevi arriva al cinema">
+            <div class="cinema-card__media tile" style="background:linear-gradient(180deg,#3a4a5a,#161e26)"><span class="tile-label">Agata Christian</span></div>
+            <div class="kicker cinema-card__kicker">Cinema</div>
+            <h3>Agata Christian — Delitto sulle nevi arriva al cinema</h3>
+          </article>
+        </div>
+      </section>
+
+      <section aria-label="Video della settimana">
+        <div class="block-head"><h2>Video della settimana</h2></div>
+        <div class="video-list">
+          <article class="video-card tile" style="background:linear-gradient(135deg,#1f3a52,#0a1722)" data-article data-section="Video" data-author="Tuttoitalia" data-time="video" data-label="LA GRAZIA" data-bg="linear-gradient(135deg,#1f3a52,#0a1722)" data-deck="LA GRAZIA del dubbio nel nuovo cinema di Paolo Sorrentino">
+            <span class="video-card__play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#0B5132" aria-hidden="true"><polygon points="7 4 20 12 7 20"/></svg></span></span>
+            <h3>LA GRAZIA del dubbio nel nuovo cinema di Paolo Sorrentino</h3>
+          </article>
+          <article class="video-card tile" style="background:linear-gradient(135deg,#21477f,#0e1f3d)" data-article data-section="Video" data-author="Tuttoitalia" data-time="video" data-label="NEK" data-bg="linear-gradient(135deg,#21477f,#0e1f3d)" data-deck="NEK torna in Svizzera con due date: Zurigo e Berna, aprile 2026">
+            <span class="video-card__play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#0B5132" aria-hidden="true"><polygon points="7 4 20 12 7 20"/></svg></span></span>
+            <h3>NEK torna in Svizzera con due date: Zurigo e Berna, aprile 2026</h3>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================================================== TABBED BLOCK -->
+    <section class="container tabbed" aria-label="Rubriche">
+      <div class="tabbed__head">
+        <h2 id="js-tabbed-title">Motori</h2>
+        <div class="tabs" role="tablist" aria-label="Rubrica">
+          <button class="tab" type="button" role="tab" aria-selected="true" data-tab="motori">Motori</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="turismo">Turismo</button>
+        </div>
+      </div>
+
+      <div class="cards3" data-panel="motori" role="tabpanel">
+        <article class="card" data-article data-section="Motori" data-author="Antonio De Luca" data-time="oggi" data-label="Alfa Romeo F1" data-bg="linear-gradient(160deg,#7a2a2f,#3d1418)" data-deck="Alfa Romeo torna in F1 con Sauber">
+          <div class="card__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)"><span class="tile-label">Alfa Romeo F1</span></div>
+          <div class="card__body"><div class="kicker">Motori</div><h3>Alfa Romeo torna in F1 con Sauber</h3><p class="card__byline">di Antonio De Luca</p></div>
+        </article>
+        <article class="card" data-article data-section="Motori" data-author="Eleonora Ciullo" data-time="oggi" data-label="Jeep · Fiat · Abarth" data-bg="linear-gradient(160deg,#3a4452,#1a2028)" data-deck="JEEP, FIAT e Abarth tornano in Argovia: apre il Neue Centrum Garage">
+          <div class="card__media tile" style="background:linear-gradient(160deg,#3a4452,#1a2028)"><span class="tile-label">Jeep · Fiat · Abarth</span></div>
+          <div class="card__body"><div class="kicker">Motori</div><h3>JEEP, FIAT e Abarth tornano in Argovia: apre il Neue Centrum Garage</h3><p class="card__byline">di Eleonora Ciullo</p></div>
+        </article>
+        <article class="card" data-article data-section="Motori" data-author="Cirano Tondi" data-time="oggi" data-label="Vespa · Firenze" data-bg="linear-gradient(160deg,#5d7a8a,#2a3a48)" data-deck="In palio 3 viaggi a Firenze, con visita al museo della Vespa">
+          <div class="card__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Vespa · Firenze</span></div>
+          <div class="card__body"><div class="kicker">Motori</div><h3>In palio 3 viaggi a Firenze, con visita al museo della Vespa</h3><p class="card__byline">di Cirano Tondi</p></div>
+        </article>
+      </div>
+
+      <div class="cards3" data-panel="turismo" role="tabpanel" hidden>
+        <article class="card" data-article data-section="Turismo" data-author="Cirano Tondi" data-time="oggi" data-label="Turismo delle Radici" data-bg="linear-gradient(160deg,#0B5132,#063019)" data-deck="Turismo delle Radici: il programma della Farnesina che riguarda anche te">
+          <div class="card__media tile" style="background:linear-gradient(160deg,#0B5132,#063019)"><span class="tile-label">Turismo delle Radici</span></div>
+          <div class="card__body"><div class="kicker">Turismo</div><h3>Turismo delle Radici: il programma della Farnesina che riguarda anche te</h3><p class="card__byline">di Cirano Tondi</p></div>
+        </article>
+        <article class="card" data-article data-section="Turismo" data-author="Antonio De Luca" data-time="oggi" data-label="Eurocity · Rimini" data-bg="linear-gradient(160deg,#5d7a8a,#2a3a48)" data-deck="Da Zurigo a Rimini in treno senza cambi: il nuovo Eurocity estivo">
+          <div class="card__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Eurocity · Rimini</span></div>
+          <div class="card__body"><div class="kicker">Turismo</div><h3>Da Zurigo a Rimini in treno senza cambi: il nuovo Eurocity estivo</h3><p class="card__byline">di Antonio De Luca</p></div>
+        </article>
+        <article class="card" data-article data-section="Turismo" data-author="Redazione" data-time="oggi" data-label="Salento" data-bg="linear-gradient(160deg,#d6c5a8,#8a6a3f)" data-deck="Borgoterra, l'albergo diffuso nel cuore della Grecìa Salentina">
+          <div class="card__media tile" style="background:linear-gradient(160deg,#d6c5a8,#8a6a3f)"><span class="tile-label">Salento</span></div>
+          <div class="card__body"><div class="kicker">Turismo</div><h3>Borgoterra, l'albergo diffuso nel cuore della Grecìa Salentina</h3><p class="card__byline">di Redazione</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================================================== SPONSORS -->
+    <div class="container sponsors">
+      <div class="sponsors__inner">
+        <span class="sponsors__label">In collaborazione con</span>
+        <span class="sponsors__name">Ticketcorner</span>
+        <span class="sponsors__name">Pathé</span>
+        <span class="sponsors__name">Fiat 500e</span>
+        <span class="sponsors__name">Lavazza</span>
+        <span class="sponsors__name">Montreux Jazz</span>
+      </div>
+    </div>
+
+    <!-- AD · footer leaderboard (unsold -> house promo) -->
+    <div class="container adwrap" style="margin-top:48px">
+      <span class="adwrap__label">Pubblicità</span>
+      <div class="adslot" data-ad-slot="home-footer" data-format="leaderboard"></div>
+    </div>
+  </main>
+
+  <!-- ==================================================== NEWSLETTER -->
+  <section class="newsletter" id="newsletter" aria-label="Newsletter">
+    <div class="newsletter__inner">
+      <div>
+        <div class="newsletter__kicker">La newsletter</div>
+        <div class="newsletter__title">79'000 italofoni la leggono ogni settimana.</div>
+        <div class="newsletter__sub">Una sintesi delle nostre storie più importanti. Tasso di apertura del 47%.</div>
+      </div>
+      <div>
+        <form class="newsletter__form" id="js-nl-form" novalidate>
+          <input type="email" id="js-nl-email" name="email" placeholder="La tua email" aria-label="La tua email" required>
+          <button type="submit">Iscriviti</button>
+        </form>
+        <div class="newsletter__thanks" id="js-nl-thanks" hidden>Grazie! Sei dei nostri. ✦</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <div class="wordmark">Tuttoitalia<span class="tld">.ch</span></div>
+        <div class="footer__motto">L'Italia, ovunque siano gli italiani.</div>
+        <div class="footer__meta">Tuttoitalia GmbH · Zurigo · dal 2003</div>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__head">Rubriche</div>
+          <div class="footer__link">Attualità</div>
+          <div class="footer__link">Cinema</div>
+          <div class="footer__link">Eventi</div>
+          <div class="footer__link">Musica</div>
+          <div class="footer__link">Motori</div>
+          <div class="footer__link">Turismo</div>
+        </div>
+        <div>
+          <div class="footer__head">Tuttoitalia</div>
+          <div class="footer__link">Chi siamo</div>
+          <a class="footer__link" href="./pubblicita.html">Pubblicità &amp; Agenzie</a>
+          <a class="footer__link" href="./pubblicita.html">Media Kit 2026</a>
+          <div class="footer__link">Contatti</div>
+          <a class="footer__link" href="./portale.html#concorsi">Concorsi</a>
+        </div>
+        <div>
+          <div class="footer__head">Seguici</div>
+          <div class="footer__link">Instagram</div>
+          <div class="footer__link">Facebook</div>
+          <div class="footer__link">YouTube</div>
+          <div class="footer__link">LinkedIn</div>
+          <div class="footer__link">Newsletter</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__rule"></div>
+    <div class="footer__legal">
+      <span>© 2026 Tuttoitalia GmbH — Tutti i diritti riservati</span>
+      <span>Privacy · Cookie · Note legali · Impressum</span>
+    </div>
+  </footer>
+
+  <!-- ==================================================== READER MODAL -->
+  <div class="reader" id="js-reader" hidden role="dialog" aria-modal="true" aria-labelledby="js-reader-title">
+    <div class="reader__panel">
+      <div class="reader__bar">
+        <span class="reader__brand">Tuttoitalia<span class="tld" style="color:#CE2B37">.ch</span></span>
+        <button class="reader__close" type="button" id="js-reader-close" aria-label="Chiudi">×</button>
+      </div>
+      <article class="reader__content">
+        <div class="kicker" id="js-reader-section"></div>
+        <h1 class="reader__title" id="js-reader-title"></h1>
+        <p class="reader__deck" id="js-reader-deck"></p>
+        <div class="reader__meta"><span id="js-reader-author"></span><span id="js-reader-time"></span></div>
+        <div class="reader__media tile" id="js-reader-media"><span class="tile-label" id="js-reader-label"></span></div>
+        <div class="reader__caption">Foto · Tuttoitalia / Archivio</div>
+        <p>L'annuncio è arrivato nelle ultime ore e ha già acceso l'entusiasmo della comunità italiana in Svizzera. Tuttoitalia, media partner ufficiale, seguirà l'evento con contenuti esclusivi, interviste e racconti dietro le quinte.</p>
+        <p>Per chi vive l'italianità lontano da casa, appuntamenti come questo sono molto più di un evento: sono un modo per ritrovarsi, per sentire la propria lingua e la propria cultura vibrare in una sala piena.</p>
+        <div class="reader__quote">"L'Italia non è un luogo: è un sentimento che portiamo con noi, ovunque andiamo."</div>
+        <p>Restate connessi con noi: aggiorneremo questa pagina con tutti i dettagli, le date e le voci dei protagonisti e del pubblico italofono che ogni sera riempie le sale svizzere.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL (shared markup, driven by account.js) -->
+  <div class="auth" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="auth__card">
+      <div class="auth__top">
+        <div class="auth__brand">Tuttoitalia<span class="tld">.ch</span></div>
+        <h2 class="auth__title" id="auth-title">Crea il tuo account</h2>
+        <button class="auth__close" id="auth-close" type="button" aria-label="Chiudi">×</button>
+      </div>
+      <div class="auth__body">
+        <form id="auth-form" novalidate>
+          <div class="auth__field" id="auth-name-row">
+            <label for="auth-name">Nome e cognome</label>
+            <input type="text" id="auth-name" autocomplete="name" placeholder="Mario Rossi">
+          </div>
+          <div class="auth__field">
+            <label for="auth-email">Email</label>
+            <input type="email" id="auth-email" autocomplete="email" placeholder="mario@email.ch">
+          </div>
+          <div class="auth__field">
+            <label for="auth-pass">Password</label>
+            <input type="password" id="auth-pass" autocomplete="current-password" placeholder="Almeno 6 caratteri">
+          </div>
+          <p class="auth__error" id="auth-error" role="alert"></p>
+          <button class="btn btn--green btn--block" id="auth-submit" type="submit">Registrati gratis</button>
+        </form>
+        <div class="auth__switch">
+          <span id="auth-switch-text">Hai già un account?</span>
+          <button id="auth-switch-btn" type="button">Accedi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/main.js" defer></script>
+  <script src="./assets/js/account.js" defer></script>
+  <script src="./assets/js/ads.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Tuttoitalia.ch — robots
+# Allow all standard search engines.
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI assistant crawlers (discoverability in ChatGPT, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://www.tuttoitalia.ch/sitemap.xml

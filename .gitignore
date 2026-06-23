@@ -1,0 +1,12 @@
+# Archivio sorgente (non versionato)
+tuttoitaliaportale.zip
+
+# OS / editor
+Thumbs.db
+.DS_Store
+desktop.ini
+*~
+
+# Dipendenze / build (se in futuro)
+node_modules/
+.cache/

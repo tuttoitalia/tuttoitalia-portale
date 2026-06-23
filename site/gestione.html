@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestione banner — Tuttoitalia.ch</title>
+  <meta name="description" content="Pannello di gestione dei banner pubblicitari di Tuttoitalia.ch.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B5132">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/portale.css">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <div class="utility">
+    <div class="container utility__inner">
+      <div class="utility__meta"><span class="utility__date" id="js-date">—</span><span class="utility__sep">·</span><span class="utility__time" id="js-time">—</span></div>
+      <div class="utility__actions">
+        <a class="utility__link" href="./index.html">Quotidiano</a><span class="utility__divider">|</span>
+        <a class="utility__link" href="./portale.html">Portale</a><span class="utility__divider">|</span>
+        <a class="utility__link" href="./pubblicita.html">Pubblicità</a><span class="utility__divider">|</span>
+        <span data-acct-slot></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="container masthead">
+    <div class="masthead__side masthead__tagline-left"><div class="masthead__since">Admin</div><div>Gestione banner.</div></div>
+    <div class="masthead__center"><a href="./index.html" class="wordmark">Tuttoitalia<span class="tld">.ch</span></a><div class="masthead__motto">Pannello pubblicità</div></div>
+    <div class="masthead__side"></div>
+  </header>
+
+  <main class="container" style="padding-top:40px;padding-bottom:64px">
+    <div class="section-head-row">
+      <div><h2>Gestione banner pubblicitari</h2><p>Crea, modifica e pianifica i banner mostrati su tutto il sito. Le modifiche sono immediate sul tuo browser; usa <b>Esporta</b> per salvare la configurazione.</p></div>
+      <a class="btn btn--ghost btn--sm" href="./index.html" target="_blank">Anteprima sito ↗</a>
+    </div>
+
+    <!-- Lock prompt for guests -->
+    <div id="gate-locked" hidden style="text-align:center;padding:56px 20px;background:#fff;border:1px solid var(--line);border-radius:12px">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" aria-hidden="true" style="margin-bottom:10px"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <h3 style="font-family:var(--serif);margin:0 0 8px">Accesso riservato</h3>
+      <p style="color:var(--gray);max-width:42ch;margin:0 auto 16px">Accedi come gestore per modificare i banner. <br>(Demo: qualsiasi account registrato può gestire; in produzione sarà riservato agli amministratori.)</p>
+      <button class="btn btn--green" type="button" data-auth="register">Accedi / Registrati</button>
+    </div>
+
+    <!-- Manager -->
+    <div id="mgr" class="mgr" hidden>
+      <!-- List -->
+      <div>
+        <h3 style="font-family:var(--serif);font-size:20px;margin:0 0 14px">Campagne <span id="ad-count" style="color:var(--gray);font-size:14px"></span></h3>
+        <div class="mgr__list" id="ad-list"></div>
+        <div class="toolbar">
+          <button class="btn btn--ghost btn--sm" id="btn-new" type="button">+ Nuovo banner</button>
+          <button class="btn btn--ghost btn--sm" id="btn-export" type="button">Esporta JSON</button>
+          <label class="btn btn--ghost btn--sm" style="cursor:pointer">Importa JSON<input id="file-import" type="file" accept="application/json" hidden></label>
+          <button class="btn btn--ghost btn--sm" id="btn-reset" type="button">Ripristina default</button>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px">
+        <h3 style="font-family:var(--serif);font-size:20px;margin:0 0 14px" id="form-title">Nuovo banner</h3>
+        <form id="ad-form" novalidate>
+          <input type="hidden" id="f-id">
+          <div class="fld"><label for="f-advertiser">Inserzionista</label><input id="f-advertiser" type="text" placeholder="Es. Lavazza"></div>
+          <div class="fld--row">
+            <div class="fld"><label for="f-slot">Posizione</label>
+              <select id="f-slot">
+                <option value="home-top">Quotidiano · Leaderboard (alto)</option>
+                <option value="home-mid">Quotidiano · Rectangle (sidebar)</option>
+                <option value="home-footer">Quotidiano · Leaderboard (fondo)</option>
+                <option value="portale-top">Portale · Leaderboard</option>
+                <option value="portale-mid">Portale · Rectangle</option>
+              </select>
+            </div>
+            <div class="fld"><label for="f-format">Formato</label>
+              <select id="f-format">
+                <option value="leaderboard">Leaderboard 728×90</option>
+                <option value="billboard">Billboard 970×250</option>
+                <option value="mpu">Rectangle 300×250</option>
+                <option value="halfpage">Half-page 300×600</option>
+                <option value="mobile">Mobile 320×100</option>
+              </select>
+            </div>
+          </div>
+          <div class="fld"><label for="f-title">Titolo</label><input id="f-title" type="text" placeholder="Il caffè italiano, ovunque tu sia"></div>
+          <div class="fld"><label for="f-sub">Sottotitolo</label><input id="f-sub" type="text" placeholder="Capsule e macchine in offerta"></div>
+          <div class="fld--row">
+            <div class="fld"><label for="f-cta">Pulsante (CTA)</label><input id="f-cta" type="text" placeholder="Scopri di più"></div>
+            <div class="fld"><label for="f-href">Link (URL)</label><input id="f-href" type="text" placeholder="https://…"></div>
+          </div>
+          <div class="fld--row">
+            <div class="fld"><label for="f-bg">Sfondo (colore o gradiente CSS)</label><input id="f-bg" type="text" placeholder="linear-gradient(120deg,#0B5132,#073C25)"></div>
+            <div class="fld"><label for="f-color">Colore testo</label><input id="f-color" type="text" placeholder="#ffffff" value="#ffffff"></div>
+          </div>
+          <div class="fld--row">
+            <div class="fld"><label for="f-start">Inizio (opzionale)</label><input id="f-start" type="date"></div>
+            <div class="fld"><label for="f-end">Fine (opzionale)</label><input id="f-end" type="date"></div>
+          </div>
+          <div class="fld"><label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-weight:500"><input id="f-active" type="checkbox" checked style="width:auto"> Banner attivo</label></div>
+
+          <div class="fld"><label>Anteprima</label>
+            <div class="adslot" id="f-preview" data-format="leaderboard"></div>
+          </div>
+          <p class="auth__error" id="f-error" role="alert"></p>
+          <div class="toolbar">
+            <button class="btn btn--green btn--sm" id="f-save" type="submit">Salva banner</button>
+            <button class="btn btn--ghost btn--sm" id="f-cancel" type="button">Annulla</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- AUTH MODAL -->
+  <div class="auth" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="auth__card">
+      <div class="auth__top"><div class="auth__brand">Tuttoitalia<span class="tld">.ch</span></div><h2 class="auth__title" id="auth-title">Accedi</h2><button class="auth__close" id="auth-close" type="button" aria-label="Chiudi">×</button></div>
+      <div class="auth__body">
+        <form id="auth-form" novalidate>
+          <div class="auth__field" id="auth-name-row"><label for="auth-name">Nome e cognome</label><input type="text" id="auth-name" autocomplete="name"></div>
+          <div class="auth__field"><label for="auth-email">Email</label><input type="email" id="auth-email" autocomplete="email"></div>
+          <div class="auth__field"><label for="auth-pass">Password</label><input type="password" id="auth-pass"></div>
+          <p class="auth__error" id="auth-error" role="alert"></p>
+          <button class="btn btn--green btn--block" id="auth-submit" type="submit">Accedi</button>
+        </form>
+        <div class="auth__switch"><span id="auth-switch-text">Non hai un account?</span> <button id="auth-switch-btn" type="button">Registrati</button></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/portale.js" defer></script>
+  <script src="./assets/js/account.js" defer></script>
+  <script src="./assets/js/ads.js" defer></script>
+  <script src="./assets/js/gestione.js" defer></script>
+</body>
+</html>

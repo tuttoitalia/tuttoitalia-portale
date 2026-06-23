@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tuttoitalia.ch">
+  <rect width="64" height="64" rx="14" fill="#0B5132"/>
+  <text x="32" y="44" font-family="Playfair Display, Georgia, serif" font-weight="900"
+        font-size="42" text-anchor="middle" fill="#F5F3EE">T</text>
+  <g>
+    <rect x="17" y="49" width="10" height="3.4" fill="#009246"/>
+    <rect x="27" y="49" width="10" height="3.4" fill="#F5F3EE"/>
+    <rect x="37" y="49" width="10" height="3.4" fill="#CE2B37"/>
+  </g>
+</svg>

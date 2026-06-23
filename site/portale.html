@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Portale — Tuttoitalia.ch | Servizi e community degli italiani in Svizzera</title>
+  <meta name="description" content="Il portale degli italiani in Svizzera: incontri, lavoro, mercatino, immobiliare in Italia, sport &amp; CONI, benessere, alimentazione mediterranea, beauty e concorsi. Registrati gratis.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0B5132">
+  <link rel="canonical" href="https://www.tuttoitalia.ch/portale.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tuttoitalia.ch">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="Portale — Tuttoitalia.ch">
+  <meta property="og:description" content="Incontri, lavoro, mercatino, immobiliare e lo stile di vita mediterraneo. La community degli italiani in Svizzera.">
+  <meta property="og:url" content="https://www.tuttoitalia.ch/portale.html">
+  <meta property="og:image" content="https://www.tuttoitalia.ch/assets/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Spectral:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/portale.css">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Portale Tuttoitalia.ch",
+    "description": "Servizi e community per gli italiani in Svizzera: incontri, lavoro, mercatino, immobiliare, sport, benessere, alimentazione e beauty.",
+    "inLanguage": "it-CH",
+    "isPartOf": { "@type": "WebSite", "name": "Tuttoitalia.ch", "url": "https://www.tuttoitalia.ch/" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- UTILITY BAR -->
+  <div class="utility">
+    <div class="container utility__inner">
+      <div class="utility__meta">
+        <span class="utility__date" id="js-date">—</span>
+        <span class="utility__sep">·</span>
+        <span class="utility__time" id="js-time">—</span>
+        <span class="utility__sep">·</span>
+        <span class="utility__temp">Zurigo 18°C</span>
+      </div>
+      <div class="utility__actions">
+        <a class="utility__link" href="./index.html">Quotidiano</a>
+        <span class="utility__divider">|</span>
+        <div class="langs" role="group" aria-label="Lingua">
+          <button class="lang" type="button" aria-pressed="true">IT</button>
+          <button class="lang" type="button" aria-pressed="false">EN</button>
+          <button class="lang" type="button" aria-pressed="false">DE</button>
+          <button class="lang" type="button" aria-pressed="false">FR</button>
+        </div>
+        <span class="utility__divider">|</span>
+        <span data-acct-slot></span>
+        <button class="btn-newsletter" type="button" data-auth="register">Registrati</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="container masthead">
+    <div class="masthead__side masthead__tagline-left">
+      <div class="masthead__since">Il Portale</div>
+      <div>Servizi e community<br>per gli italiani in CH.</div>
+    </div>
+    <div class="masthead__center">
+      <a href="./index.html" class="wordmark" aria-label="Tuttoitalia.ch — home">Tuttoitalia<span class="tld">.ch</span></a>
+      <div class="masthead__motto">L'italianità, tutta in un account.</div>
+    </div>
+    <div class="masthead__side masthead__search">
+      <form class="search" role="search" action="#" method="get">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" name="s" placeholder="Cerca nel portale" aria-label="Cerca">
+      </form>
+    </div>
+  </header>
+
+  <!-- SECTION NAV -->
+  <nav class="sectionnav" aria-label="Sezioni del portale">
+    <div class="container sectionnav__inner">
+      <a class="navitem" href="./index.html">Quotidiano</a>
+      <a class="navitem" href="#incontri">Incontri</a>
+      <a class="navitem" href="#lavoro">Lavoro</a>
+      <a class="navitem" href="#mercatino">Mercatino</a>
+      <a class="navitem" href="#immobiliare">Immobiliare</a>
+      <a class="navitem" href="./case-vacanze.html" style="color:var(--rausch,#ff385c)">Case vacanza</a>
+      <a class="navitem" href="#membership">Diventa membro</a>
+      <a class="navitem" href="#sport">Sport &amp; CONI</a>
+      <a class="navitem" href="#benessere">Benessere</a>
+      <a class="navitem" href="#alimentazione">Alimentazione</a>
+      <a class="navitem" href="#beauty">Beauty</a>
+      <a class="navitem" href="#concorsi">Concorsi</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="phero">
+      <div class="container">
+        <div class="phero__eyebrow">Il portale degli italiani in Svizzera</div>
+        <h1 class="phero__title">L'italianità, tutta in <em>un account</em>.</h1>
+        <p class="phero__sub">Incontri, lavoro, mercatino e casa in Italia. E poi sport, benessere, cucina mediterranea e beauty. Tutto in italiano, accanto a chi vive la tua stessa vita lontano da casa.</p>
+        <div class="phero__cta">
+          <button class="btn btn--gold" type="button" data-auth="register">Registrati gratis</button>
+          <a class="btn btn--ghost-light" href="#membership">Scopri i vantaggi →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLYWHEEL -->
+    <section class="flywheel" aria-label="Come funziona">
+      <div class="container flywheel__inner">
+        <div class="flywheel__node flywheel__node--svc"><b>Servizi gratuiti</b><span>Incontri · Lavoro · Mercatino · Casa</span></div>
+        <span class="flywheel__arrow" aria-hidden="true">→</span>
+        <div class="flywheel__node flywheel__node--reg"><b>Utenti registrati</b><span>una community profilata</span></div>
+        <span class="flywheel__arrow" aria-hidden="true">→</span>
+        <div class="flywheel__node flywheel__node--mon"><b>Stile di vita</b><span>Sport · Benessere · Cibo · Beauty</span></div>
+        <div class="flywheel__loop">↻ i ricavi finanziano contenuti ed eventi → nuovi utenti</div>
+      </div>
+    </section>
+
+    <!-- AD · leaderboard -->
+    <div class="adwrap adwrap--band">
+      <div class="container adwrap" style="padding:0">
+        <span class="adwrap__label">Pubblicità</span>
+        <div class="adslot" data-ad-slot="portale-top" data-format="leaderboard"></div>
+      </div>
+    </div>
+
+    <!-- ============================= SERVIZI (acquisition) ============= -->
+
+    <!-- INCONTRI -->
+    <section class="svc" id="incontri">
+      <div class="container">
+        <span class="svc__badge badge--svc">Servizio · gratis</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Trova la tua anima gemella italiana</h2>
+            <p>Conosci italiane e italiani che vivono in Svizzera. Stessa lingua, stessa cultura, stesso cuore.</p>
+          </div>
+          <button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Registrati gratuitamente per vedere e contattare i profili." data-done-msg="Profili sbloccati ✦">Vedi tutti i profili →</button>
+        </div>
+        <div class="locked">
+          <div class="grid grid--4">
+            <article class="lcard lcard--profile">
+              <div class="lcard__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)"><span class="tile-label">Giulia</span></div>
+              <div class="lcard__body"><h3 class="lcard__name">Giulia, 29</h3><div class="lcard__meta">Zurigo</div><div class="lcard__tag">Cucina pugliese &amp; cinema</div></div>
+            </article>
+            <article class="lcard lcard--profile">
+              <div class="lcard__media tile" style="background:linear-gradient(160deg,#1f3a52,#0a1722)"><span class="tile-label">Marco</span></div>
+              <div class="lcard__body"><h3 class="lcard__name">Marco, 34</h3><div class="lcard__meta">Lugano</div><div class="lcard__tag">Tifoso del Milan, chef per passione</div></div>
+            </article>
+            <article class="lcard lcard--profile">
+              <div class="lcard__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Sofia</span></div>
+              <div class="lcard__body"><h3 class="lcard__name">Sofia, 27</h3><div class="lcard__meta">Ginevra</div><div class="lcard__tag">Montagne e weekend in Italia</div></div>
+            </article>
+            <article class="lcard lcard--profile">
+              <div class="lcard__media tile" style="background:linear-gradient(160deg,#8a6a3f,#3a2a18)"><span class="tile-label">Luca</span></div>
+              <div class="lcard__body"><h3 class="lcard__name">Luca, 31</h3><div class="lcard__meta">Basilea</div><div class="lcard__tag">Caffè, vespe e buona musica</div></div>
+            </article>
+          </div>
+          <div class="locked__veil">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <p>Registrati gratuitamente per vedere e contattare i profili.</p>
+            <button class="btn btn--green btn--sm" type="button" data-auth="register">Registrati gratis</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAVORO -->
+    <section class="svc" id="lavoro">
+      <div class="container">
+        <span class="svc__badge badge--svc">Servizio · gratis</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Cerco lavoro in Svizzera</h2>
+            <p>Offerte di lavoro per la comunità italofona.</p>
+          </div>
+          <button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi o registrati per pubblicare un annuncio." data-done-msg="Pronto a pubblicare il tuo annuncio ✦">+ Pubblica un annuncio</button>
+        </div>
+        <div class="grid grid--2">
+          <article class="lcard"><div class="lcard__body">
+            <h3 class="lcard__title">Cuoco/a — cucina italiana</h3>
+            <div class="lcard__meta">Ristorante Da Vinci · Zurigo</div>
+            <div class="lcard__tag">CHF 4'800 / mese · tempo pieno</div>
+            <div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi per candidarti." data-done-msg="Candidatura inviata ✦">Candidati</button></div>
+          </div></article>
+          <article class="lcard"><div class="lcard__body">
+            <h3 class="lcard__title">Muratore qualificato</h3>
+            <div class="lcard__meta">Edilizia Rossi · Lugano</div>
+            <div class="lcard__tag">CHF 5'200 / mese · tempo pieno</div>
+            <div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi per candidarti." data-done-msg="Candidatura inviata ✦">Candidati</button></div>
+          </div></article>
+          <article class="lcard"><div class="lcard__body">
+            <h3 class="lcard__title">Impiegato/a contabile (IT/DE)</h3>
+            <div class="lcard__meta">Studio Bianchi · Zurigo</div>
+            <div class="lcard__tag">CHF 6'000 / mese · 80–100%</div>
+            <div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi per candidarti." data-done-msg="Candidatura inviata ✦">Candidati</button></div>
+          </div></article>
+          <article class="lcard"><div class="lcard__body">
+            <h3 class="lcard__title">Pizzaiolo/a</h3>
+            <div class="lcard__meta">Napoli Express · Berna</div>
+            <div class="lcard__tag">CHF 4'500 / mese · serale</div>
+            <div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi per candidarti." data-done-msg="Candidatura inviata ✦">Candidati</button></div>
+          </div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MERCATINO -->
+    <section class="svc" id="mercatino">
+      <div class="container">
+        <span class="svc__badge badge--svc">Servizio · gratis</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Vendo / Offro</h2>
+            <p>Il mercatino degli italiani in Svizzera.</p>
+          </div>
+          <button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi o registrati per vendere un oggetto." data-done-msg="Pronto a vendere ✦">+ Vendi un oggetto</button>
+        </div>
+        <div class="grid grid--4">
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#3a4452,#1a2028)"><span class="tile-label">Vespa PX 125</span><span class="lcard__price">CHF 3'200</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Vespa PX 125 (1998)</h3><div class="lcard__meta">Zurigo</div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)"><span class="tile-label">La Pavoni</span><span class="lcard__price">CHF 280</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Macchina caffè La Pavoni</h3><div class="lcard__meta">Lugano</div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#8a6a3f,#3a2a18)"><span class="tile-label">Pentole rame</span><span class="lcard__price">CHF 150</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Set pentole in rame</h3><div class="lcard__meta">Ginevra</div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#1f3a52,#0a1722)"><span class="tile-label">Bianchi</span><span class="lcard__price">CHF 950</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Bici da corsa Bianchi</h3><div class="lcard__meta">Basilea</div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AD · in-feed rectangle -->
+    <div class="container adwrap" style="padding:36px 32px">
+      <span class="adwrap__label">Pubblicità</span>
+      <div class="adslot" data-ad-slot="portale-mid" data-format="mpu"></div>
+    </div>
+
+    <!-- IMMOBILIARE -->
+    <section class="svc" id="immobiliare">
+      <div class="container">
+        <span class="svc__badge badge--svc">Servizio · gratis</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Immobiliare in Italia</h2>
+            <p>Vivi in Svizzera ma hai una casa in Italia? Affittala, vendila o proponila come casa vacanza alla nostra community italofona.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn--green btn--sm" href="./case-vacanze.html">🏡 Case vacanza →</a>
+            <button class="btn btn--ghost btn--sm" type="button" data-gate data-gate-msg="Accedi o registrati per pubblicare il tuo immobile." data-done-msg="Pronto a pubblicare l'immobile ✦">+ Pubblica il tuo immobile</button>
+          </div>
+        </div>
+        <div class="grid grid--4">
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#d6c5a8,#8a6a3f)"><span class="tile-label">Puglia</span><span class="lcard__price">€ 145'000</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Trullo ristrutturato</h3><div class="lcard__meta">Valle d'Itria, Puglia</div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Calabria</span><span class="lcard__price">€ 89'000</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Bilocale vista mare</h3><div class="lcard__meta">Tropea, Calabria</div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#3a4d2a,#1c2614)"><span class="tile-label">Toscana</span><span class="lcard__price">€ 320'000</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Casale in collina</h3><div class="lcard__meta">Val d'Orcia, Toscana</div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#7a5a2a,#3a2810)"><span class="tile-label">Sicilia</span><span class="lcard__price">€ 110'000</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Appartamento centro storico</h3><div class="lcard__meta">Ortigia, Sicilia</div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= MEMBERSHIP (registration) ========= -->
+    <section class="membership" id="membership">
+      <div class="container" style="text-align:center">
+        <div class="psection__eyebrow">Diventa membro di Tuttoitalia</div>
+        <h2 class="psection__title" style="color:#fff">Una community, mille opportunità.</h2>
+        <p class="psection__lead" style="color:rgba(255,255,255,.82);max-width:60ch;margin:0 auto">Registrati gratis per usare tutti i servizi. Passa a Membro per vantaggi esclusivi, eventi e concorsi riservati.</p>
+        <div class="membership__grid">
+          <div class="plan">
+            <div class="plan__name">Gratuito</div>
+            <div class="plan__price">CHF 0</div>
+            <ul>
+              <li>Incontri, lavoro, mercatino e immobiliare</li>
+              <li>Newsletter settimanale</li>
+              <li>Partecipa ai concorsi</li>
+              <li>Profilo nella community</li>
+            </ul>
+            <button class="btn btn--ghost-light btn--block" type="button" data-auth="register">Registrati gratis</button>
+          </div>
+          <div class="plan plan--featured">
+            <div class="plan__name">Membro ✦</div>
+            <div class="plan__price">CHF 4.90 <small>/ mese</small></div>
+            <ul>
+              <li>Tutto del piano gratuito</li>
+              <li>Piano alimentare mediterraneo completo</li>
+              <li>Prevendite e biglietti scontati agli eventi</li>
+              <li>Concorsi e contenuti riservati ai membri</li>
+              <li>Nessuna pubblicità</li>
+            </ul>
+            <button class="btn btn--green btn--block" type="button" data-gate data-gate-msg="Accedi o registrati per attivare l'abbonamento." data-done-msg="Abbonamento Membro attivato ✦ (demo)">Diventa Membro</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= STILE DI VITA (monetization) ====== -->
+
+    <!-- SPORT & CONI -->
+    <section class="svc" id="sport">
+      <div class="container">
+        <span class="svc__badge badge--mon">Stile di vita</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Sport italiano in Svizzera</h2>
+            <p>Trova la tua squadra, il tuo club, la tua community sportiva italofona — in collaborazione con il CONI.</p>
+          </div>
+        </div>
+        <div class="grid grid--3">
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#0B5132,#063019)"><span class="tile-label">Calcio</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">ASI Zurigo — Calcio amatoriale</h3><div class="lcard__meta">Zurigo · 240 membri</div><div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-done-msg="Iscritto al club ✦">Unisciti</button></div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)"><span class="tile-label">Bocce</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Bocciofila Lugano</h3><div class="lcard__meta">Lugano · 130 membri</div><div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-done-msg="Iscritto al club ✦">Unisciti</button></div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#1f3a52,#0a1722)"><span class="tile-label">Ciclismo</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Gruppo Ciclistico Ticino</h3><div class="lcard__meta">Bellinzona · 95 membri</div><div class="lcard__foot"><button class="btn btn--ghost btn--sm" type="button" data-gate data-done-msg="Iscritto al club ✦">Unisciti</button></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENESSERE -->
+    <section class="svc" id="benessere">
+      <div class="container">
+        <span class="svc__badge badge--mon">Stile di vita</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Benessere &amp; Salute</h2>
+            <p>Vivere meglio, alla maniera italiana: equilibrio, movimento e prevenzione.</p>
+          </div>
+        </div>
+        <div class="grid grid--3">
+          <article class="lcard"><div class="lcard__media tile" style="background:linear-gradient(160deg,#3a4d2a,#1c2614)"><span class="tile-label">Medici IT</span></div><div class="lcard__body"><div class="kicker">Salute</div><h3 class="lcard__title">Medici e specialisti italiani in Svizzera: la guida</h3></div></article>
+          <article class="lcard"><div class="lcard__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Mindfulness</span></div><div class="lcard__body"><div class="kicker">Benessere</div><h3 class="lcard__title">Mindfulness mediterranea: il ritmo lento che fa bene</h3></div></article>
+          <article class="lcard"><div class="lcard__media tile" style="background:linear-gradient(160deg,#8a6a3f,#3a2a18)"><span class="tile-label">Terme</span></div><div class="lcard__body"><div class="kicker">Viaggi &amp; salute</div><h3 class="lcard__title">Le terme italiane più vicine alla Svizzera</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALIMENTAZIONE -->
+    <section class="svc" id="alimentazione">
+      <div class="container">
+        <span class="svc__badge badge--mon">Stile di vita</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Alimentazione mediterranea</h2>
+            <p>Stare in forma, dimagrire e vivere meglio con la sapienza dell'alimentazione mediterranea — il modo italiano al benessere.</p>
+          </div>
+        </div>
+        <div class="mealplan">
+          <div>
+            <h3 style="font-family:var(--serif);font-weight:900;font-size:26px;margin:0 0 10px">Il piano alimentare mediterraneo</h3>
+            <p style="color:var(--gray);line-height:1.6;margin:0 0 18px">7 giorni di menù bilanciati, lista della spesa e ricette della tradizione. Disponibile per intero ai membri Tuttoitalia.</p>
+            <button class="btn btn--green" type="button" data-gate data-gate-msg="Diventa membro per il piano completo." data-done-msg="Programma avviato ✦">Inizia il programma →</button>
+          </div>
+          <div class="mealplan__days">
+            <div class="mealday"><b>Lun</b><span>Orata al forno, verdure di stagione</span></div>
+            <div class="mealday"><b>Mar</b><span>Pasta integrale e legumi</span></div>
+            <div class="mealday"><b>Mer</b><span>Insalata di farro e pomodori</span></div>
+            <div class="mealday"><b>Gio</b><span>Pesce azzurro, olio EVO</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAUTY -->
+    <section class="svc" id="beauty">
+      <div class="container">
+        <span class="svc__badge badge--mon">Stile di vita</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Beauty</h2>
+            <p>Skincare, cosmetica e rituali di bellezza dalla tradizione italiana, tra natura mediterranea ed eleganza.</p>
+          </div>
+        </div>
+        <div class="grid grid--3">
+          <article class="lcard"><div class="lcard__media tile" style="background:linear-gradient(160deg,#7a5a2a,#3a2810)"><span class="tile-label">Olio EVO</span></div><div class="lcard__body"><div class="kicker">Cura di sé</div><h3 class="lcard__title">L'olio d'oliva nella skincare: i benefici reali</h3></div></article>
+          <article class="lcard"><div class="lcard__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Profumi</span></div><div class="lcard__body"><div class="kicker">Beauty</div><h3 class="lcard__title">Profumeria artigianale italiana: 5 case da conoscere</h3></div></article>
+          <article class="lcard"><div class="lcard__media tile" style="background:linear-gradient(160deg,#3a4d2a,#1c2614)"><span class="tile-label">Rituali</span></div><div class="lcard__body"><div class="kicker">Rituali</div><h3 class="lcard__title">Il rituale di bellezza mediterraneo, mattina e sera</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCORSI -->
+    <section class="svc" id="concorsi">
+      <div class="container">
+        <span class="svc__badge badge--svc">Community</span>
+        <div class="section-head-row">
+          <div>
+            <h2>Concorsi &amp; Premi</h2>
+            <p>Partecipa gratuitamente e vinci viaggi, biglietti ed esperienze. Accedi o registrati per partecipare.</p>
+          </div>
+        </div>
+        <div class="grid grid--3">
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#e8631f,#7a2e0c)"><span class="tile-label">Zucchero</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Vinci 2 biglietti per Zucchero</h3><div class="lcard__meta">Hallenstadion · Zurigo</div><div class="lcard__foot"><button class="btn btn--gold btn--sm" type="button" data-gate data-gate-msg="Accedi o registrati per partecipare." data-done-msg="Partecipazione registrata ✦ — in bocca al lupo!">Partecipa</button></div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#5d7a8a,#2a3a48)"><span class="tile-label">Firenze</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Weekend per due a Firenze</h3><div class="lcard__meta">Con visita al museo della Vespa</div><div class="lcard__foot"><button class="btn btn--gold btn--sm" type="button" data-gate data-gate-msg="Accedi o registrati per partecipare." data-done-msg="Partecipazione registrata ✦ — in bocca al lupo!">Partecipa</button></div></div>
+          </article>
+          <article class="lcard">
+            <div class="lcard__media tile" style="background:linear-gradient(160deg,#7a2a2f,#3d1418)"><span class="tile-label">Lavazza</span></div>
+            <div class="lcard__body"><h3 class="lcard__title">Cofanetto degustazione Lavazza</h3><div class="lcard__meta">10 cofanetti in palio</div><div class="lcard__foot"><button class="btn btn--gold btn--sm" type="button" data-gate data-gate-msg="Accedi o registrati per partecipare." data-done-msg="Partecipazione registrata ✦ — in bocca al lupo!">Partecipa</button></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter" id="newsletter" aria-label="Newsletter">
+    <div class="newsletter__inner">
+      <div>
+        <div class="newsletter__kicker">La newsletter</div>
+        <div class="newsletter__title">79'000 italofoni la leggono ogni settimana.</div>
+        <div class="newsletter__sub">Una sintesi delle nostre storie più importanti. Tasso di apertura del 47%.</div>
+      </div>
+      <div>
+        <form class="newsletter__form" id="js-nl-form" novalidate>
+          <input type="email" id="js-nl-email" name="email" placeholder="La tua email" aria-label="La tua email" required>
+          <button type="submit">Iscriviti</button>
+        </form>
+        <div class="newsletter__thanks" id="js-nl-thanks" hidden>Grazie! Sei dei nostri. ✦</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div>
+        <div class="wordmark">Tuttoitalia<span class="tld">.ch</span></div>
+        <div class="footer__motto">L'Italia, ovunque siano gli italiani.</div>
+        <div class="footer__meta">Tuttoitalia GmbH · Zurigo · dal 2003</div>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__head">Servizi</div>
+          <a class="footer__link" href="#incontri">Incontri</a>
+          <a class="footer__link" href="#lavoro">Lavoro</a>
+          <a class="footer__link" href="#mercatino">Mercatino</a>
+          <a class="footer__link" href="#immobiliare">Immobiliare</a>
+          <a class="footer__link" href="#concorsi">Concorsi</a>
+        </div>
+        <div>
+          <div class="footer__head">Stile di vita</div>
+          <a class="footer__link" href="#sport">Sport &amp; CONI</a>
+          <a class="footer__link" href="#benessere">Benessere</a>
+          <a class="footer__link" href="#alimentazione">Alimentazione</a>
+          <a class="footer__link" href="#beauty">Beauty</a>
+          <a class="footer__link" href="#membership">Diventa membro</a>
+        </div>
+        <div>
+          <div class="footer__head">Tuttoitalia</div>
+          <a class="footer__link" href="./index.html">Quotidiano</a>
+          <span class="footer__link">Chi siamo</span>
+          <a class="footer__link" href="./pubblicita.html">Pubblicità &amp; Agenzie</a>
+          <a class="footer__link" href="./gestione.html">Gestione banner</a>
+          <span class="footer__link">Contatti</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__rule"></div>
+    <div class="footer__legal">
+      <span>© 2026 Tuttoitalia GmbH — Tutti i diritti riservati</span>
+      <span>Privacy · Cookie · Note legali · Impressum</span>
+    </div>
+  </footer>
+
+  <!-- AUTH MODAL (shared markup, driven by account.js) -->
+  <div class="auth" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="auth__card">
+      <div class="auth__top">
+        <div class="auth__brand">Tuttoitalia<span class="tld">.ch</span></div>
+        <h2 class="auth__title" id="auth-title">Crea il tuo account</h2>
+        <button class="auth__close" id="auth-close" type="button" aria-label="Chiudi">×</button>
+      </div>
+      <div class="auth__body">
+        <form id="auth-form" novalidate>
+          <div class="auth__field" id="auth-name-row">
+            <label for="auth-name">Nome e cognome</label>
+            <input type="text" id="auth-name" autocomplete="name" placeholder="Mario Rossi">
+          </div>
+          <div class="auth__field">
+            <label for="auth-email">Email</label>
+            <input type="email" id="auth-email" autocomplete="email" placeholder="mario@email.ch">
+          </div>
+          <div class="auth__field">
+            <label for="auth-pass">Password</label>
+            <input type="password" id="auth-pass" autocomplete="current-password" placeholder="Almeno 6 caratteri">
+          </div>
+          <p class="auth__error" id="auth-error" role="alert"></p>
+          <button class="btn btn--green btn--block" id="auth-submit" type="submit">Registrati gratis</button>
+        </form>
+        <div class="auth__switch">
+          <span id="auth-switch-text">Hai già un account?</span>
+          <button id="auth-switch-btn" type="button">Accedi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/portale.js" defer></script>
+  <script src="./assets/js/account.js" defer></script>
+  <script src="./assets/js/ads.js" defer></script>
+</body>
+</html>

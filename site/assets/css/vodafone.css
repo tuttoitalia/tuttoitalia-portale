@@ -1,0 +1,225 @@
+/* ==========================================================================
+   vodafone.css — Vodafone design layer over the Tuttoitalia portale.
+   Loaded LAST on every page, so it cascades over styles.css / portale.css
+   (editorial pages) and airbnb.css (case-vacanze).
+
+   Translates the site to the Vodafone design language (see DESIGN-vodafone.md):
+     · single red accent  #e60000  (no second accent colour)
+     · ink / white band rhythm — surface contrast, not soft neutrals
+     · heavy uppercase display type (Inter 800, tight tracking)
+     · pill CTAs (60px radius), flat surfaces (no drop shadows)
+     · editorial photography stays (the placeholder gradient tiles)
+
+   Fully reversible: delete the <link> to this file to restore the original.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   1. Token remap — editorial pages (styles.css + portale.css :root)
+   ========================================================================== */
+:root {
+  /* Surfaces — white canvas, near-white soft, hairline */
+  --cream:       #ffffff;
+  --cream-2:     #f2f2f2;
+  --white:       #ffffff;
+  --line:        #e3e3e3;
+
+  /* Text */
+  --ink:         #25282b;
+  --ink-soft:    #4a4d50;
+  --gray:        #7e7e7e;
+
+  /* Brand: red is the ONLY accent. The former "green" tokens (used for dark
+     bands, nav, footer, wordmark) become Vodafone ink; the CTA greens become
+     Vodafone red. */
+  --green:       #25282b;
+  --green-card:  #2f3337;
+  --green-dark:  #1b1d1f;
+  --green-deep:  #141517;
+  --italy-green: #e60000;
+  --italy-green-dark: #b80000;
+  --red:         #e60000;
+  --red-dark:    #b80000;
+
+  /* Gold accent is removed in Vodafone → fold into the red family */
+  --gold:        #e60000;
+  --gold-dark:   #b80000;
+  --gold-soft:   #f6c9c9;
+
+  /* portale.css vertical tints → neutralise to grey / red / ink */
+  --teal-bg:  #f2f2f2;  --teal-ln:  #e3e3e3;
+  --terra-bg: #fbe6e6;  --terra-ln: #f3c4c4;  --terra: #e60000;
+  --indigo:   #25282b;  --indigo-bg: #f2f2f2;
+
+  /* Single typeface throughout (kills Playfair / Spectral serif) */
+  --serif: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --sans:  Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* airbnb page (case-vacanze) — recolour Rausch → Vodafone red */
+  --rausch:        #e60000;
+  --rausch-active: #b80000;
+  --rausch-disabled: #f6c9c9;
+}
+
+/* ==========================================================================
+   2. Typography — one family, heavy uppercase display voice
+   ========================================================================== */
+body, .abnb { font-family: var(--sans); }
+
+/* Drop every italic-serif flourish */
+.wordmark, .masthead__motto, .footer__motto, .reader__brand, .reader__quote,
+.auth__brand, .phero__title em, .plan__name, .adhouse b {
+  font-style: normal;
+}
+
+/* Wordmark → heavy sans, ink with a red TLD */
+.wordmark {
+  font-family: var(--sans);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+.wordmark .tld { color: var(--red); }
+.footer .wordmark { color: #fff; }
+.footer .wordmark .tld { color: var(--red); }
+
+/* Hero headlines — the Vodafone billboard: UPPERCASE weight 800, tight */
+.phero__title {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: .95;
+  color: #fff;
+  max-width: 18ch;
+}
+.phero__title em { color: var(--red); font-style: normal; }
+
+.lead h2, .lead .lead__title {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -.015em;
+  font-size: clamp(30px, 4.4vw, 54px);
+  line-height: .98;
+}
+
+/* Section heads — uppercase 800, moderate scale */
+.events__title, .newsletter__title, .block-head h2, .tabbed__head h2,
+.psection__title, .section-head-row h2, .col-heading, .mealplan h2 {
+  font-family: var(--sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+}
+
+/* Body-level headings stay sentence-case for legibility, Inter 700 */
+.card h3, .lcard__title, .lcard__name, .cinema-card h3, .latest__item h3,
+.mostread__title, .partnerbox__title, .plan__name, .mealday b,
+.reader__title, .reader__deck, .auth__title, .adbanner__title,
+.adhouse b, .eventcard__venue, .stat__lbl, .lcard__meta, .table td b {
+  font-family: var(--sans);
+  letter-spacing: -.005em;
+  text-transform: none;
+}
+.card h3, .lcard__title, .lcard__name, .cinema-card h3, .latest__item h3,
+.partnerbox__title, .plan__name, .auth__title, .reader__title { font-weight: 700; }
+
+/* Eyebrows / kickers / labels → red, heavy (on light surfaces) */
+.kicker, .eyebrow, .psection__eyebrow, .masthead__since, .sponsors__label,
+.adwrap__label, .ticker__tag, .events__all, .block-head__more,
+.lcard__tag, .table__price, .auth__switch button {
+  color: var(--red);
+}
+.kicker, .eyebrow, .psection__eyebrow, .masthead__since { font-weight: 800; }
+
+/* Eyebrows that sit on dark (ink) bands → light, not red (contrast) */
+.events__kicker, .newsletter__kicker, .phero__eyebrow {
+  color: #fff;
+  opacity: .9;
+  font-weight: 800;
+}
+.footer__head { color: #fff; opacity: .75; }
+
+/* Numerals that were gold → red brand pop */
+.mostread__n, .stat__num, .eventcard__day { color: var(--red); }
+
+/* ==========================================================================
+   3. Buttons & pills — red fill primary, outline secondary, 60px radius
+   ========================================================================== */
+.btn, .partnerbox__btn, .newsletter__form button, .btn-newsletter,
+.eventcard__btn, .abnb-btn, .tab {
+  border-radius: 60px;
+}
+
+/* Primary CTA — solid Vodafone red pill */
+.btn--green, .btn--gold, .partnerbox__btn, .newsletter__form button,
+.btn-newsletter, .abnb-btn--primary, .abnb-btn--grad {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+  filter: none;
+}
+.btn--green:hover, .btn--gold:hover, .partnerbox__btn:hover,
+.newsletter__form button:hover, .btn-newsletter:hover,
+.abnb-btn--primary:hover, .abnb-btn--grad:hover {
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+  filter: none;
+}
+
+/* Secondary / outline pills */
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: #fff; }
+.btn--ghost-light { border-color: rgba(255,255,255,.7); }
+.abnb-btn--secondary { border-radius: 60px; border-color: var(--ink); }
+
+/* Active tab / current nav → red */
+.tab[aria-selected="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+.navitem[aria-current="page"] { color: var(--red); border-bottom-color: var(--red); }
+
+/* ==========================================================================
+   4. Surfaces — flat (no soft shadows); contrast does the elevation work
+   ========================================================================== */
+.card, .lcard, .eventcard, .plan, .lcard__price { border-radius: 6px; }
+
+.card:hover, .lcard:hover, .eventcard:hover {
+  box-shadow: none;
+  border-color: var(--ink);
+}
+.card:hover, .cinema-card:hover { transform: translateY(-2px); }
+
+/* airbnb page: keep functional chrome, drop the soft shadow tier */
+.abnb-search, .abnb-account:hover, .abnb-badge { box-shadow: none; }
+.abnb-search { border-color: var(--ink); }
+.abnb-account { border-color: var(--ink); }
+
+/* ==========================================================================
+   5. case-vacanze (airbnb layout) — Vodafone display + logo
+   ========================================================================== */
+.abnb-logo { text-transform: uppercase; letter-spacing: -.01em; color: var(--red); }
+.abnb-hero h1 {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  font-size: clamp(28px, 4.4vw, 56px);
+  line-height: 1.02;
+}
+.abnb-h2 { font-weight: 800; letter-spacing: -.01em; }
+.abnb-tab[aria-selected="true"]::after { background: var(--red); }
+.abnb-cat[aria-selected="true"] { border-bottom-color: var(--red); }
+
+/* ==========================================================================
+   6. Misc brand alignment
+   ========================================================================== */
+/* speechmark-style red accent on the masthead motto */
+.masthead__motto { color: var(--red); }
+
+/* keep dark utility / ticker bars clearly Vodafone ink */
+.utility { background: var(--ink); }
+.ticker  { background: var(--ink); }
+
+/* tab outline geometry already pill; ensure consistent padding feel */
+.tab { padding: 8px 18px; }

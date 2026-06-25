@@ -151,7 +151,7 @@
 
   function cardHTML(a) {
     return '<article class="card" data-slug="' + esc(a.slug) + '" tabindex="0" role="link">' +
-      '<div class="card__media tile"' + bg(a.thumb || a.image) + '></div>' +
+      '<div class="card__media tile"' + bg((OV[a.slug] && OV[a.slug].thumb) || a.thumb || a.image) + '></div>' +
       '<div class="card__body">' +
       (a.category ? '<div class="kicker">' + esc(cleanCat(a.category)) + '</div>' : '') +
       '<h3>' + esc((OV[a.slug] && OV[a.slug].name) || a.title) + '</h3>' +
@@ -162,7 +162,7 @@
   function heroHTML(a) {
     return '<div class="container" style="margin-top:32px">' +
       '<article class="lead" data-slug="' + esc(a.slug) + '" tabindex="0" role="link">' +
-      '<div class="lead__media tile"' + bg(a.image || a.thumb) + '>' +
+      '<div class="lead__media tile"' + bg((OV[a.slug] && OV[a.slug].image) || a.image || a.thumb) + '>' +
       (a.category ? '<span class="badge-tag">' + esc(cleanCat(a.category)) + '</span>' : '') + '</div>' +
       (a.category ? '<div class="kicker lead__kicker">' + esc(cleanCat(a.category)) + '</div>' : '') +
       '<h2 class="lead__title">' + esc((OV[a.slug] && OV[a.slug].name) || a.title) + '</h2>' +
@@ -247,7 +247,7 @@
   function openArticle(slug) {
     fetch('./data/a/' + encodeURIComponent(slug) + '.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (a) { var o = OV[a.slug || slug]; if (o) { if (o.name) a.title = o.name; if (o.subtitle != null) a.subtitle = o.subtitle; if (o.body) a.body = o.body; } showReader(a); })
+      .then(function (a) { var o = OV[a.slug || slug]; if (o) { if (o.name) a.title = o.name; if (o.subtitle != null) a.subtitle = o.subtitle; if (o.body) a.body = o.body; if (o.image) a.image = o.image; if (o.thumb) a.thumb = o.thumb; } showReader(a); })
       .catch(function () {});
   }
 })();

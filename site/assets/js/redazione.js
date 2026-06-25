@@ -14,7 +14,7 @@
   var user = sessionStorage.getItem('red_user');
   var pass = sessionStorage.getItem('red_pass');
   var uname = sessionStorage.getItem('red_name');
-  var listData = [], current = null, OV = {};
+  var listData = [], current = null, OV = {}, newThumb = null, newMain = null;
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { var d = document.createElement('div'); d.textContent = (s == null ? '' : s); return d.innerHTML; }
 
@@ -108,6 +108,10 @@
     $('f-sub').value = it.subtitle || it['brief-summary'] || '';
     $('f-body').innerHTML = it.body || it['article-body'] || '';
     autoGrow($('f-sub'));
+    newThumb = null; newMain = null;
+    setPhoto('ph-thumb', it.thumb || it.image || '');
+    setPhoto('ph-main', it.image || it.thumb || '');
+    if ($('photo-msg')) { $('photo-msg').style.color = 'var(--gray)'; $('photo-msg').textContent = ''; }
   }
   function autoGrow(el) { if (!el) return; el.style.height = 'auto'; el.style.height = (el.scrollHeight + 2) + 'px'; }
   $('cancel-btn').addEventListener('click', function () {
@@ -129,10 +133,13 @@
     if (!current) return;
     var alsoWebflow = !$('f-also-tutto') || $('f-also-tutto').checked;
     $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Salvataggio…'; $('save-btn').disabled = true;
-    api('/redazione-save', {
+    var payload = {
       user: user, pass: pass, id: current.id, slug: current.slug, local: !alsoWebflow,
       name: $('f-title').value, subtitle: $('f-sub').value, body: $('f-body').innerHTML
-    }).then(function (res) {
+    };
+    if (newThumb) { payload.thumbId = newThumb.id; payload.thumbUrl = newThumb.url; }
+    if (newMain) { payload.mainId = newMain.id; payload.imageUrl = newMain.url; }
+    api('/redazione-save', payload).then(function (res) {
       $('save-btn').disabled = false;
       if (res && res.ok) {
         if (res.scope === 'italians') OV[current.slug] = { name: $('f-title').value, subtitle: $('f-sub').value, body: $('f-body').innerHTML };
@@ -165,6 +172,33 @@
       $('f-body').focus();
     });
   });
+
+  /* ---- foto: anteprima + upload su Webflow ---- */
+  function setPhoto(elId, url) { var el = $(elId); if (el) el.style.backgroundImage = url ? ('url("' + url + '")') : ''; }
+  function wirePhoto(inputId, previewId, which) {
+    var inp = $(inputId); if (!inp) return;
+    inp.addEventListener('change', function () {
+      var file = inp.files && inp.files[0]; if (!file) return;
+      if (file.size > 11 * 1024 * 1024) { $('photo-msg').style.color = 'var(--red)'; $('photo-msg').textContent = 'Foto troppo grande (max ~11 MB).'; inp.value = ''; return; }
+      $('photo-msg').style.color = 'var(--gray)'; $('photo-msg').textContent = 'Caricamento foto…';
+      var reader = new FileReader();
+      reader.onload = function () {
+        var bytes = new Uint8Array(reader.result), bin = '', CH = 0x8000, i;
+        for (i = 0; i < bytes.length; i += CH) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
+        var hash = md5(bin), b64 = btoa(bin);
+        api('/redazione-upload', { user: user, pass: pass, fileName: file.name, fileHash: hash, data: b64 }).then(function (res) {
+          if (res && res.ok && res.url) {
+            setPhoto(previewId, res.url);
+            if (which === 'thumb') newThumb = { id: res.id, url: res.url }; else newMain = { id: res.id, url: res.url };
+            $('photo-msg').style.color = 'var(--italy-green)'; $('photo-msg').textContent = '✓ Foto caricata — salva per applicarla.';
+          } else { $('photo-msg').style.color = 'var(--red)'; $('photo-msg').textContent = (res && res.error) || 'Errore upload foto.'; }
+        }).catch(function () { $('photo-msg').style.color = 'var(--red)'; $('photo-msg').textContent = 'Backend non raggiungibile (n8n).'; });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }
+  wirePhoto('file-thumb', 'ph-thumb', 'thumb');
+  wirePhoto('file-main', 'ph-main', 'main');
 
   /* ---- start ---- */
   if (user && pass) enter();

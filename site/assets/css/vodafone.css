@@ -272,3 +272,9 @@ body, .abnb { font-family: var(--sans); }
 .rte-toolbar { display: flex; flex-wrap: wrap; gap: 5px; padding: 7px; background: var(--cream-2); border: 1px solid var(--line); border-bottom: none; border-radius: 8px 8px 0 0; }
 .rte-toolbar button { background: #fff; border: 1px solid var(--line); border-radius: 6px; min-width: 34px; padding: 6px 9px; font: inherit; font-size: 14px; line-height: 1; color: var(--ink); cursor: pointer; }
 .rte-toolbar button:hover { border-color: var(--ink); }
+
+/* Redazione: anteprime foto */
+.red-photos { display: flex; gap: 16px; flex-wrap: wrap; }
+.red-photo { flex: 1 1 200px; }
+.red-photo__cap { font-size: 12px; color: var(--gray); margin-bottom: 6px; }
+.red-photo__img { width: 100%; aspect-ratio: 16/10; border: 1px solid var(--line); border-radius: 8px; background: var(--cream-2) center/cover no-repeat; }

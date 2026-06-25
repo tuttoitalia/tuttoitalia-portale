@@ -81,6 +81,21 @@
               </div>
               <div id="f-body" class="reader__body" contenteditable="true" style="border:1px solid var(--line);border-radius:0 0 6px 6px;padding:16px;min-height:340px;background:#fff;outline:none"></div>
             </div>
+            <div class="fld"><label>Foto</label>
+              <div class="red-photos">
+                <div class="red-photo">
+                  <div class="red-photo__cap">Foto piccola (nelle liste)</div>
+                  <div class="red-photo__img" id="ph-thumb"></div>
+                  <label class="btn btn--ghost btn--sm" style="margin-top:8px;cursor:pointer">Cambia foto<input type="file" id="file-thumb" accept="image/*" hidden></label>
+                </div>
+                <div class="red-photo">
+                  <div class="red-photo__cap">Foto grande (copertina)</div>
+                  <div class="red-photo__img" id="ph-main"></div>
+                  <label class="btn btn--ghost btn--sm" style="margin-top:8px;cursor:pointer">Cambia foto<input type="file" id="file-main" accept="image/*" hidden></label>
+                </div>
+              </div>
+              <p id="photo-msg" class="auth__error" style="color:var(--gray)"></p>
+            </div>
             <label style="display:flex;align-items:center;gap:8px;font-weight:600;text-transform:none;letter-spacing:0;margin:4px 0 12px;cursor:pointer"><input type="checkbox" id="f-also-tutto" checked style="width:auto"> Cambia anche su www.tuttoitalia.ch</label>
             <p class="auth__error" id="save-msg" role="status" style="color:var(--gray)"></p>
             <div class="toolbar">
@@ -94,6 +109,7 @@
     </section>
   </main>
 
+  <script src="./assets/js/md5.js" defer></script>
   <script src="./assets/js/redazione.js" defer></script>
 </body>
 </html>

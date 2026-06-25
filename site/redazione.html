@@ -66,9 +66,20 @@
           <div id="r-empty" style="background:var(--cream-2);border-radius:12px;padding:48px 24px;text-align:center;color:var(--gray)">← Scegli un articolo da modificare</div>
           <div id="r-form" hidden style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px">
             <div class="fld"><label for="f-title">Titolo</label><input id="f-title" type="text"></div>
-            <div class="fld"><label for="f-sub">Sottotitolo</label><textarea id="f-sub" rows="2"></textarea></div>
+            <div class="fld"><label for="f-sub">Sottotitolo</label><textarea id="f-sub" rows="3"></textarea></div>
             <div class="fld"><label for="f-body">Testo dell'articolo</label>
-              <div id="f-body" class="reader__body" contenteditable="true" style="border:1px solid var(--line);border-radius:6px;padding:16px;min-height:320px;background:#fff;outline:none"></div>
+              <div class="rte-toolbar" aria-label="Formattazione">
+                <button type="button" data-cmd="bold" title="Grassetto"><b>B</b></button>
+                <button type="button" data-cmd="italic" title="Corsivo"><i>I</i></button>
+                <button type="button" data-cmd="underline" title="Sottolineato"><u>U</u></button>
+                <button type="button" data-cmd="formatBlock" data-val="h3" title="Sottotitolo di paragrafo (H3)">H3</button>
+                <button type="button" data-cmd="formatBlock" data-val="p" title="Paragrafo normale">¶</button>
+                <button type="button" data-cmd="insertUnorderedList" title="Elenco puntato">• Lista</button>
+                <button type="button" data-cmd="createLink" title="Inserisci link">🔗 Link</button>
+                <button type="button" data-cmd="unlink" title="Rimuovi link">Togli link</button>
+                <button type="button" data-cmd="removeFormat" title="Pulisci formattazione">✕ Pulisci</button>
+              </div>
+              <div id="f-body" class="reader__body" contenteditable="true" style="border:1px solid var(--line);border-radius:0 0 6px 6px;padding:16px;min-height:340px;background:#fff;outline:none"></div>
             </div>
             <label style="display:flex;align-items:center;gap:8px;font-weight:600;text-transform:none;letter-spacing:0;margin:4px 0 12px;cursor:pointer"><input type="checkbox" id="f-also-tutto" checked style="width:auto"> Cambia anche su www.tuttoitalia.ch</label>
             <p class="auth__error" id="save-msg" role="status" style="color:var(--gray)"></p>

@@ -19,10 +19,10 @@
   document.documentElement.lang = LANG;
 
   var T = {
-    it: { latest: 'Ultime notizie', by: 'di', loading: 'Caricamento notizie…', err: 'Impossibile caricare le notizie.' },
-    en: { latest: 'Latest news', by: 'by', loading: 'Loading news…', err: 'Unable to load the news.' },
-    de: { latest: 'Neueste Nachrichten', by: 'von', loading: 'Nachrichten werden geladen…', err: 'Nachrichten konnten nicht geladen werden.' },
-    fr: { latest: 'Dernières actualités', by: 'par', loading: 'Chargement des actualités…', err: 'Impossible de charger les actualités.' }
+    it: { latest: 'Ultime notizie', by: 'di', loading: 'Caricamento notizie…', err: 'Impossibile caricare le notizie.', home: 'Home' },
+    en: { latest: 'Latest news', by: 'by', loading: 'Loading news…', err: 'Unable to load the news.', home: 'Home' },
+    de: { latest: 'Neueste Nachrichten', by: 'von', loading: 'Nachrichten werden geladen…', err: 'Nachrichten konnten nicht geladen werden.', home: 'Home' },
+    fr: { latest: 'Dernières actualités', by: 'par', loading: 'Chargement des actualités…', err: 'Impossible de charger les actualités.', home: 'Accueil' }
   }[LANG];
 
   var LOCALE = { it: 'it-IT', en: 'en-GB', de: 'de-DE', fr: 'fr-FR' }[LANG];
@@ -92,12 +92,62 @@
 
   ROOT.innerHTML = '<div class="container" style="padding:48px 0;color:var(--gray)">' + T.loading + '</div>';
 
-  var OV = {};
+  var OV = {}, FULL = [];
+  var CAT_MAP = {
+    attualita: { it: 'attualita', de: 'aktuell', fr: 'actualite-french', en: 'actuality' },
+    cinema: { it: 'cinema', de: 'kino', fr: 'cinema-french', en: 'cinema-english' },
+    eventi: { it: 'eventi', de: 'veranstaltungen', fr: 'evenements', en: 'events' },
+    gastronomia: { it: 'gastronomia', de: 'gastronomie-german', fr: 'gastronomie-french', en: 'gastronomy' },
+    imprese: { it: 'imprese', de: 'unternehmen', fr: 'entreprises', en: 'business' },
+    motori: { it: 'motori', de: 'motoren', fr: 'moteurs', en: 'car-motorcycle' },
+    musica: { it: 'musica', de: 'musik', fr: 'musique', en: 'music' },
+    sport: { it: 'sport', de: 'sport-german', fr: 'sport-french', en: 'sports-english' },
+    turismo: { it: 'turismo', de: 'tourismus', fr: 'tourisme', en: 'tourism' },
+    wellness: { it: 'wellness-e-salute', de: 'wellness-deutsch', fr: 'wellness-fr', en: 'wellness-english' }
+  };
   Promise.all([
     fetch('./data/index.' + LANG + '.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }),
     fetch('https://work.tuttoitalia.ch/webhook/redazione-overrides', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) { return (j && j.overrides) || {}; }).catch(function () { return {}; })
-  ]).then(function (a) { OV = a[1] || {}; render(a[0]); })
+  ]).then(function (a) { OV = a[1] || {}; FULL = a[0] || []; wireNav(); route(); })
     .catch(function () { ROOT.innerHTML = '<div class="container" style="padding:64px 0">' + T.err + '</div>'; });
+
+  function curCat() { var c = new URLSearchParams(location.search).get('cat'); return (c && CAT_MAP[c]) ? c : ''; }
+  function setActiveNav(c) {
+    [].forEach.call(document.querySelectorAll('.navitem'), function (n) {
+      var nc = n.getAttribute('data-cat');
+      if (nc !== null) { if (nc === c) n.setAttribute('aria-current', 'page'); else n.removeAttribute('aria-current'); }
+    });
+  }
+  function wireNav() {
+    [].forEach.call(document.querySelectorAll('.navitem[data-cat]'), function (n) {
+      n.addEventListener('click', function () {
+        var c = n.getAttribute('data-cat');
+        var p = new URLSearchParams(location.search);
+        if (c) p.set('cat', c); else p.delete('cat');
+        p.delete('a');
+        location.search = p.toString();
+      });
+    });
+  }
+  function route() {
+    var c = curCat();
+    setActiveNav(c);
+    if (c) renderRubric(FULL, c); else render(FULL);
+    var direct = new URLSearchParams(location.search).get('a');
+    if (direct) openArticle(direct);
+  }
+  function renderRubric(list, key) {
+    var slug = CAT_MAP[key][LANG];
+    var items = list.filter(function (a) { return a.categorySlug === slug; });
+    var title = items.length ? cleanCat(items[0].category) : key;
+    var html = '<div class="container" style="margin-top:32px">' +
+      '<div class="block-head"><h2>' + esc(title) + '</h2>' +
+      '<a class="block-head__more" href="?lang=' + LANG + '">← ' + (T.home || 'Home') + '</a></div>';
+    html += items.length ? '<div class="cards3">' + items.map(cardHTML).join('') + '</div>'
+      : '<p style="padding:40px 0;color:var(--gray)">—</p>';
+    ROOT.innerHTML = html + '</div>';
+    fillTicker(list);
+  }
 
   function cardHTML(a) {
     return '<article class="card" data-slug="' + esc(a.slug) + '" tabindex="0" role="link">' +
@@ -152,10 +202,6 @@
 
     ROOT.innerHTML = html;
     fillTicker(list);
-
-    // deep-link ?a=slug
-    var direct = new URLSearchParams(location.search).get('a');
-    if (direct) openArticle(direct);
   }
 
   /* ---- reader ---- */

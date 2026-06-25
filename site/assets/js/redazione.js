@@ -11,7 +11,8 @@
   var N8N = 'https://work.tuttoitalia.ch/webhook';   // base webhook n8n (cambia qui se serve)
   var LANG = 'it';
 
-  var token = sessionStorage.getItem('red_token');
+  var user = sessionStorage.getItem('red_user');
+  var pass = sessionStorage.getItem('red_pass');
   var uname = sessionStorage.getItem('red_name');
   var listData = [], current = null;
   var $ = function (id) { return document.getElementById(id); };
@@ -33,9 +34,9 @@
     $('login-btn').disabled = true; $('login-btn').textContent = 'Accesso…';
     api('/redazione-login', { user: u, pass: p }).then(function (res) {
       $('login-btn').disabled = false; $('login-btn').textContent = 'Accedi';
-      if (res && res.ok && res.token) {
-        token = res.token; uname = res.name || u;
-        sessionStorage.setItem('red_token', token); sessionStorage.setItem('red_name', uname);
+      if (res && res.ok) {
+        user = u; pass = p; uname = res.name || u;
+        sessionStorage.setItem('red_user', user); sessionStorage.setItem('red_pass', pass); sessionStorage.setItem('red_name', uname);
         enter();
       } else { $('login-error').textContent = (res && res.error) || 'Credenziali non valide.'; }
     }).catch(function () {
@@ -45,7 +46,7 @@
   }
 
   $('logout').addEventListener('click', function () {
-    sessionStorage.removeItem('red_token'); sessionStorage.removeItem('red_name'); location.reload();
+    sessionStorage.removeItem('red_user'); sessionStorage.removeItem('red_pass'); sessionStorage.removeItem('red_name'); location.reload();
   });
 
   function enter() {
@@ -81,7 +82,7 @@
     $('r-empty').hidden = true; $('r-form').hidden = false;
     $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Caricamento articolo…';
     [].forEach.call(document.querySelectorAll('.red-item'), function (b) { b.classList.toggle('is-on', b.getAttribute('data-id') === id); });
-    api('/redazione-get', { token: token, id: id }).then(function (res) {
+    api('/redazione-get', { user: user, pass: pass, id: id }).then(function (res) {
       if (res && res.ok && res.item) { fill(res.item); $('save-msg').textContent = ''; }
       else throw 0;
     }).catch(function () {
@@ -107,7 +108,7 @@
     if (!current) return;
     $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Salvataggio…'; $('save-btn').disabled = true;
     api('/redazione-save', {
-      token: token, id: current.id,
+      user: user, pass: pass, id: current.id,
       name: $('f-title').value, subtitle: $('f-sub').value, body: $('f-body').innerHTML
     }).then(function (res) {
       $('save-btn').disabled = false;
@@ -120,5 +121,5 @@
   });
 
   /* ---- start ---- */
-  if (token) enter();
+  if (user && pass) enter();
 })();

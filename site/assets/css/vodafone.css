@@ -246,3 +246,6 @@ body, .abnb { font-family: var(--sans); }
 .reader__body iframe, .reader__body video { max-width: 100%; border-radius: 6px; margin: 18px 0; }
 .reader__body blockquote { border-left: 3px solid var(--red); padding-left: 18px; margin: 24px 0; font-style: italic; }
 .card { cursor: pointer; }
+/* Reader: con articoli lunghi il pannello deve crescere col contenuto e scrollare
+   (default align-items:stretch lo stirava all'altezza viewport -> overflow visibile) */
+.reader { align-items: flex-start; }

@@ -10,3 +10,7 @@ desktop.ini
 # Dipendenze / build (se in futuro)
 node_modules/
 .cache/
+
+# Nessuno zip nel sito
+site/assets/*.zip
+*.zip

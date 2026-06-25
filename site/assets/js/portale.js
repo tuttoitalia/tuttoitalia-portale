@@ -1,4 +1,4 @@
-/* Tuttoitalia.ch — Portale page chrome (clock, lang, nav, newsletter). */
+/* Italians.ch — Portale page chrome (clock, lang, nav, newsletter). */
 (function () {
   'use strict';
 

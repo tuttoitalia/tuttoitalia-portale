@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tuttoitalia.ch — restyle 2026
+   Italians.ch — restyle 2026
    Progressive enhancement: the page is fully readable without JS.
    This script only adds interactivity (clock, nav, tabs, reader, newsletter).
    ========================================================================== */

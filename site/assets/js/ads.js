@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tuttoitalia.ch — advertising engine.
+   Italians.ch — advertising engine.
    Renders banners into <div class="adslot" data-ad-slot="ID" data-format="...">.
    Config lives in localStorage ('ti_ads'), managed from gestione.html, and
    falls back to DEFAULT_ADS. Unsold slots show a "space available" house promo

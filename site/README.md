@@ -1,6 +1,6 @@
-# Tuttoitalia.ch — Homepage restyle 2026
+# Italians.ch — Homepage restyle 2026
 
-Static, framework-free implementation of the *“Tuttoitalia Home – restyle 2026”*
+Static, framework-free implementation of the *“Italians.ch Home – restyle 2026”*
 design (editorial 2026 layout: cream + verde Italia + oro, Playfair + Inter).
 
 This is a **single static page** — no build step, no server-side code, no database.
@@ -77,7 +77,7 @@ site/
 ├── portale.html            # Portale (servizi + lifestyle + account)
 ├── pubblicita.html         # Media kit + Area Agenzie + prenotazione spazi
 ├── gestione.html           # Admin: gestione banner pubblicitari
-├── case-vacanze.html       # Tuttoitalia Stays — UI in stile Airbnb (case in Italia)
+├── case-vacanze.html       # Italians.ch Stays — UI in stile Airbnb (case in Italia)
 ├── assets/css/styles.css   # base styling + responsive + print
 ├── assets/css/portale.css  # portal/components (auth modal, buttons, toast, ads, cards)
 ├── assets/css/airbnb.css   # Airbnb design tokens & components (Stays)
@@ -92,7 +92,7 @@ site/
 ├── robots.txt · sitemap.xml · site.webmanifest · _headers
 ```
 
-> `case-vacanze.html` ("Tuttoitalia Stays") riproduce fedelmente il design system
+> `case-vacanze.html` ("Italians.ch Stays") riproduce fedelmente il design system
 > di Airbnb (canvas bianco, accento Rausch #ff385c, search pill, griglia foto,
 > rating 64px, reservation card). Riferimento: `../DESIGN-airbnb.md`, generato con
 > `npx getdesign@latest add airbnb`.

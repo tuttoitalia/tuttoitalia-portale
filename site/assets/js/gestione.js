@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tuttoitalia.ch — banner manager (gestione.html).
+   Italians.ch — banner manager (gestione.html).
    CRUD over the ad config (via window.TIAds), live preview, export/import.
    Gated behind login (demo: any account; production: admin role).
    ========================================================================== */
@@ -139,7 +139,7 @@
   document.getElementById('btn-export').addEventListener('click', function () {
     var blob = new Blob([JSON.stringify(cfg(), null, 2)], { type: 'application/json' });
     var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'tuttoitalia-ads.json';
+    a.href = URL.createObjectURL(blob); a.download = 'italians-ads.json';
     document.body.appendChild(a); a.click(); a.remove();
     toast('Configurazione esportata');
   });

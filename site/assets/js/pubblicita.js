@@ -1,4 +1,4 @@
-/* Tuttoitalia.ch — Pubblicità page: booking form -> confirmation + mailto. */
+/* Italians.ch — Pubblicità page: booking form -> confirmation + mailto. */
 (function () {
   'use strict';
   var form = document.getElementById('book-form');
@@ -25,7 +25,7 @@
       '',
       val('b-msg')
     ].join('\n');
-    var mailto = 'mailto:commerciale@tuttoitalia.ch?subject=' + encodeURIComponent(subject) +
+    var mailto = 'mailto:commerciale@italians.ch?subject=' + encodeURIComponent(subject) +
                  '&body=' + encodeURIComponent(body);
 
     form.hidden = true;

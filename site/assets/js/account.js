@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tuttoitalia.ch — account, auth modal, content gating, toast.
+   Italians.ch — account, auth modal, content gating, toast.
    Shared by index.html and portale.html. Client-side only (localStorage):
    a real backend would replace storeUser()/findUser(). Progressive: the page
    is fully readable without this script; it only adds account features.
@@ -96,7 +96,7 @@
       if (users[email]) { els.error.textContent = 'Esiste già un account con questa email. Accedi.'; return; }
       users[email] = { name: name, email: email, pass: pass };
       write(KEY_USERS, users);
-      login({ name: name, email: email }, 'Benvenuto in Tuttoitalia, ' + name.split(' ')[0] + '! ✦');
+      login({ name: name, email: email }, 'Benvenuto in Italians.ch, ' + name.split(' ')[0] + '! ✦');
     } else {
       var u = users[email];
       if (!u || u.pass !== pass) { els.error.textContent = 'Email o password non corretti.'; return; }

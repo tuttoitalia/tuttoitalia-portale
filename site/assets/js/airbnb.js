@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tuttoitalia Stays — Airbnb-style frontend behaviour.
+   Italians.ch Stays — Airbnb-style frontend behaviour.
    Renders listings, wishlist hearts, category filter, search, and a listing
    detail overlay with reservation fee calc. Client-side demo only.
    ========================================================================== */
@@ -199,7 +199,7 @@
     document.getElementById('d-fees').innerHTML =
       '<div><span>' + eur(l.price) + ' x ' + NIGHTS + ' notti</span><span>' + eur(fees) + '</span></div>' +
       '<div><span>Pulizie</span><span>' + eur(clean) + '</span></div>' +
-      '<div><span>Servizio Tuttoitalia Stays</span><span>' + eur(service) + '</span></div>' +
+      '<div><span>Servizio Italians.ch Stays</span><span>' + eur(service) + '</span></div>' +
       '<div class="total"><span>Totale</span><span>' + eur(fees + clean + service) + '</span></div>';
 
     detail.hidden = false; document.body.style.overflow = 'hidden'; window.scrollTo(0, 0);

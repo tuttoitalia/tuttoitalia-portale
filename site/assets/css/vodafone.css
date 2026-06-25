@@ -4,7 +4,7 @@
    (editorial pages) and airbnb.css (case-vacanze).
 
    Translates the site to the Vodafone design language (see DESIGN-vodafone.md):
-     · single red accent  #e60000  (no second accent colour)
+     · single red accent  #CE2B37  (no second accent colour)
      · ink / white band rhythm — surface contrast, not soft neutrals
      · heavy uppercase display type (Inter 800, tight tracking)
      · pill CTAs (60px radius), flat surfaces (no drop shadows)
@@ -13,7 +13,7 @@
    Fully reversible: delete the <link> to this file to restore the original.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* ==========================================================================
    1. Token remap — editorial pages (styles.css + portale.css :root)
@@ -26,39 +26,39 @@
   --line:        #e3e3e3;
 
   /* Text */
-  --ink:         #25282b;
+  --ink:         #15110F;
   --ink-soft:    #4a4d50;
   --gray:        #7e7e7e;
 
   /* Brand: red is the ONLY accent. The former "green" tokens (used for dark
      bands, nav, footer, wordmark) become Vodafone ink; the CTA greens become
      Vodafone red. */
-  --green:       #25282b;
+  --green:       #15110F;
   --green-card:  #2f3337;
   --green-dark:  #1b1d1f;
   --green-deep:  #141517;
-  --italy-green: #e60000;
-  --italy-green-dark: #b80000;
-  --red:         #e60000;
-  --red-dark:    #b80000;
+  --italy-green: #CE2B37;
+  --italy-green-dark: #A4222C;
+  --red:         #CE2B37;
+  --red-dark:    #A4222C;
 
   /* Gold accent is removed in Vodafone → fold into the red family */
-  --gold:        #e60000;
-  --gold-dark:   #b80000;
+  --gold:        #CE2B37;
+  --gold-dark:   #A4222C;
   --gold-soft:   #f6c9c9;
 
   /* portale.css vertical tints → neutralise to grey / red / ink */
   --teal-bg:  #f2f2f2;  --teal-ln:  #e3e3e3;
-  --terra-bg: #fbe6e6;  --terra-ln: #f3c4c4;  --terra: #e60000;
-  --indigo:   #25282b;  --indigo-bg: #f2f2f2;
+  --terra-bg: #fbe6e6;  --terra-ln: #f3c4c4;  --terra: #CE2B37;
+  --indigo:   #15110F;  --indigo-bg: #f2f2f2;
 
   /* Single typeface throughout (kills Playfair / Spectral serif) */
   --serif: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --sans:  Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
   /* airbnb page (case-vacanze) — recolour Rausch → Vodafone red */
-  --rausch:        #e60000;
-  --rausch-active: #b80000;
+  --rausch:        #CE2B37;
+  --rausch-active: #A4222C;
   --rausch-disabled: #f6c9c9;
 }
 
@@ -73,12 +73,19 @@ body, .abnb { font-family: var(--sans); }
   font-style: normal;
 }
 
-/* Wordmark → heavy sans, ink with a red TLD */
+/* Wordmark → Archivo Black, ink with a red TLD (Italians.ch brand) */
 .wordmark {
-  font-family: var(--sans);
-  font-weight: 800;
-  letter-spacing: -.02em;
+  font-family: 'Archivo Black', var(--sans);
+  font-weight: 400;
+  letter-spacing: -.03em;
   color: var(--ink);
+}
+/* Header lockup: speech-bubble icon + wordmark (logo direction 02) */
+.masthead .wordmark { display: inline-flex; align-items: center; }
+.masthead .wordmark::before {
+  content: "";
+  width: .92em; height: .92em; flex: none; margin-right: .24em;
+  background: url("../italians-icon.svg") center / contain no-repeat;
 }
 .wordmark .tld { color: var(--red); }
 .footer .wordmark { color: #fff; }

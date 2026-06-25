@@ -48,6 +48,48 @@
     });
   });
 
+  /* ---- chrome i18n: claim ed etichette fisse ---- */
+  var CHROME = {
+    it: { since: 'Dal 2003', sub: 'Il media italiano<br>in Svizzera.', motto: "L'Italia, ovunque siano gli italiani.", search: 'Cerca', searchAria: 'Cerca sul sito', breaking: "ULTIM'ORA", ads: 'Pubblicità', concorsi: 'Concorsi', register: 'Registrati' },
+    en: { since: 'Since 2003', sub: 'The Italian media<br>in Switzerland.', motto: 'Italy, wherever Italians are.', search: 'Search', searchAria: 'Search the site', breaking: 'BREAKING', ads: 'Advertising', concorsi: 'Contests', register: 'Sign up' },
+    de: { since: 'Seit 2003', sub: 'Das italienische Medium<br>in der Schweiz.', motto: 'Italien, überall wo Italiener sind.', search: 'Suchen', searchAria: 'Website durchsuchen', breaking: 'AKTUELL', ads: 'Werbung', concorsi: 'Wettbewerbe', register: 'Registrieren' },
+    fr: { since: 'Depuis 2003', sub: 'Le média italien<br>en Suisse.', motto: "L'Italie, partout où vivent les Italiens.", search: 'Rechercher', searchAria: 'Rechercher sur le site', breaking: 'DERNIÈRE HEURE', ads: 'Publicité', concorsi: 'Concours', register: "S'inscrire" }
+  };
+  var NAV = {
+    'Portale ✦': { en: 'Portal ✦', de: 'Portal ✦', fr: 'Portail ✦' },
+    'Attualità': { en: 'News', de: 'Aktuelles', fr: 'Actualité' },
+    'Cinema': { en: 'Cinema', de: 'Kino', fr: 'Cinéma' },
+    'Eventi': { en: 'Events', de: 'Veranstaltungen', fr: 'Événements' },
+    'Gastronomia': { en: 'Food', de: 'Gastronomie', fr: 'Gastronomie' },
+    'Imprese': { en: 'Business', de: 'Unternehmen', fr: 'Entreprises' },
+    'Motori': { en: 'Motors', de: 'Motor', fr: 'Moteurs' },
+    'Musica': { en: 'Music', de: 'Musik', fr: 'Musique' },
+    'Sport': { en: 'Sport', de: 'Sport', fr: 'Sport' },
+    'Turismo': { en: 'Tourism', de: 'Tourismus', fr: 'Tourisme' },
+    'Wellness & Salute': { en: 'Wellness & Health', de: 'Wellness & Gesundheit', fr: 'Bien-être & Santé' }
+  };
+  function applyChrome() {
+    var c = CHROME[LANG]; if (!c) return;
+    var m = document.querySelector('.masthead__motto'); if (m) m.textContent = c.motto;
+    var sc = document.querySelector('.masthead__since'); if (sc) sc.textContent = c.since;
+    var sub = document.querySelector('.masthead__tagline-left > div:not(.masthead__since)'); if (sub) sub.innerHTML = c.sub;
+    var si = document.querySelector('.search input'); if (si) { si.placeholder = c.search; si.setAttribute('aria-label', c.searchAria); }
+    var tk = document.querySelector('.ticker__tag'); if (tk) tk.textContent = c.breaking;
+    [].forEach.call(document.querySelectorAll('.adwrap__label'), function (n) { n.textContent = c.ads; });
+    var conc = document.querySelector('.utility__link[href$="#concorsi"]'); if (conc) conc.textContent = c.concorsi;
+    var reg = document.querySelector('.btn-newsletter'); if (reg && LANG !== 'it') reg.textContent = c.register;
+    if (LANG !== 'it') [].forEach.call(document.querySelectorAll('.navitem'), function (n) {
+      var k = n.textContent.trim(); if (NAV[k] && NAV[k][LANG]) n.textContent = NAV[k][LANG];
+    });
+  }
+  applyChrome();
+
+  function fillTicker(list) {
+    var track = document.querySelector('.ticker__marquee'); if (!track) return;
+    var spans = list.slice(0, 6).map(function (a) { return '<span>' + esc(a.title) + '</span>'; }).join('');
+    track.innerHTML = '<span class="ticker__group">' + spans + '</span><span class="ticker__group" aria-hidden="true">' + spans + '</span>';
+  }
+
   ROOT.innerHTML = '<div class="container" style="padding:48px 0;color:var(--gray)">' + T.loading + '</div>';
 
   fetch('./data/index.' + LANG + '.json', { cache: 'no-cache' })
@@ -107,6 +149,7 @@
     });
 
     ROOT.innerHTML = html;
+    fillTicker(list);
 
     // deep-link ?a=slug
     var direct = new URLSearchParams(location.search).get('a');

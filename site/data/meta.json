@@ -1,0 +1,179 @@
+{
+ "counts": {
+  "it": 472,
+  "de": 102,
+  "fr": 74,
+  "en": 76
+ },
+ "categories": {
+  "it": [
+   {
+    "slug": "eventi",
+    "name": "Eventi"
+   },
+   {
+    "slug": "turismo",
+    "name": "Turismo"
+   },
+   {
+    "slug": "attualita",
+    "name": "Attualità"
+   },
+   {
+    "slug": "sport",
+    "name": "Sport (Italian)"
+   },
+   {
+    "slug": "musica",
+    "name": "Musica"
+   },
+   {
+    "slug": "motori",
+    "name": "Motori"
+   },
+   {
+    "slug": "wellness-e-salute",
+    "name": "Wellness (Italian)"
+   },
+   {
+    "slug": "imprese",
+    "name": "Imprese"
+   },
+   {
+    "slug": "cinema",
+    "name": "Cinema (It)"
+   },
+   {
+    "slug": "gastronomia",
+    "name": "Gastronomia"
+   }
+  ],
+  "de": [
+   {
+    "slug": "veranstaltungen",
+    "name": "Veranstaltungen"
+   },
+   {
+    "slug": "tourismus",
+    "name": "Tourismus"
+   },
+   {
+    "slug": "aktuell",
+    "name": "Aktuell"
+   },
+   {
+    "slug": "sport-german",
+    "name": "Sport (German)"
+   },
+   {
+    "slug": "musik",
+    "name": "Musik"
+   },
+   {
+    "slug": "motoren",
+    "name": "Motoren"
+   },
+   {
+    "slug": "gastronomie-german",
+    "name": "Gastronomie (German)"
+   },
+   {
+    "slug": "unternehmen",
+    "name": "Unternehmen"
+   },
+   {
+    "slug": "wellness-deutsch",
+    "name": "Wellness (deutsch)"
+   },
+   {
+    "slug": "kino",
+    "name": "Kino"
+   }
+  ],
+  "fr": [
+   {
+    "slug": "evenements",
+    "name": "Evenements"
+   },
+   {
+    "slug": "tourisme",
+    "name": "Tourisme"
+   },
+   {
+    "slug": "actualite-french",
+    "name": "Actualité"
+   },
+   {
+    "slug": "sport-french",
+    "name": "Sport (French) "
+   },
+   {
+    "slug": "musique",
+    "name": "Musique"
+   },
+   {
+    "slug": "gastronomie-french",
+    "name": "Gastronomie (French)"
+   },
+   {
+    "slug": "wellness-fr",
+    "name": "Wellness (French)"
+   },
+   {
+    "slug": "entreprises",
+    "name": "Entreprises"
+   },
+   {
+    "slug": "moteurs",
+    "name": "Moteurs"
+   },
+   {
+    "slug": "cinema-french",
+    "name": "Cinema (French)"
+   }
+  ],
+  "en": [
+   {
+    "slug": "events",
+    "name": "Events"
+   },
+   {
+    "slug": "tourism",
+    "name": "Tourism"
+   },
+   {
+    "slug": "actuality",
+    "name": "Actuality"
+   },
+   {
+    "slug": "sports-english",
+    "name": "Sports (english)"
+   },
+   {
+    "slug": "music",
+    "name": "Music"
+   },
+   {
+    "slug": "gastronomy",
+    "name": "Gastronomy"
+   },
+   {
+    "slug": "wellness-english",
+    "name": "Wellness (english)"
+   },
+   {
+    "slug": "business",
+    "name": "Business"
+   },
+   {
+    "slug": "car-motorcycle",
+    "name": "Car & Motorcycle"
+   },
+   {
+    "slug": "cinema-english",
+    "name": "Cinema (english)"
+   }
+  ]
+ },
+ "total": 724
+}

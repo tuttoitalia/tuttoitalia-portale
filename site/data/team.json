@@ -1,0 +1,121 @@
+[
+ {
+  "name": "La Redazione",
+  "role": null,
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5fc1eddf9c0c307add212768_Tuttoitalia_small_256x256_contorno.png",
+  "email": null
+ },
+ {
+  "name": "Cirano Tondi",
+  "role": "CEO",
+  "bio": "Passion for sport, the environment and politics.",
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f836bd7eaf4dd46197d20d7_CiranoTondi.jpg",
+  "email": "cirano@tuttoitalia.ch"
+ },
+ {
+  "name": "Cirano Tondi (TED)",
+  "role": "CEO",
+  "bio": "Leidenschaft für Sport, Umwelt und Politik.",
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f836bd7eaf4dd46197d20d7_CiranoTondi.jpg",
+  "email": "cirano@tuttoitalia.ch"
+ },
+ {
+  "name": "Michela Dal Toso",
+  "role": "Reporter",
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f8394ab33feee1ea60ac89c_Michela-Dal-TOoso.jpg",
+  "email": "redazione@tuttoitalia.ch"
+ },
+ {
+  "name": "Norberto Cioffi",
+  "role": "Head of French-speaking Switzerland",
+  "bio": "I am an engineer with dual Italian and Swiss nationality. I have been living in Geneva since 2008. I have been collaborating with TuttoItalia since 2013 as Responsible for French-speaking Switzerland. I am passionate about jazz and classical music, theater and good Italian cuisine. I take care of giving voice to events with an Italian flavor in my region for the Italian-speaking (and non-Italian) community by creating articles, interviews, photos, events.",
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f864db9dcc85e77a71efea9_Norberto_Cioffi.jpg",
+  "email": "norberto@tuttoitalia.ch"
+ },
+ {
+  "name": "Gloria Bressan",
+  "role": "Reporter and professional photographer",
+  "bio": "www.byphotoz.com",
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f9b1bfdd162e23c6fdfc5ef_GloriaBressan.jpg",
+  "email": "info@byphotoz.com"
+ },
+ {
+  "name": "Fabio Montini",
+  "role": "Motorcycle specialist",
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/637636ba07ceb1cf1693ad5a_Fabio-Montini-small.jpg",
+  "email": null
+ },
+ {
+  "name": "Tatiana Gaudimonte",
+  "role": "Nutritionist",
+  "bio": "Dr. Tatiana Gaudimonte\nLove YourBody Nutrition",
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f83453a5b0301e3aa6c7433_Tatiana_Gaudimonte_web.gif",
+  "email": "tatiana.gaudimonte@gmail.com"
+ },
+ {
+  "name": "Antonio De Luca",
+  "role": "Head of Events and Shows",
+  "bio": null,
+  "photo": "https://cdn.prod.website-files.com/5f82fd88166eb97cde0e507b/622edfe2de8cb601be11a898_Dydo.jpg",
+  "email": null
+ },
+ {
+  "name": "Federica Lupinu",
+  "role": "Reporter",
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5f97fd6ecef66b9c2a82dc1d_Federica_Lupinu_1.jpg",
+  "email": null
+ },
+ {
+  "name": "Rosa De Vita",
+  "role": null,
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5fa2b2973f9c676f717f8a31_Rosa%20De%20Vita%20tuttoitalia%203.jpg",
+  "email": null
+ },
+ {
+  "name": "Rosa De Vita (IGER)",
+  "role": null,
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5fa2b2973f9c676f717f8a31_Rosa%20De%20Vita%20tuttoitalia%203.jpg",
+  "email": null
+ },
+ {
+  "name": "Giulia Greco",
+  "role": "Reporter",
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/5fa2b57b5cf53d01a3d0d10f_Giulia%20Greco%20Tuttoitalia.jpg",
+  "email": null
+ },
+ {
+  "name": "Lorenzo Sini",
+  "role": "Responsabile Eventi Estero",
+  "bio": "Victor ha vissuto a Londra per 10 anni ed ora si è trasferito a Zurigo, ma continua ad organizzare eventi culturali e di svago.",
+  "photo": "https://cdn.prod.website-files.com/5f82fd88166eb97cde0e507b/673724ea78c8e17d02f20829_Victor_square.jpg",
+  "email": "victor@tuttoitalia.ch"
+ },
+ {
+  "name": "Giuseppe Elmo",
+  "role": "Giornalista",
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/656736947bc2c2f84fd9839e_Giuseppe%20Elmo.jpg",
+  "email": null
+ },
+ {
+  "name": "Eleonora Ciullo",
+  "role": "Journalist",
+  "bio": null,
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/637ea97306be8e4d4890b449_Eleonora%20Ciullo%20Tuttoitalia.jpg",
+  "email": "eleonora@tuttoitalia.ch"
+ },
+ {
+  "name": "Silvia Locati",
+  "role": "Giornalista",
+  "bio": "PhD in Italian Literature, Zurich University, Zurich, 2003\nMaster Degree in Italian Literature, Universita’ Cattolica, Milan, 1993",
+  "photo": "https://uploads-ssl.webflow.com/5f82fd88166eb97cde0e507b/62befa2359b9a22bb47e2a22_Silvia-Locat_small_CV.jpg",
+  "email": null
+ }
+]

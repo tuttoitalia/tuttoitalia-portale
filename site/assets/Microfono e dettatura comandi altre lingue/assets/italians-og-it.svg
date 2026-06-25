@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  
+  <rect x="0" y="0" width="1200" height="630" rx="0" fill="#1A1613"></rect>
+  <g transform="translate(305 205) scale(1.42)">
+    
+  <rect x="0" y="0" width="100" height="100" rx="30" fill="#CE2B37"></rect>
+  <path d="M22 80 L22 112 L50 90 Z" fill="#CE2B37"></path>
+  <rect x="42" y="21" width="16" height="16" rx="4" fill="#FFFFFF"></rect>
+  <rect x="42" y="43" width="16" height="36" rx="4" fill="#FFFFFF"></rect>
+    <text x="130" y="69" font-family="&#39;Archivo Black&#39;, Archivo, sans-serif" font-size="54" letter-spacing="-1.6"><tspan fill="#FFFFFF">Italians</tspan><tspan fill="#CE2B37">.ch</tspan></text>
+    <text x="131" y="118" font-family="Archivo, sans-serif" font-weight="700" font-size="21" letter-spacing="-0.2" fill="#C9C4BE">L&#39;Italia, ovunque siano gli italiani.</text>
+  </g>
+</svg>

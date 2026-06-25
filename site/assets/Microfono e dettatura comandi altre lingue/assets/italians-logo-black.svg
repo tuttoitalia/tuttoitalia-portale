@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 116" width="430" height="116" fill="none">
+  
+  <defs>
+    <mask id="iKnockK" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="116">
+      <rect x="0" y="0" width="100" height="116" fill="#FFFFFF"></rect>
+      <rect x="42" y="21" width="16" height="16" rx="4" fill="#000000"></rect>
+      <rect x="42" y="43" width="16" height="36" rx="4" fill="#000000"></rect>
+    </mask>
+  </defs>
+  <g mask="url(#iKnockK)">
+    <rect x="0" y="0" width="100" height="100" rx="30" fill="#15110F"></rect>
+    <path d="M22 80 L22 112 L50 90 Z" fill="#15110F"></path>
+  </g>
+  <text x="130" y="69" font-family="&#39;Archivo Black&#39;, Archivo, sans-serif" font-size="54" letter-spacing="-1.6" fill="#15110F">Italians.ch</text>
+</svg>

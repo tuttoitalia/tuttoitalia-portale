@@ -14,7 +14,7 @@
   var user = sessionStorage.getItem('red_user');
   var pass = sessionStorage.getItem('red_pass');
   var uname = sessionStorage.getItem('red_name');
-  var listData = [], current = null;
+  var listData = [], current = null, OV = {};
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { var d = document.createElement('div'); d.textContent = (s == null ? '' : s); return d.innerHTML; }
 
@@ -52,6 +52,8 @@
   function enter() {
     $('login-view').hidden = true; $('editor-view').hidden = false;
     $('logout').hidden = false; $('who').textContent = uname ? (uname + ' · ') : '';
+    fetch('https://work.tuttoitalia.ch/webhook/redazione-overrides', { cache: 'no-store' })
+      .then(function (r) { return r.json(); }).then(function (j) { OV = (j && j.overrides) || {}; }).catch(function () {});
     loadList();
   }
 
@@ -80,8 +82,16 @@
   function openItem(id, slug) {
     current = { id: id, slug: slug };
     $('r-empty').hidden = true; $('r-form').hidden = false;
-    $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Caricamento articolo…';
     [].forEach.call(document.querySelectorAll('.red-item'), function (b) { b.classList.toggle('is-on', b.getAttribute('data-id') === id); });
+    if ($('revert-btn')) $('revert-btn').hidden = !OV[slug];
+    if (OV[slug]) {
+      fill(OV[slug]);
+      if ($('f-also-tutto')) $('f-also-tutto').checked = false;
+      $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Versione SOLO Italians.ch (modifica locale).';
+      return;
+    }
+    if ($('f-also-tutto')) $('f-also-tutto').checked = true;
+    $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Caricamento articolo…';
     api('/redazione-get', { user: user, pass: pass, id: id }).then(function (res) {
       if (res && res.ok && res.item) { fill(res.item); $('save-msg').textContent = ''; }
       else throw 0;
@@ -100,19 +110,33 @@
   }
   $('cancel-btn').addEventListener('click', function () {
     $('r-form').hidden = true; $('r-empty').hidden = false; current = null;
+    if ($('revert-btn')) $('revert-btn').hidden = true;
     [].forEach.call(document.querySelectorAll('.red-item.is-on'), function (b) { b.classList.remove('is-on'); });
+  });
+  if ($('revert-btn')) $('revert-btn').addEventListener('click', function () {
+    if (!current) return;
+    $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Ripristino versione condivisa…';
+    api('/redazione-save', { user: user, pass: pass, slug: current.slug, local: true, del: true }).then(function (res) {
+      if (res && res.ok) { delete OV[current.slug]; openItem(current.id, current.slug); }
+      else { $('save-msg').style.color = 'var(--red)'; $('save-msg').textContent = (res && res.error) || 'Errore.'; }
+    }).catch(function () { $('save-msg').style.color = 'var(--red)'; $('save-msg').textContent = 'Backend non raggiungibile.'; });
   });
 
   /* ---- salva ---- */
   $('save-btn').addEventListener('click', function () {
     if (!current) return;
+    var alsoWebflow = !$('f-also-tutto') || $('f-also-tutto').checked;
     $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Salvataggio…'; $('save-btn').disabled = true;
     api('/redazione-save', {
-      user: user, pass: pass, id: current.id,
+      user: user, pass: pass, id: current.id, slug: current.slug, local: !alsoWebflow,
       name: $('f-title').value, subtitle: $('f-sub').value, body: $('f-body').innerHTML
     }).then(function (res) {
       $('save-btn').disabled = false;
-      if (res && res.ok) { $('save-msg').style.color = 'var(--italy-green)'; $('save-msg').textContent = '✓ Salvato e pubblicato su Webflow.'; }
+      if (res && res.ok) {
+        if (res.scope === 'italians') OV[current.slug] = { name: $('f-title').value, subtitle: $('f-sub').value, body: $('f-body').innerHTML };
+        $('save-msg').style.color = 'var(--italy-green)';
+        $('save-msg').textContent = res.scope === 'italians' ? '✓ Salvato solo su Italians.ch.' : '✓ Salvato (Italians.ch + tuttoitalia.ch).';
+      }
       else { $('save-msg').style.color = 'var(--red)'; $('save-msg').textContent = (res && res.error) || 'Errore nel salvataggio.'; }
     }).catch(function () {
       $('save-btn').disabled = false; $('save-msg').style.color = 'var(--red)';

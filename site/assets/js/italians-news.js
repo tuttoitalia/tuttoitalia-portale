@@ -92,9 +92,11 @@
 
   ROOT.innerHTML = '<div class="container" style="padding:48px 0;color:var(--gray)">' + T.loading + '</div>';
 
-  fetch('./data/index.' + LANG + '.json', { cache: 'no-cache' })
-    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-    .then(render)
+  var OV = {};
+  Promise.all([
+    fetch('./data/index.' + LANG + '.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+    fetch('https://work.tuttoitalia.ch/webhook/redazione-overrides', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (j) { return (j && j.overrides) || {}; }).catch(function () { return {}; })
+  ]).then(function (a) { OV = a[1] || {}; render(a[0]); })
     .catch(function () { ROOT.innerHTML = '<div class="container" style="padding:64px 0">' + T.err + '</div>'; });
 
   function cardHTML(a) {
@@ -102,7 +104,7 @@
       '<div class="card__media tile"' + bg(a.thumb || a.image) + '></div>' +
       '<div class="card__body">' +
       (a.category ? '<div class="kicker">' + esc(cleanCat(a.category)) + '</div>' : '') +
-      '<h3>' + esc(a.title) + '</h3>' +
+      '<h3>' + esc((OV[a.slug] && OV[a.slug].name) || a.title) + '</h3>' +
       '<p class="card__byline">' + byline(a) + '</p>' +
       '</div></article>';
   }
@@ -113,7 +115,7 @@
       '<div class="lead__media tile"' + bg(a.image || a.thumb) + '>' +
       (a.category ? '<span class="badge-tag">' + esc(cleanCat(a.category)) + '</span>' : '') + '</div>' +
       (a.category ? '<div class="kicker lead__kicker">' + esc(cleanCat(a.category)) + '</div>' : '') +
-      '<h2 class="lead__title">' + esc(a.title) + '</h2>' +
+      '<h2 class="lead__title">' + esc((OV[a.slug] && OV[a.slug].name) || a.title) + '</h2>' +
       (a.subtitle ? '<p class="lead__deck">' + esc(a.subtitle) + '</p>' : '') +
       '<div class="byline">' + byline(a) + '</div>' +
       '</article></div>';
@@ -199,7 +201,7 @@
   function openArticle(slug) {
     fetch('./data/a/' + encodeURIComponent(slug) + '.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(showReader)
+      .then(function (a) { var o = OV[a.slug || slug]; if (o) { if (o.name) a.title = o.name; if (o.subtitle != null) a.subtitle = o.subtitle; if (o.body) a.body = o.body; } showReader(a); })
       .catch(function () {});
   }
 })();

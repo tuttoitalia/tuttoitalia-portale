@@ -70,10 +70,12 @@
             <div class="fld"><label for="f-body">Testo dell'articolo</label>
               <div id="f-body" class="reader__body" contenteditable="true" style="border:1px solid var(--line);border-radius:6px;padding:16px;min-height:320px;background:#fff;outline:none"></div>
             </div>
+            <label style="display:flex;align-items:center;gap:8px;font-weight:600;text-transform:none;letter-spacing:0;margin:4px 0 12px;cursor:pointer"><input type="checkbox" id="f-also-tutto" checked style="width:auto"> Cambia anche su www.tuttoitalia.ch</label>
             <p class="auth__error" id="save-msg" role="status" style="color:var(--gray)"></p>
             <div class="toolbar">
-              <button class="btn btn--green" id="save-btn" type="button">Salva su Webflow</button>
+              <button class="btn btn--green" id="save-btn" type="button">Salva</button>
               <button class="btn btn--ghost btn--sm" id="cancel-btn" type="button">Annulla</button>
+              <button class="btn btn--ghost btn--sm" id="revert-btn" type="button" hidden>↺ Ripristina versione condivisa</button>
             </div>
           </div>
         </div>

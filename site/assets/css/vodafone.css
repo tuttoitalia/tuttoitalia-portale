@@ -249,3 +249,16 @@ body, .abnb { font-family: var(--sans); }
 /* Reader: con articoli lunghi il pannello deve crescere col contenuto e scrollare
    (default align-items:stretch lo stirava all'altezza viewport -> overflow visibile) */
 .reader { align-items: flex-start; }
+
+/* ==========================================================================
+   8. Redazione (area riservata giornalisti)
+   ========================================================================== */
+.red-grid { display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: start; }
+.red-list { display: flex; flex-direction: column; gap: 8px; max-height: 72vh; overflow: auto; padding-right: 4px; }
+.red-item { text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 11px 13px; cursor: pointer; font: inherit; display: flex; flex-direction: column; gap: 3px; transition: border-color .12s; }
+.red-item:hover { border-color: var(--ink); }
+.red-item.is-on { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.red-item__t { font-weight: 600; font-size: 14px; line-height: 1.25; color: var(--ink); }
+.red-item__m { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--red); }
+#f-body:focus { border-color: var(--ink); }
+@media (max-width: 860px) { .red-grid { grid-template-columns: 1fr; } }

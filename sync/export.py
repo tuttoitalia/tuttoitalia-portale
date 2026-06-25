@@ -95,11 +95,11 @@ def main():
         image = url_of(fd.get("main-image")) or url_of(fd.get("foto-copertina-per-cinema")) or thumb
         ver = versions_of(fd)
         cat = cfd.get("name"); catslug = cfd.get("slug")
-        light[lang].append({"slug":slug,"title":title,"subtitle":subtitle,"date":date,
+        light[lang].append({"id":it["id"],"slug":slug,"title":title,"subtitle":subtitle,"date":date,
                             "category":cat,"categorySlug":catslug,"author":clean_name(afd.get("name")),
                             "thumb":thumb,"image":image,"featured":bool(fd.get("featured-post")),
                             "videoWeek":bool(fd.get("video-della-settimana")),"versions":ver})
-        full[slug] = {"slug":slug,"lang":lang,"title":title,"subtitle":subtitle,
+        full[slug] = {"id":it["id"],"slug":slug,"lang":lang,"title":title,"subtitle":subtitle,
                       "date":date,"category":cat,"categorySlug":catslug,
                       "author":clean_name(afd.get("name")),"authorPhoto":url_of(afd.get("picture")),
                       "authorRole":afd.get("position"),

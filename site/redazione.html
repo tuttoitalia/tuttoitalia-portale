@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redazione — Italians.ch</title>
+  <meta name="description" content="Area riservata redazione Italians.ch.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#CE2B37">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self' https://work.tuttoitalia.ch; img-src 'self' data: https://cdn.prod.website-files.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="./assets/css/portale.css">
+  <link rel="stylesheet" href="./assets/css/vodafone.css">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <div class="utility">
+    <div class="container utility__inner">
+      <div class="utility__meta"><span class="masthead__since" style="color:#fff">Redazione</span> · area riservata</div>
+      <div class="utility__actions">
+        <span id="who"></span>
+        <button class="utility__link" id="logout" type="button" hidden>Esci</button>
+        <a class="utility__link" href="./index.html">↗ Sito</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="container masthead">
+    <div class="masthead__side"></div>
+    <div class="masthead__center">
+      <a href="./index.html" class="wordmark" aria-label="Italians.ch">Italians<span class="tld">.ch</span></a>
+      <div class="masthead__motto">Modifica notizie</div>
+    </div>
+    <div class="masthead__side"></div>
+  </header>
+
+  <main class="container" style="padding-bottom:72px">
+
+    <!-- LOGIN -->
+    <section id="login-view" style="max-width:430px;margin:24px auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px">
+      <h2 style="margin:0 0 6px">Accesso giornalisti</h2>
+      <p style="color:var(--gray);margin:0 0 18px">Accedi per modificare le notizie pubblicate.</p>
+      <div class="fld"><label for="r-user">Utente</label><input id="r-user" type="text" autocomplete="username"></div>
+      <div class="fld"><label for="r-pass">Password</label><input id="r-pass" type="password" autocomplete="current-password"></div>
+      <p class="auth__error" id="login-error" role="alert"></p>
+      <button class="btn btn--green btn--block" id="login-btn" type="button">Accedi</button>
+    </section>
+
+    <!-- EDITOR -->
+    <section id="editor-view" hidden>
+      <div class="section-head-row">
+        <div><h2>Modifica notizie</h2><p>Scegli un articolo, modifica titolo, sottotitolo e testo, poi salva. Le modifiche vengono scritte su Webflow.</p></div>
+      </div>
+      <div class="red-grid">
+        <div>
+          <div class="fld"><input id="r-search" type="text" placeholder="Cerca per titolo…"></div>
+          <div id="r-list" class="red-list"></div>
+        </div>
+        <div>
+          <div id="r-empty" style="background:var(--cream-2);border-radius:12px;padding:48px 24px;text-align:center;color:var(--gray)">← Scegli un articolo da modificare</div>
+          <div id="r-form" hidden style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px">
+            <div class="fld"><label for="f-title">Titolo</label><input id="f-title" type="text"></div>
+            <div class="fld"><label for="f-sub">Sottotitolo</label><textarea id="f-sub" rows="2"></textarea></div>
+            <div class="fld"><label for="f-body">Testo dell'articolo</label>
+              <div id="f-body" class="reader__body" contenteditable="true" style="border:1px solid var(--line);border-radius:6px;padding:16px;min-height:320px;background:#fff;outline:none"></div>
+            </div>
+            <p class="auth__error" id="save-msg" role="status" style="color:var(--gray)"></p>
+            <div class="toolbar">
+              <button class="btn btn--green" id="save-btn" type="button">Salva su Webflow</button>
+              <button class="btn btn--ghost btn--sm" id="cancel-btn" type="button">Annulla</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./assets/js/redazione.js" defer></script>
+</body>
+</html>

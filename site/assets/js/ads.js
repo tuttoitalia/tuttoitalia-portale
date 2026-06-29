@@ -23,17 +23,9 @@
   // Large/immersive slots: when unsold they stay empty (no house promo).
   var IMMERSIVE = { 'wallpaper': 1, 'fullscreen-1': 1 };
 
-  var DEFAULT_ADS = {
-    version: 2,
-    creatives: [
-      { id: 'c1', slot: 'home-top', type: 'text', format: 'leaderboard', advertiser: 'Ticketcorner',
-        title: 'I grandi concerti italiani, 2026', sub: 'Eros, Ligabue, Zucchero e altri — biglietti ufficiali',
-        cta: 'Scopri le date', href: 'https://www.ticketcorner.ch', bg: 'linear-gradient(120deg,#0B5132,#073C25)', color: '#fff', active: true },
-      { id: 'c2', slot: 'home-mid', type: 'text', format: 'mpu', advertiser: 'Fiat',
-        title: 'Nuova 500e', sub: 'L\'icona italiana, ora elettrica', cta: 'Configura la tua',
-        href: '#', bg: 'linear-gradient(160deg,#7a2a2f,#3d1418)', color: '#fff', active: true }
-    ]
-  };
+  // Empty by default: unsold slots show the "space available" house promo.
+  // Real inventory comes from n8n (managed in gestione.html).
+  var DEFAULT_ADS = { version: 2, creatives: [] };
 
   function loadConfig() {
     try {

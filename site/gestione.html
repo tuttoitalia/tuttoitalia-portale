@@ -8,13 +8,15 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#CE2B37">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+        content="default-src 'self'; connect-src 'self' https://work.tuttoitalia.ch; img-src 'self' data: blob: https://cdn.prod.website-files.com; media-src 'self' blob: https://cdn.prod.website-files.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="stylesheet" href="./assets/css/portale.css">
   <link rel="stylesheet" href="./assets/css/vodafone.css">
+  <link rel="stylesheet" href="./assets/css/ads.css">
+  <link rel="stylesheet" href="./assets/css/gestione.css">
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -26,7 +28,8 @@
         <a class="utility__link" href="./index.html">Quotidiano</a><span class="utility__divider">|</span>
         <a class="utility__link" href="./portale.html">Portale</a><span class="utility__divider">|</span>
         <a class="utility__link" href="./pubblicita.html">Pubblicità</a><span class="utility__divider">|</span>
-        <span data-acct-slot></span>
+        <span id="adm-who"></span>
+        <button class="utility__link" id="adm-logout" type="button" hidden>Esci</button>
       </div>
     </div>
   </div>
@@ -37,108 +40,136 @@
     <div class="masthead__side"></div>
   </header>
 
-  <main class="container" style="padding-top:40px;padding-bottom:64px">
-    <div class="section-head-row">
-      <div><h2>Gestione banner pubblicitari</h2><p>Crea, modifica e pianifica i banner mostrati su tutto il sito. Le modifiche sono immediate sul tuo browser; usa <b>Esporta</b> per salvare la configurazione.</p></div>
-      <a class="btn btn--ghost btn--sm" href="./index.html" target="_blank">Anteprima sito ↗</a>
+  <main class="container" style="padding-top:32px;padding-bottom:64px">
+
+    <!-- LOGIN GATE -->
+    <div id="gate" class="adm-gate">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#CE2B37" stroke-width="1.7" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <h2>Accesso riservato</h2>
+      <p>Pannello di gestione pubblicità. Accedi con le credenziali della redazione.</p>
+      <form id="login-form" class="adm-login" novalidate autocomplete="off">
+        <input id="lg-user" type="text" placeholder="Utente" autocomplete="username" aria-label="Utente">
+        <input id="lg-pass" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password">
+        <button class="btn btn--green" type="submit">Accedi</button>
+      </form>
+      <p class="adm-err" id="lg-err" role="alert"></p>
     </div>
 
-    <!-- Lock prompt for guests -->
-    <div id="gate-locked" hidden style="text-align:center;padding:56px 20px;background:#fff;border:1px solid var(--line);border-radius:12px">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.7" aria-hidden="true" style="margin-bottom:10px"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-      <h3 style="font-family:var(--serif);margin:0 0 8px">Accesso riservato</h3>
-      <p style="color:var(--gray);max-width:42ch;margin:0 auto 16px">Accedi come gestore per modificare i banner. <br>(Demo: qualsiasi account registrato può gestire; in produzione sarà riservato agli amministratori.)</p>
-      <button class="btn btn--green" type="button" data-auth="register">Accedi / Registrati</button>
-    </div>
-
-    <!-- Manager -->
-    <div id="mgr" class="mgr" hidden>
-      <!-- List -->
-      <div>
-        <h3 style="font-family:var(--serif);font-size:20px;margin:0 0 14px">Campagne <span id="ad-count" style="color:var(--gray);font-size:14px"></span></h3>
-        <div class="mgr__list" id="ad-list"></div>
-        <div class="toolbar">
-          <button class="btn btn--ghost btn--sm" id="btn-new" type="button">+ Nuovo banner</button>
-          <button class="btn btn--ghost btn--sm" id="btn-export" type="button">Esporta JSON</button>
-          <label class="btn btn--ghost btn--sm" style="cursor:pointer">Importa JSON<input id="file-import" type="file" accept="application/json" hidden></label>
-          <button class="btn btn--ghost btn--sm" id="btn-reset" type="button">Ripristina default</button>
+    <!-- MANAGER -->
+    <div id="mgr" class="adm-mgr" hidden>
+      <div class="section-head-row">
+        <div>
+          <h2 style="margin:0">Banner pubblicitari</h2>
+          <p style="margin:4px 0 0;color:var(--gray)">Le modifiche sono <b>condivise e live</b> su italians.ch. <span id="adm-status"></span></p>
         </div>
+        <a class="btn btn--ghost btn--sm" href="./index.html" target="_blank">Anteprima sito ↗</a>
       </div>
 
-      <!-- Form -->
-      <div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px">
-        <h3 style="font-family:var(--serif);font-size:20px;margin:0 0 14px" id="form-title">Nuovo banner</h3>
-        <form id="ad-form" novalidate>
-          <input type="hidden" id="f-id">
-          <div class="fld"><label for="f-advertiser">Inserzionista</label><input id="f-advertiser" type="text" placeholder="Es. Lavazza"></div>
-          <div class="fld--row">
-            <div class="fld"><label for="f-slot">Posizione</label>
-              <select id="f-slot">
-                <option value="home-top">Quotidiano · Leaderboard (alto)</option>
-                <option value="home-mid">Quotidiano · Rectangle (sidebar)</option>
-                <option value="home-footer">Quotidiano · Leaderboard (fondo)</option>
-                <option value="portale-top">Portale · Leaderboard</option>
-                <option value="portale-mid">Portale · Rectangle</option>
-              </select>
-            </div>
-            <div class="fld"><label for="f-format">Formato</label>
-              <select id="f-format">
-                <option value="leaderboard">Leaderboard 728×90</option>
-                <option value="billboard">Billboard 970×250</option>
-                <option value="mpu">Rectangle 300×250</option>
-                <option value="halfpage">Half-page 300×600</option>
-                <option value="mobile">Mobile 320×100</option>
-              </select>
-            </div>
-          </div>
-          <div class="fld"><label for="f-title">Titolo</label><input id="f-title" type="text" placeholder="Il caffè italiano, ovunque tu sia"></div>
-          <div class="fld"><label for="f-sub">Sottotitolo</label><input id="f-sub" type="text" placeholder="Capsule e macchine in offerta"></div>
-          <div class="fld--row">
-            <div class="fld"><label for="f-cta">Pulsante (CTA)</label><input id="f-cta" type="text" placeholder="Scopri di più"></div>
-            <div class="fld"><label for="f-href">Link (URL)</label><input id="f-href" type="text" placeholder="https://…"></div>
-          </div>
-          <div class="fld--row">
-            <div class="fld"><label for="f-bg">Sfondo (colore o gradiente CSS)</label><input id="f-bg" type="text" placeholder="linear-gradient(120deg,#0B5132,#073C25)"></div>
-            <div class="fld"><label for="f-color">Colore testo</label><input id="f-color" type="text" placeholder="#ffffff" value="#ffffff"></div>
-          </div>
-          <div class="fld--row">
-            <div class="fld"><label for="f-start">Inizio (opzionale)</label><input id="f-start" type="date"></div>
-            <div class="fld"><label for="f-end">Fine (opzionale)</label><input id="f-end" type="date"></div>
-          </div>
-          <div class="fld"><label style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-weight:500"><input id="f-active" type="checkbox" checked style="width:auto"> Banner attivo</label></div>
-
-          <div class="fld"><label>Anteprima</label>
-            <div class="adslot" id="f-preview" data-format="leaderboard"></div>
-          </div>
-          <p class="auth__error" id="f-error" role="alert"></p>
+      <div class="red-grid">
+        <!-- LIST -->
+        <div>
+          <h3 class="adm-h3">Campagne <span id="ad-count" class="adm-muted"></span></h3>
+          <div class="adm-list" id="ad-list"></div>
           <div class="toolbar">
-            <button class="btn btn--green btn--sm" id="f-save" type="submit">Salva banner</button>
-            <button class="btn btn--ghost btn--sm" id="f-cancel" type="button">Annulla</button>
+            <button class="btn btn--green btn--sm" id="btn-new" type="button">+ Nuovo banner</button>
+            <button class="btn btn--ghost btn--sm" id="btn-reload" type="button">Ricarica</button>
           </div>
-        </form>
+        </div>
+
+        <!-- FORM -->
+        <div class="adm-card">
+          <h3 class="adm-h3" id="form-title">Nuovo banner</h3>
+          <form id="ad-form" novalidate autocomplete="off">
+            <input type="hidden" id="f-id">
+
+            <div class="fld"><label for="f-advertiser">Inserzionista</label><input id="f-advertiser" type="text" placeholder="Es. Lavazza"></div>
+
+            <div class="fld--row">
+              <div class="fld"><label for="f-slot">Posizione</label>
+                <select id="f-slot">
+                  <optgroup label="Home — immersivi">
+                    <option value="fullscreen-1">Full-screen (a tutto schermo, scroll)</option>
+                    <option value="rail-right">Skyscraper destro (sticky)</option>
+                    <option value="wallpaper">Wallpaper (sfondo laterale)</option>
+                  </optgroup>
+                  <optgroup label="Home — banner">
+                    <option value="home-top">Leaderboard (in alto)</option>
+                    <option value="home-mid">Rectangle (sidebar)</option>
+                    <option value="home-footer">Leaderboard (in fondo)</option>
+                  </optgroup>
+                  <optgroup label="Portale">
+                    <option value="portale-top">Leaderboard</option>
+                    <option value="portale-mid">Rectangle</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="fld"><label for="f-type">Tipo creatività</label>
+                <select id="f-type">
+                  <option value="image">Immagine (JPG / PNG / GIF / WebP)</option>
+                  <option value="video">Video (MP4 / WebM)</option>
+                  <option value="text">Testo (banner colorato)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- MEDIA: image / video -->
+            <div class="fld" data-when="image video">
+              <label>Creatività</label>
+              <div class="adm-upload">
+                <div class="adm-thumb" id="media-thumb"><span>Nessun file</span></div>
+                <div class="adm-upload__ctl">
+                  <label class="btn btn--ghost btn--sm" style="cursor:pointer" data-when="image">Carica immagine<input id="file-image" type="file" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml" hidden></label>
+                  <label class="btn btn--ghost btn--sm" style="cursor:pointer" data-when="video">Carica video<input id="file-video" type="file" accept="video/mp4,video/webm" hidden></label>
+                  <input id="f-media" type="text" placeholder="…oppure incolla un URL" data-when="video">
+                  <p class="adm-hint" id="media-hint"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- POSTER for video -->
+            <div class="fld" data-when="video">
+              <label>Poster (primo fotogramma — mostrato subito)</label>
+              <div class="adm-upload">
+                <div class="adm-thumb" id="poster-thumb"><span>Auto dal video</span></div>
+                <div class="adm-upload__ctl">
+                  <label class="btn btn--ghost btn--sm" style="cursor:pointer">Carica poster<input id="file-poster" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>
+                  <p class="adm-hint">Se vuoto, lo genero dal primo fotogramma del video.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="fld"><label for="f-title" data-label-image="Testo alternativo (alt)" data-label-video="Didascalia (opzionale)" data-label-text="Titolo">Titolo</label><input id="f-title" type="text" placeholder="Es. Il caffè italiano, ovunque tu sia"></div>
+
+            <!-- TEXT-only fields -->
+            <div data-when="text">
+              <div class="fld"><label for="f-sub">Sottotitolo</label><input id="f-sub" type="text" placeholder="Capsule e macchine in offerta"></div>
+              <div class="fld--row">
+                <div class="fld"><label for="f-cta">Pulsante (CTA)</label><input id="f-cta" type="text" placeholder="Scopri di più"></div>
+                <div class="fld"><label for="f-color">Colore testo</label><input id="f-color" type="text" value="#ffffff"></div>
+              </div>
+              <div class="fld"><label for="f-bg">Sfondo (colore o gradiente CSS)</label><input id="f-bg" type="text" placeholder="linear-gradient(120deg,#0B5132,#073C25)"></div>
+            </div>
+
+            <div class="fld"><label for="f-href">Link (URL di destinazione)</label><input id="f-href" type="text" placeholder="https://…"></div>
+
+            <div class="fld--row">
+              <div class="fld"><label for="f-start">Inizio (opzionale)</label><input id="f-start" type="date"></div>
+              <div class="fld"><label for="f-end">Fine (opzionale)</label><input id="f-end" type="date"></div>
+            </div>
+            <div class="fld"><label class="adm-check"><input id="f-active" type="checkbox" checked> Banner attivo</label></div>
+
+            <p class="adm-err" id="f-error" role="alert"></p>
+            <div class="toolbar">
+              <button class="btn btn--green btn--sm" id="f-save" type="submit">Salva banner</button>
+              <button class="btn btn--ghost btn--sm" id="f-cancel" type="button">Annulla</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </main>
 
-  <!-- AUTH MODAL -->
-  <div class="auth" id="auth" hidden role="dialog" aria-modal="true" aria-labelledby="auth-title">
-    <div class="auth__card">
-      <div class="auth__top"><div class="auth__brand">Italians<span class="tld">.ch</span></div><h2 class="auth__title" id="auth-title">Accedi</h2><button class="auth__close" id="auth-close" type="button" aria-label="Chiudi">×</button></div>
-      <div class="auth__body">
-        <form id="auth-form" novalidate>
-          <div class="auth__field" id="auth-name-row"><label for="auth-name">Nome e cognome</label><input type="text" id="auth-name" autocomplete="name"></div>
-          <div class="auth__field"><label for="auth-email">Email</label><input type="email" id="auth-email" autocomplete="email"></div>
-          <div class="auth__field"><label for="auth-pass">Password</label><input type="password" id="auth-pass"></div>
-          <p class="auth__error" id="auth-error" role="alert"></p>
-          <button class="btn btn--green btn--block" id="auth-submit" type="submit">Accedi</button>
-        </form>
-        <div class="auth__switch"><span id="auth-switch-text">Non hai un account?</span> <button id="auth-switch-btn" type="button">Registrati</button></div>
-      </div>
-    </div>
-  </div>
-
-  <script src="./assets/js/portale.js" defer></script>
-  <script src="./assets/js/account.js" defer></script>
+  <script src="./assets/js/md5.js"></script>
   <script src="./assets/js/ads.js" defer></script>
   <script src="./assets/js/gestione.js" defer></script>
 </body>

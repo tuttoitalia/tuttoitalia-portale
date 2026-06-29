@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Italians.ch — advertising placements (engine v2).
+   Image / video creatives + the new immersive placements:
+   sticky right skyscraper · wallpaper gutters · full-screen scroll reveal.
+   Loaded after vodafone.css. See assets/js/ads.js.
+   ========================================================================== */
+
+/* ---- Creative media (image / video) inside any slot --------------------- */
+.adcreative {
+  display: block; position: relative; width: 100%; height: 100%;
+  overflow: hidden; border-radius: inherit; line-height: 0;
+}
+.adcreative__img,
+.adcreative__video {
+  width: 100%; height: 100%; object-fit: cover; display: block; border: 0;
+  background: #100d0b;
+}
+.adcreative__cap {
+  position: absolute; left: 0; right: 0; bottom: 0; line-height: 1.3;
+  font: 600 11px/1.3 var(--font, Inter), system-ui, sans-serif;
+  color: #fff; padding: 14px 12px 8px; text-align: center;
+  background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
+}
+/* tiny "Pubblicità" tag for media slots that don't sit in a labelled band */
+.adslot--rail::before,
+.ad-wallpaper__panel::before {
+  content: "Pubblicità"; display: block; text-align: center;
+  font: 700 9px/1 var(--font, Inter), sans-serif; letter-spacing: .14em;
+  text-transform: uppercase; color: #b8b0a0; margin-bottom: 6px;
+}
+
+/* ====================================================== STICKY RIGHT RAIL */
+#ad-rail { position: fixed; top: 96px; right: 20px; z-index: 40; display: none; }
+.adslot--rail {
+  width: 160px; aspect-ratio: 160 / 600; background: var(--cream-2, #efeadd);
+  border: 1px solid var(--line, #e6e0d2); border-radius: 10px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+}
+.adslot--rail .adhouse { height: 100%; border: 0; border-radius: 0; }
+@media (min-width: 1640px) { #ad-rail { display: block; } }
+@media (min-width: 1980px) {
+  #ad-rail { right: 28px; }
+  .adslot--rail { width: 300px; aspect-ratio: 300 / 600; }
+}
+
+/* ====================================================== WALLPAPER GUTTERS */
+/* Two fixed panels living in the empty margins beside the 1280px column.
+   Only appear when there is real gutter room, so content is never covered. */
+#ad-wallpaper { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: none; }
+body.has-wallpaper #ad-wallpaper { display: block; }
+.ad-wallpaper__panel {
+  position: fixed; top: 0; bottom: 0; width: calc((100vw - var(--maxw, 1280px)) / 2 - 12px);
+  max-width: 360px; pointer-events: auto; overflow: hidden;
+}
+.ad-wallpaper__panel--l { left: 0; }
+.ad-wallpaper__panel--r { right: 0; }
+@media (max-width: 1380px) { #ad-wallpaper { display: none !important; } }
+/* when the right rail shows, hand the right gutter to it */
+@media (min-width: 1640px) { .ad-wallpaper__panel--r { display: none; } }
+
+/* ====================================================== FULL-SCREEN REVEAL */
+/* A tall block inserted after the first article. Its creative is sticky and
+   full-bleed: it pins to the viewport (full screen) for ~one screen of
+   scrolling, then releases so the remaining articles scroll back over it.
+   No fixed-behind-content layering → works for image AND video, no bleed. */
+.ad-reveal { position: relative; height: 200vh; margin: 0; }
+.ad-reveal__sticky {
+  position: sticky; top: 0; height: 100vh; width: 100vw;
+  margin-left: calc(50% - 50vw); overflow: hidden; background: #100d0b;
+}
+.ad-reveal__sticky .adcreative,
+.ad-reveal__sticky .adcreative__img,
+.ad-reveal__sticky .adcreative__video { width: 100%; height: 100%; }
+.ad-reveal__sticky .adcreative__cap {
+  bottom: 44px; max-width: 680px; left: 50%; right: auto; transform: translateX(-50%);
+  font-size: 14px; background: none; text-shadow: 0 2px 16px rgba(0,0,0,.7);
+}
+.ad-reveal__tag {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 2;
+  font: 700 9px/1 var(--font, Inter), sans-serif; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(255,255,255,.82); pointer-events: none;
+}
+@media (max-width: 700px) { .ad-reveal { height: 170vh; } }

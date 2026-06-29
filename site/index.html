@@ -37,7 +37,7 @@
   <!-- Security: baseline Content-Security-Policy. Scripts are self-hosted only.
        (For production, prefer setting these as HTTP response headers — see README.) -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; connect-src 'self' https://work.tuttoitalia.ch; img-src 'self' data: https://cdn.prod.website-files.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+        content="default-src 'self'; connect-src 'self' https://work.tuttoitalia.ch; img-src 'self' data: https://cdn.prod.website-files.com; media-src 'self' https://cdn.prod.website-files.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="stylesheet" href="./assets/css/portale.css">
   <link rel="stylesheet" href="./assets/css/vodafone.css">
+  <link rel="stylesheet" href="./assets/css/ads.css">
 
   <!-- Icons -->
   <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
@@ -191,6 +192,9 @@
       <div class="adslot" data-ad-slot="home-top" data-format="leaderboard"></div>
     </div>
   </div>
+
+  <!-- AD · sticky vertical skyscraper (wide screens) -->
+  <div id="ad-rail" aria-label="Pubblicità"></div>
 
   <main>
     <div id="news-root"></div>

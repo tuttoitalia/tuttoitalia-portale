@@ -80,7 +80,8 @@
 
   /* ---- apri + modifica ---- */
   function openItem(id, slug) {
-    current = { id: id, slug: slug };
+    var _it = null, _k; for (_k = 0; _k < listData.length; _k++) { if (listData[_k].id === id) { _it = listData[_k]; break; } }
+    current = { id: id, slug: slug, versions: (_it && _it.versions) || {} };
     $('r-empty').hidden = true; $('r-form').hidden = false;
     [].forEach.call(document.querySelectorAll('.red-item'), function (b) { b.classList.toggle('is-on', b.getAttribute('data-id') === id); });
     if ($('revert-btn')) $('revert-btn').hidden = !OV[slug];
@@ -114,6 +115,12 @@
     if ($('photo-msg')) { $('photo-msg').style.color = 'var(--gray)'; $('photo-msg').textContent = ''; }
   }
   function autoGrow(el) { if (!el) return; el.style.height = 'auto'; el.style.height = (el.scrollHeight + 2) + 'px'; }
+  // tutte le versioni linguistiche dell'articolo (per propagare la foto)
+  function versionSlugs() {
+    var vs = (current && current.slug) ? [current.slug] : [], v = (current && current.versions) || {}, k;
+    for (k in v) { if (v[k] && vs.indexOf(v[k]) < 0) vs.push(v[k]); }
+    return vs;
+  }
   $('cancel-btn').addEventListener('click', function () {
     $('r-form').hidden = true; $('r-empty').hidden = false; current = null;
     if ($('revert-btn')) $('revert-btn').hidden = true;
@@ -122,7 +129,7 @@
   if ($('revert-btn')) $('revert-btn').addEventListener('click', function () {
     if (!current) return;
     $('save-msg').style.color = 'var(--gray)'; $('save-msg').textContent = 'Ripristino versione condivisa…';
-    api('/redazione-save', { user: user, pass: pass, slug: current.slug, local: true, del: true }).then(function (res) {
+    api('/redazione-save', { user: user, pass: pass, slug: current.slug, local: true, del: true, versions: versionSlugs() }).then(function (res) {
       if (res && res.ok) { delete OV[current.slug]; openItem(current.id, current.slug); }
       else { $('save-msg').style.color = 'var(--red)'; $('save-msg').textContent = (res && res.error) || 'Errore.'; }
     }).catch(function () { $('save-msg').style.color = 'var(--red)'; $('save-msg').textContent = 'Backend non raggiungibile.'; });
@@ -139,12 +146,15 @@
     };
     if (newThumb) { payload.thumbId = newThumb.id; payload.thumbUrl = newThumb.url; }
     if (newMain) { payload.mainId = newMain.id; payload.imageUrl = newMain.url; }
+    // override solo-Italians.ch + foto cambiata => applica la foto a tutte le lingue
+    if (payload.local && (newThumb || newMain)) payload.versions = versionSlugs();
     api('/redazione-save', payload).then(function (res) {
       $('save-btn').disabled = false;
       if (res && res.ok) {
         if (res.scope === 'italians') OV[current.slug] = { name: $('f-title').value, subtitle: $('f-sub').value, body: $('f-body').innerHTML };
         $('save-msg').style.color = 'var(--italy-green)';
-        $('save-msg').textContent = res.scope === 'italians' ? '✓ Salvato solo su Italians.ch.' : '✓ Salvato (Italians.ch + tuttoitalia.ch).';
+        var photoNote = (payload.versions && (newThumb || newMain)) ? ' Foto applicata a tutte le lingue.' : '';
+        $('save-msg').textContent = (res.scope === 'italians' ? '✓ Salvato solo su Italians.ch.' : '✓ Salvato (Italians.ch + tuttoitalia.ch).') + photoNote;
       }
       else { $('save-msg').style.color = 'var(--red)'; $('save-msg').textContent = (res && res.error) || 'Errore nel salvataggio.'; }
     }).catch(function () {

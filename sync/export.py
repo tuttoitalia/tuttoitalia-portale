@@ -146,6 +146,16 @@ def main():
         p=os.path.join(OUT,f)
         if os.path.exists(p): os.remove(p)
 
+    # mirror immagini nuove su Hostpoint (media.italians.ch) + riscrivi i JSON.
+    # Best-effort: se l'SSH non è disponibile i JSON restano su URL Webflow.
+    try:
+        import sys
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from mirror_media import mirror
+        mirror(OUT)
+    except Exception as e:
+        print(f"[mirror] non eseguito: {e}")
+
     print("\n=== RISULTATO ===")
     print("per lingua:", meta["counts"], "| articoli-file:", len(full), "| team:", len(team))
     print(f"Fatto in {time.time()-t0:.0f}s")

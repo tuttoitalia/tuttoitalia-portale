@@ -56,14 +56,20 @@
       r.readAsArrayBuffer(file);
     });
   }
+  // Ad creatives are uploaded straight to the Hostpoint media server
+  // (media.italians.ch/ads/) via upload.php — no Webflow dependency.
+  var UPLOAD = 'https://media.italians.ch/upload.php';
   function uploadFile(file, name) {
-    return fileToParts(file).then(function (p) {
-      var hash = window.md5(p.bin);
-      return apiPost('redazione-upload', { user: creds().user, pass: creds().pass, fileName: safeName(name || file.name), fileHash: hash, data: p.b64 });
-    }).then(function (j) {
-      if (!j || !j.ok || !j.url) throw new Error((j && j.error) || 'Upload fallito');
-      return j.url;
-    });
+    var fd = new FormData();
+    fd.append('user', creds().user);
+    fd.append('pass', creds().pass);
+    fd.append('file', file, name || file.name);
+    return fetch(UPLOAD, { method: 'POST', body: fd })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || !j.ok || !j.url) throw new Error((j && j.error) || 'Upload fallito');
+        return j.url;
+      });
   }
   // Grab the first frame of a video as a JPEG blob (instant poster).
   function posterFromVideo(file) {

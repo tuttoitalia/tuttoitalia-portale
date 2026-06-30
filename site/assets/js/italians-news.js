@@ -19,10 +19,10 @@
   document.documentElement.lang = LANG;
 
   var T = {
-    it: { latest: 'Ultime notizie', by: 'di', loading: 'Caricamento notizie…', err: 'Impossibile caricare le notizie.', home: 'Home' },
-    en: { latest: 'Latest news', by: 'by', loading: 'Loading news…', err: 'Unable to load the news.', home: 'Home' },
-    de: { latest: 'Neueste Nachrichten', by: 'von', loading: 'Nachrichten werden geladen…', err: 'Nachrichten konnten nicht geladen werden.', home: 'Home' },
-    fr: { latest: 'Dernières actualités', by: 'par', loading: 'Chargement des actualités…', err: 'Impossible de charger les actualités.', home: 'Accueil' }
+    it: { latest: 'Ultime notizie', by: 'di', loading: 'Caricamento notizie…', err: 'Impossibile caricare le notizie.', home: 'Home', related: 'Continua a leggere' },
+    en: { latest: 'Latest news', by: 'by', loading: 'Loading news…', err: 'Unable to load the news.', home: 'Home', related: 'Keep reading' },
+    de: { latest: 'Neueste Nachrichten', by: 'von', loading: 'Nachrichten werden geladen…', err: 'Nachrichten konnten nicht geladen werden.', home: 'Home', related: 'Weiterlesen' },
+    fr: { latest: 'Dernières actualités', by: 'par', loading: 'Chargement des actualités…', err: 'Impossible de charger les actualités.', home: 'Accueil', related: 'À lire aussi' }
   }[LANG];
 
   var LOCALE = { it: 'it-IT', en: 'en-GB', de: 'de-DE', fr: 'fr-FR' }[LANG];
@@ -218,6 +218,15 @@
     var el = e.target.closest('[data-slug]'); if (el) { e.preventDefault(); goArticle(el.getAttribute('data-slug')); }
   });
 
+  function relatedHTML(a) {
+    var rel = (FULL || []).filter(function (x) {
+      return x && x.slug && x.slug !== a.slug && a.categorySlug && x.categorySlug === a.categorySlug;
+    }).slice(0, 3);
+    if (!rel.length) return '';
+    return '<section class="container related"><div class="block-head"><h2>' +
+      esc(T.related || 'Continua a leggere') + '</h2></div>' +
+      '<div class="cards3">' + rel.map(cardHTML).join('') + '</div></section>';
+  }
   function articleHTML(a) {
     var img = a.image || a.thumb;
     var p = new URLSearchParams(location.search); p.delete('a');
@@ -232,7 +241,7 @@
         (a.date ? '<span>' + esc(fmtDate(a.date)) + '</span>' : '') + '</div>' +
       (img ? '<div class="reader__media tile" style="background-image:url(' + esc(img) + ');background-size:cover;background-position:center"></div>' : '') +
       '<div class="reader__body">' + (a.body || '') + '</div>' +
-      '</article></div>';
+      '</article></div>' + relatedHTML(a);
   }
 
   function openArticle(slug) {

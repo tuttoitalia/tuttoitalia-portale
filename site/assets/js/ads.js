@@ -192,10 +192,11 @@
       for (var i = 0; i < body.children.length; i++) if (body.children[i].nodeType === 1) kids.push(body.children[i]);
       if (kids.length >= 2) { body.insertBefore(buildReveal(), kids[Math.floor(kids.length / 2)]); return; }
     }
-    // homepage: dopo la prima sezione
+    // homepage: PRIMA della prima striscia di categoria (es. EVENTI), dopo le "Ultime notizie"
+    var firstCat = root.querySelector(':scope > [id^="cat-"]');
+    if (firstCat) { firstCat.parentNode.insertBefore(buildReveal(), firstCat); return; }
     var first = root.querySelector(':scope > *');
-    if (!first) return;
-    first.parentNode.insertBefore(buildReveal(), first.nextSibling);
+    if (first) first.parentNode.insertBefore(buildReveal(), first.nextSibling);
   }
   function startReveal() {
     ensureGap();

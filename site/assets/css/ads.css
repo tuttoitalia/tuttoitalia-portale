@@ -69,7 +69,7 @@ body.has-wallpaper #ad-wallpaper { display: block; }
    article scrolls over it — appears around the middle, then is covered again.
    Image -> the image; video -> its poster; text -> a gradient + centred text. */
 .ad-reveal {
-  position: relative; height: 130vh; margin: 0;
+  position: relative; height: 100vh; margin: 0;
   width: 100vw; margin-left: calc(50% - 50vw);
   background-color: #100d0b; background-size: cover; background-position: center;
   background-repeat: no-repeat; background-attachment: fixed;

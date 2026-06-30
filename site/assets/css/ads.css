@@ -5,6 +5,11 @@
    Loaded after vodafone.css. See assets/js/ads.js.
    ========================================================================== */
 
+/* Top ad band: the parent is a centred flex column, which otherwise shrinks
+   the inner container to its content (an empty/house slot collapses). Force
+   full width so the slot fills its billboard/leaderboard size. */
+.adwrap--band > .container { width: 100%; }
+
 /* ---- Creative media (image / video) inside any slot --------------------- */
 .adcreative {
   display: block; position: relative; width: 100%; height: 100%;

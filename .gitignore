@@ -1,6 +1,9 @@
 # Archivio sorgente (non versionato)
 tuttoitaliaportale.zip
 
+# Dev server locale (non deployare)
+devserver.py
+
 # OS / editor
 Thumbs.db
 .DS_Store

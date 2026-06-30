@@ -192,11 +192,12 @@
       for (var i = 0; i < body.children.length; i++) if (body.children[i].nodeType === 1) kids.push(body.children[i]);
       if (kids.length >= 2) { body.insertBefore(buildReveal(), kids[Math.floor(kids.length / 2)]); return; }
     }
-    // homepage: PRIMA della prima striscia di categoria (es. EVENTI), dopo le "Ultime notizie"
+    // homepage: PRIMA della prima striscia di categoria (es. EVENTI), dopo le "Ultime notizie".
+    // NIENTE fallback: durante "Caricamento notizie…" non c'è né corpo né strisce → non
+    // inseriamo nulla (l'observer richiama ensureGap quando il contenuto reale è pronto),
+    // così l'utente vede prima l'articolo/le notizie e MAI la pubblicità prima del contenuto.
     var firstCat = root.querySelector(':scope > [id^="cat-"]');
-    if (firstCat) { firstCat.parentNode.insertBefore(buildReveal(), firstCat); return; }
-    var first = root.querySelector(':scope > *');
-    if (first) first.parentNode.insertBefore(buildReveal(), first.nextSibling);
+    if (firstCat) { firstCat.parentNode.insertBefore(buildReveal(), firstCat); }
   }
   function startReveal() {
     ensureGap();

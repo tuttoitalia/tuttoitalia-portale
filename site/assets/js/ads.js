@@ -159,11 +159,25 @@
     startReveal();
   }
   function buildReveal() {
+    var c = revealPool[0];
     var wrap = document.createElement('div');
     wrap.className = 'ad-reveal';
     wrap.id = 'ad-reveal-gap';
-    wrap.innerHTML = '<div class="ad-reveal__tag">Pubblicità</div><div class="ad-reveal__sticky"></div>';
-    mount(wrap.querySelector('.ad-reveal__sticky'), revealPool);
+    var k = kind(c);
+    // lo SFONDO è fisso (background-attachment:fixed): img per immagine, poster per video, gradiente per testo
+    var bgImg = (k === 'image') ? c.media : (k === 'video' ? (c.poster || c.media) : '');
+    wrap.style.backgroundImage = bgImg ? ('url("' + bgImg + '")') : (c.bg || 'linear-gradient(135deg,#15110F,#CE2B37)');
+    var href = safeHref(c.href), ext = href.indexOf('http') === 0;
+    var inner = '<div class="ad-reveal__tag">Pubblicità</div>';
+    if (k === 'text') {
+      inner += '<div class="ad-reveal__txt">' +
+        (c.title ? '<div class="ad-reveal__title">' + esc(c.title) + '</div>' : '') +
+        (c.sub ? '<div class="ad-reveal__sub">' + esc(c.sub) + '</div>' : '') +
+        (c.cta ? '<div class="ad-reveal__cta">' + esc(c.cta) + ' →</div>' : '') + '</div>';
+    }
+    inner += '<a class="ad-reveal__hit" href="' + esc(href) + '" rel="noopener nofollow"' +
+      (ext ? ' target="_blank"' : '') + ' aria-label="' + esc(c.advertiser || c.title || 'Pubblicità') + '"></a>';
+    wrap.innerHTML = inner;
     return wrap;
   }
   function ensureGap() {

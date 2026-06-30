@@ -113,6 +113,9 @@ body, .abnb { font-family: var(--sans); }
   line-height: .98;
 }
 
+/* Hero deck (sottotitolo): segue la larghezza dell'hero, non più stretto a 600px */
+.lead .lead__deck { max-width: none; }
+
 /* Section heads — uppercase 800, moderate scale */
 .events__title, .newsletter__title, .block-head h2, .tabbed__head h2,
 .psection__title, .section-head-row h2, .col-heading, .mealplan h2 {

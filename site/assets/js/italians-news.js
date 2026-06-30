@@ -130,11 +130,11 @@
     });
   }
   function route() {
+    var direct = new URLSearchParams(location.search).get('a');
+    if (direct) { openArticle(direct); return; }   // articolo = pagina vera (header resta)
     var c = curCat();
     setActiveNav(c);
     if (c) renderRubric(FULL, c); else render(FULL);
-    var direct = new URLSearchParams(location.search).get('a');
-    if (direct) openArticle(direct);
   }
   function renderRubric(list, key) {
     var slug = CAT_MAP[key][LANG];
@@ -204,50 +204,49 @@
     fillTicker(list);
   }
 
-  /* ---- reader ---- */
+  /* ---- apertura articolo: PAGINA VERA in-sito (header/menu/footer restano) ---- */
+  function goArticle(slug) {                       // click su una card -> naviga a ?a=slug
+    var p = new URLSearchParams(location.search);
+    p.set('a', slug);
+    location.search = p.toString();
+  }
   ROOT.addEventListener('click', function (e) {
-    var el = e.target.closest('[data-slug]'); if (el) openArticle(el.getAttribute('data-slug'));
+    var el = e.target.closest('[data-slug]'); if (el) goArticle(el.getAttribute('data-slug'));
   });
   ROOT.addEventListener('keydown', function (e) {
     if (e.key !== 'Enter' && e.key !== ' ') return;
-    var el = e.target.closest('[data-slug]'); if (el) { e.preventDefault(); openArticle(el.getAttribute('data-slug')); }
+    var el = e.target.closest('[data-slug]'); if (el) { e.preventDefault(); goArticle(el.getAttribute('data-slug')); }
   });
 
-  var reader = document.getElementById('js-reader');
-  function setText(id, v) { var n = document.getElementById(id); if (n) n.textContent = v || ''; }
-
-  function showReader(a) {
-    setText('js-reader-section', cleanCat(a.category) || '');
-    setText('js-reader-title', a.title || '');
-    setText('js-reader-deck', a.subtitle || '');
-    setText('js-reader-author', a.author ? (T.by + ' ' + a.author) : '');
-    setText('js-reader-time', fmtDate(a.date));
-    var media = document.getElementById('js-reader-media');
-    if (media) {
-      var img = a.image || a.thumb;
-      media.style.backgroundImage = img ? 'url(' + img + ')' : '';
-      media.style.backgroundSize = 'cover'; media.style.backgroundPosition = 'center';
-      var lab = document.getElementById('js-reader-label'); if (lab) lab.textContent = '';
-    }
-    var body = document.getElementById('js-reader-body');
-    if (body) body.innerHTML = a.body || '';
-    if (reader) {
-      reader.hidden = false;
-      document.body.style.overflow = 'hidden';
-      var panel = reader.querySelector('.reader__panel'); if (panel) panel.scrollTop = 0;
-      var c = document.getElementById('js-reader-close'); if (c) c.focus();
-    }
+  function articleHTML(a) {
+    var img = a.image || a.thumb;
+    var p = new URLSearchParams(location.search); p.delete('a');
+    var back = p.toString() ? ('?' + p.toString()) : './';
+    return '<div class="container article-wrap">' +
+      '<a class="article-back" href="' + esc(back) + '">← ' + esc(T.home || 'Home') + '</a>' +
+      '<article class="article-page">' +
+      (a.category ? '<div class="kicker">' + esc(cleanCat(a.category)) + '</div>' : '') +
+      '<h1 class="reader__title">' + esc(a.title || '') + '</h1>' +
+      (a.subtitle ? '<p class="reader__deck">' + esc(a.subtitle) + '</p>' : '') +
+      '<div class="reader__meta"><span>' + (a.author ? esc(T.by + ' ' + a.author) : '') + '</span>' +
+        (a.date ? '<span>' + esc(fmtDate(a.date)) + '</span>' : '') + '</div>' +
+      (img ? '<div class="reader__media tile" style="background-image:url(' + esc(img) + ');background-size:cover;background-position:center"></div>' : '') +
+      '<div class="reader__body">' + (a.body || '') + '</div>' +
+      '</article></div>';
   }
-  function closeReader() { if (reader) reader.hidden = true; document.body.style.overflow = ''; }
-  var closeBtn = document.getElementById('js-reader-close');
-  if (closeBtn) closeBtn.addEventListener('click', closeReader);
-  if (reader) reader.addEventListener('click', function (e) { if (e.target === reader) closeReader(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && reader && !reader.hidden) closeReader(); });
 
   function openArticle(slug) {
+    setActiveNav('');
+    ROOT.innerHTML = '<div class="container" style="padding:48px 0;color:var(--gray)">' + T.loading + '</div>';
     fetch('./data/a/' + encodeURIComponent(slug) + '.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-      .then(function (a) { var o = OV[a.slug || slug]; if (o) { if (o.name) a.title = o.name; if (o.subtitle != null) a.subtitle = o.subtitle; if (o.body) a.body = o.body; if (o.image) a.image = o.image; if (o.thumb) a.thumb = o.thumb; } showReader(a); })
-      .catch(function () {});
+      .then(function (a) {
+        var o = OV[a.slug || slug];
+        if (o) { if (o.name) a.title = o.name; if (o.subtitle != null) a.subtitle = o.subtitle; if (o.body) a.body = o.body; if (o.image) a.image = o.image; if (o.thumb) a.thumb = o.thumb; }
+        ROOT.innerHTML = articleHTML(a);
+        try { document.title = (a.title || 'Italians.ch') + ' — Italians.ch'; } catch (e) {}
+        window.scrollTo(0, 0);
+      })
+      .catch(function () { ROOT.innerHTML = '<div class="container" style="padding:64px 0">' + T.err + '</div>'; });
   }
 })();

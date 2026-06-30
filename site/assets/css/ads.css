@@ -76,6 +76,10 @@ body.has-wallpaper #ad-wallpaper { display: block; }
 .ad-reveal__sticky .adcreative,
 .ad-reveal__sticky .adcreative__img,
 .ad-reveal__sticky .adcreative__video { width: 100%; height: 100%; }
+/* creatività TESTO a tutto schermo (riempie e centra) */
+.ad-reveal__sticky .adbanner { width: 100%; height: 100%; justify-content: center; align-items: center; text-align: center; gap: 14px; padding: 40px; }
+.ad-reveal__sticky .adbanner__title { font-size: clamp(28px, 5vw, 58px); }
+.ad-reveal__sticky .adbanner__sub { font-size: clamp(15px, 2vw, 21px); }
 .ad-reveal__sticky .adcreative__cap {
   bottom: 44px; max-width: 680px; left: 50%; right: auto; transform: translateX(-50%);
   font-size: 14px; background: none; text-shadow: 0 2px 16px rgba(0,0,0,.7);

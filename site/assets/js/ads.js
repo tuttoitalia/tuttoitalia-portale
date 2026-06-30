@@ -171,6 +171,14 @@
     if (document.getElementById('ad-reveal-gap')) return;
     var root = document.getElementById('news-root');
     if (!root) return;
+    // pagina articolo: inserisci a METÀ del corpo dell'articolo
+    var body = root.querySelector('.reader__body');
+    if (body) {
+      var kids = [];
+      for (var i = 0; i < body.children.length; i++) if (body.children[i].nodeType === 1) kids.push(body.children[i]);
+      if (kids.length >= 2) { body.insertBefore(buildReveal(), kids[Math.floor(kids.length / 2)]); return; }
+    }
+    // homepage: dopo la prima sezione
     var first = root.querySelector(':scope > *');
     if (!first) return;
     first.parentNode.insertBefore(buildReveal(), first.nextSibling);

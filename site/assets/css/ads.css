@@ -35,7 +35,7 @@
 }
 
 /* ====================================================== STICKY RIGHT RAIL */
-#ad-rail { position: fixed; top: 96px; right: 20px; z-index: 40; display: none; }
+#ad-rail { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 40; display: none; }
 .adslot--rail {
   width: 160px; aspect-ratio: 160 / 600; background: var(--cream-2, #efeadd);
   border: 1px solid var(--line, #e6e0d2); border-radius: 10px; overflow: hidden;

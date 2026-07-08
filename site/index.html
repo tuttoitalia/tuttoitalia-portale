@@ -37,7 +37,7 @@
   <!-- Security: baseline Content-Security-Policy. Scripts are self-hosted only.
        (For production, prefer setting these as HTTP response headers — see README.) -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; connect-src 'self' https://work.tuttoitalia.ch; img-src 'self' data: https://cdn.prod.website-files.com https://media.italians.ch; media-src 'self' https://cdn.prod.website-files.com https://media.italians.ch; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+        content="default-src 'self'; connect-src 'self' https://work.tuttoitalia.ch https://italiansch.goatcounter.com; img-src 'self' data: https://cdn.prod.website-files.com https://media.italians.ch https://italiansch.goatcounter.com; media-src 'self' https://cdn.prod.website-files.com https://media.italians.ch; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://gc.zgo.at; base-uri 'self'; form-action 'self'; object-src 'none'">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -316,5 +316,11 @@
   <script src="./assets/js/account.js?v=20260630h" defer></script>
   <script src="./assets/js/ads.js?v=20260630h" defer></script>
   <script src="./assets/js/italians-news.js?v=20260630h" defer></script>
+
+  <!-- GoatCounter analytics (privacy-first, no cookie). Ogni navigazione ricarica
+       la pagina con URL diverso (?a=slug, ?cat=…), quindi conta home, categorie e
+       singoli articoli automaticamente. Dashboard: https://italiansch.goatcounter.com -->
+  <script data-goatcounter="https://italiansch.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

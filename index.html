@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Italians.ch — Sta arrivando un nuovo portale</title>
+  <meta name="description" content="Sta arrivando un nuovo portale. L'Italia, ovunque siano gli italiani.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 116'%3E%3Crect width='100' height='100' rx='30' fill='%23CE2B37'/%3E%3Cpath d='M22 80 L22 112 L50 90 Z' fill='%23CE2B37'/%3E%3Crect x='42' y='21' width='16' height='16' rx='4' fill='%23fff'/%3E%3Crect x='42' y='43' width='16' height='36' rx='4' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#15110F; --ink-2:#1d1815;
+      --red:#CE2B37; --green:#008C45; --cream:#efeadd;
+      --muted:#b7afa4;
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{height:100%}
+    body{
+      min-height:100dvh;
+      background:
+        radial-gradient(1200px 700px at 50% -10%, #241d18 0%, transparent 60%),
+        var(--ink);
+      color:#fff;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:40px 22px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap{display:flex; flex-direction:column; align-items:center; gap:26px; max-width:760px}
+
+    /* ---- logo ---- */
+    .logo{display:flex; align-items:center; gap:20px}
+    .logo__icon{width:clamp(52px,9vw,74px); height:auto; display:block}
+    .logo__word{
+      font-family:'Archivo Black','Arial Black', Inter, sans-serif;
+      font-weight:400;
+      font-size:clamp(38px,8.5vw,76px);
+      line-height:.9; letter-spacing:-.03em; color:#fff;
+    }
+    .logo__word .dot{color:var(--red)}
+
+    /* ---- tricolore divider ---- */
+    .tri{display:flex; width:132px; height:5px; border-radius:99px; overflow:hidden; opacity:.9}
+    .tri i{flex:1}
+    .tri .g{background:var(--green)} .tri .w{background:#fff} .tri .r{background:var(--red)}
+
+    /* ---- slogan ---- */
+    .slogan{
+      font-size:clamp(17px,2.6vw,23px); font-weight:500; color:var(--cream);
+      letter-spacing:.01em;
+    }
+
+    /* ---- coming soon ---- */
+    .soon{
+      display:inline-flex; align-items:center; gap:11px;
+      margin-top:8px; padding:13px 22px;
+      border:1px solid rgba(255,255,255,.16); border-radius:999px;
+      background:rgba(255,255,255,.03);
+      font-size:clamp(12px,1.7vw,14px); font-weight:600;
+      text-transform:uppercase; letter-spacing:.16em; color:#fff;
+    }
+    .soon .pulse{
+      width:9px; height:9px; border-radius:50%; background:var(--red);
+      box-shadow:0 0 0 0 rgba(206,43,55,.7);
+      animation:pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(206,43,55,.6)}
+      70%{box-shadow:0 0 0 12px rgba(206,43,55,0)}
+      100%{box-shadow:0 0 0 0 rgba(206,43,55,0)}
+    }
+
+    .foot{
+      position:fixed; left:0; right:0; bottom:22px;
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(255,255,255,.32);
+    }
+    @media (prefers-reduced-motion:reduce){ .soon .pulse{animation:none} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="logo">
+      <svg class="logo__icon" viewBox="0 0 100 116" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <mask id="iKnock" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="116">
+            <rect x="0" y="0" width="100" height="116" fill="#fff"></rect>
+            <rect x="42" y="21" width="16" height="16" rx="4" fill="#000"></rect>
+            <rect x="42" y="43" width="16" height="36" rx="4" fill="#000"></rect>
+          </mask>
+        </defs>
+        <g mask="url(#iKnock)">
+          <rect x="0" y="0" width="100" height="100" rx="30" fill="#CE2B37"></rect>
+          <path d="M22 80 L22 112 L50 90 Z" fill="#CE2B37"></path>
+        </g>
+      </svg>
+      <span class="logo__word">Italians<span class="dot">.ch</span></span>
+    </div>
+
+    <div class="tri" aria-hidden="true"><i class="g"></i><i class="w"></i><i class="r"></i></div>
+
+    <p class="slogan">L'Italia, ovunque siano gli italiani.</p>
+
+    <div class="soon"><span class="pulse"></span>Sta arrivando un nuovo portale</div>
+  </main>
+
+  <div class="foot">dal 2003 · il media italiano in Svizzera</div>
+</body>
+</html>

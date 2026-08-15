@@ -3,7 +3,7 @@ tuttoitaliaportale.zip
 
 # Dev server locale (non deployare)
 devserver.py
-devserver.*.log
+*.log
 
 # OS / editor
 Thumbs.db

@@ -3,84 +3,102 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Italians.ch — Sta arrivando un nuovo portale</title>
-  <meta name="description" content="Sta arrivando un nuovo portale. L'Italia, ovunque siano gli italiani.">
-  <meta name="robots" content="noindex, nofollow">
+  <title>Italians.ch — Sta arrivando il nuovo media italiano in Svizzera</title>
+  <meta name="description" content="Sta arrivando Italians.ch, il nuovo media italiano in Svizzera. Iscriviti e sii tra i primi a scoprirlo al lancio. L'Italia, ovunque siano gli italiani.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://italians.ch/">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'">
+        content="default-src 'none'; script-src 'self' https://gc.zgo.at; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://italiansch.goatcounter.com; connect-src https://media.italians.ch https://italiansch.goatcounter.com; base-uri 'self'; form-action 'self'">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Italians.ch">
+  <meta property="og:locale" content="it_CH">
+  <meta property="og:url" content="https://italians.ch/">
+  <meta property="og:title" content="Sta arrivando Italians.ch — il nuovo media italiano in Svizzera">
+  <meta property="og:description" content="Iscriviti e sii tra i primi a scoprirlo al lancio. L'Italia, ovunque siano gli italiani.">
+  <meta property="og:image" content="https://italians.ch/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sta arrivando Italians.ch — il nuovo media italiano in Svizzera">
+  <meta name="twitter:description" content="Iscriviti e sii tra i primi a scoprirlo al lancio.">
+  <meta name="twitter:image" content="https://italians.ch/og-cover.png">
+  <meta name="theme-color" content="#15110F">
+
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 116'%3E%3Crect width='100' height='100' rx='30' fill='%23CE2B37'/%3E%3Cpath d='M22 80 L22 112 L50 90 Z' fill='%23CE2B37'/%3E%3Crect x='42' y='21' width='16' height='16' rx='4' fill='%23fff'/%3E%3Crect x='42' y='43' width='16' height='36' rx='4' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Italians.ch",
+    "url": "https://italians.ch/",
+    "logo": "https://italians.ch/og-cover.png",
+    "slogan": "L'Italia, ovunque siano gli italiani.",
+    "description": "Il nuovo media italiano in Svizzera.",
+    "areaServed": "CH",
+    "knowsLanguage": ["it","de","fr","en"]
+  }
+  </script>
+
   <style>
-    :root{
-      --ink:#15110F; --ink-2:#1d1815;
-      --red:#CE2B37; --green:#008C45; --cream:#efeadd;
-      --muted:#b7afa4;
-    }
+    :root{ --ink:#15110F; --red:#CE2B37; --green:#008C45; --cream:#efeadd; --muted:#b7afa4; }
     *{box-sizing:border-box; margin:0; padding:0}
     html,body{height:100%}
     body{
       min-height:100dvh;
-      background:
-        radial-gradient(1200px 700px at 50% -10%, #241d18 0%, transparent 60%),
-        var(--ink);
-      color:#fff;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(1200px 700px at 50% -10%, #241d18 0%, transparent 60%), var(--ink);
+      color:#fff; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; padding:40px 22px;
-      -webkit-font-smoothing:antialiased;
+      text-align:center; padding:48px 22px; -webkit-font-smoothing:antialiased;
     }
-    .wrap{display:flex; flex-direction:column; align-items:center; gap:26px; max-width:760px}
-
-    /* ---- logo ---- */
-    .logo{display:flex; align-items:center; gap:20px}
-    .logo__icon{width:clamp(52px,9vw,74px); height:auto; display:block}
-    .logo__word{
-      font-family:'Archivo Black','Arial Black', Inter, sans-serif;
-      font-weight:400;
-      font-size:clamp(38px,8.5vw,76px);
-      line-height:.9; letter-spacing:-.03em; color:#fff;
-    }
+    .wrap{display:flex; flex-direction:column; align-items:center; gap:24px; max-width:600px; width:100%}
+    .logo{display:flex; align-items:center; gap:18px}
+    .logo__icon{width:clamp(48px,8vw,68px); height:auto; display:block}
+    .logo__word{ font-family:'Archivo Black','Arial Black', Inter, sans-serif; font-weight:400;
+      font-size:clamp(34px,8vw,68px); line-height:.9; letter-spacing:-.03em; color:#fff; }
     .logo__word .dot{color:var(--red)}
-
-    /* ---- tricolore divider ---- */
-    .tri{display:flex; width:132px; height:5px; border-radius:99px; overflow:hidden; opacity:.9}
-    .tri i{flex:1}
-    .tri .g{background:var(--green)} .tri .w{background:#fff} .tri .r{background:var(--red)}
-
-    /* ---- slogan ---- */
-    .slogan{
-      font-size:clamp(17px,2.6vw,23px); font-weight:500; color:var(--cream);
-      letter-spacing:.01em;
-    }
-
-    /* ---- coming soon ---- */
+    .tri{display:flex; width:120px; height:5px; border-radius:99px; overflow:hidden; opacity:.9}
+    .tri i{flex:1} .tri .g{background:var(--green)} .tri .w{background:#fff} .tri .r{background:var(--red)}
+    .slogan{ font-size:clamp(16px,2.6vw,22px); font-weight:500; color:var(--cream); }
     .soon{
-      display:inline-flex; align-items:center; gap:11px;
-      margin-top:8px; padding:13px 22px;
-      border:1px solid rgba(255,255,255,.16); border-radius:999px;
-      background:rgba(255,255,255,.03);
-      font-size:clamp(12px,1.7vw,14px); font-weight:600;
-      text-transform:uppercase; letter-spacing:.16em; color:#fff;
+      display:inline-flex; align-items:center; gap:10px; padding:10px 18px;
+      border:1px solid rgba(255,255,255,.16); border-radius:999px; background:rgba(255,255,255,.03);
+      font-size:clamp(11px,1.6vw,13px); font-weight:600; text-transform:uppercase; letter-spacing:.16em; color:#fff;
     }
-    .soon .pulse{
-      width:9px; height:9px; border-radius:50%; background:var(--red);
-      box-shadow:0 0 0 0 rgba(206,43,55,.7);
-      animation:pulse 1.8s ease-out infinite;
-    }
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(206,43,55,.6)}
-      70%{box-shadow:0 0 0 12px rgba(206,43,55,0)}
-      100%{box-shadow:0 0 0 0 rgba(206,43,55,0)}
-    }
+    .soon .pulse{ width:8px; height:8px; border-radius:50%; background:var(--red);
+      box-shadow:0 0 0 0 rgba(206,43,55,.7); animation:pulse 1.8s ease-out infinite; }
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(206,43,55,.6)}70%{box-shadow:0 0 0 12px rgba(206,43,55,0)}100%{box-shadow:0 0 0 0 rgba(206,43,55,0)}}
 
-    .foot{
-      position:fixed; left:0; right:0; bottom:22px;
-      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-      color:rgba(255,255,255,.32);
+    /* ---- email capture ---- */
+    .cta{ width:100%; max-width:440px; margin-top:6px; }
+    .cta__lead{ font-size:15px; color:#e9e4da; margin-bottom:14px; font-weight:500; }
+    form{ display:flex; gap:9px; width:100%; }
+    input[type=email]{
+      flex:1; min-width:0; padding:14px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06); color:#fff; font-size:15px; font-family:inherit; outline:none;
     }
+    input[type=email]::placeholder{ color:#9a9186 }
+    input[type=email]:focus{ border-color:var(--red); background:rgba(255,255,255,.09) }
+    button{
+      padding:14px 20px; border-radius:12px; border:0; cursor:pointer; white-space:nowrap;
+      background:var(--red); color:#fff; font-size:15px; font-weight:700; font-family:inherit;
+      transition:filter .15s, transform .05s;
+    }
+    button:hover{ filter:brightness(1.08) } button:active{ transform:translateY(1px) }
+    button:disabled{ opacity:.6; cursor:default }
+    .note{ font-size:12px; color:#8f887d; margin-top:11px; line-height:1.5 }
+    #msg{ display:none; margin-top:6px; font-size:16px; font-weight:600; color:#fff; }
+    #msg .ok{ color:#7dd0a3 }
+    #err{ display:none; margin-top:9px; font-size:13px; color:#e88; }
+    .foot{ position:fixed; left:0; right:0; bottom:20px; font-size:12px; letter-spacing:.14em;
+      text-transform:uppercase; color:rgba(255,255,255,.32); padding:0 16px; }
     @media (prefers-reduced-motion:reduce){ .soon .pulse{animation:none} }
+    @media (max-width:480px){ form{flex-direction:column} button{width:100%} }
   </style>
 </head>
 <body>
@@ -104,11 +122,25 @@
 
     <div class="tri" aria-hidden="true"><i class="g"></i><i class="w"></i><i class="r"></i></div>
 
-    <p class="slogan">L'Italia, ovunque siano gli italiani.</p>
+    <h1 class="slogan">L'Italia, ovunque siano gli italiani.</h1>
 
     <div class="soon"><span class="pulse"></span>Sta arrivando un nuovo portale</div>
+
+    <div class="cta">
+      <p class="cta__lead">Sii tra i primi a scoprirlo. Lasciaci la tua email e ti avvisiamo al lancio.</p>
+      <form id="sub" novalidate>
+        <input id="em" type="email" name="email" placeholder="La tua email" autocomplete="email" required aria-label="La tua email">
+        <button type="submit">Avvisami</button>
+      </form>
+      <p id="err">Controlla l'indirizzo email e riprova.</p>
+      <p id="msg">Ci sei! <span class="ok">Ti avviseremo al lancio.</span></p>
+      <p class="note">Niente spam: una sola email, quando andiamo online. Puoi disiscriverti quando vuoi.</p>
+    </div>
   </main>
 
   <div class="foot">Il nuovo media italiano in Svizzera</div>
+
+  <script src="./app.js" defer></script>
+  <script data-goatcounter="https://italiansch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

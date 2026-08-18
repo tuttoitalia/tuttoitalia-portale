@@ -403,6 +403,62 @@ def build_page(art, by_cat, all_by_slug):
     )
 
 
+def home_hero(a, lang):
+    img = a.get("image") or a.get("thumb") or ""
+    return ('<div class="container" style="margin-top:32px">'
+            '<a class="lead" href="%s" style="text-decoration:none;color:inherit">'
+            '<div class="lead__media tile" style="background-image:url(%s);background-size:cover;background-position:center">'
+            '<span class="badge-tag">%s</span></div>'
+            '<div class="kicker lead__kicker">%s</div>'
+            '<h2 class="lead__title">%s</h2>'
+            '<p class="lead__deck">%s</p></a></div>' % (
+                esc(url_for(a["slug"])), esc(img), esc(cat_label(a.get("categorySlug"), lang)),
+                esc(cat_label(a.get("categorySlug"), lang)), esc(a.get("title")),
+                esc(strip_html(a.get("subtitle"))[:190])))
+
+
+def home_card(a, lang):
+    img = a.get("thumb") or a.get("image") or ""
+    return ('<a class="card" href="%s">'
+            '<div class="card__media tile" style="background-image:url(%s);background-size:cover;background-position:center"></div>'
+            '<div class="card__body"><div class="kicker">%s</div><h3>%s</h3>'
+            '<p class="card__byline">%s %s</p></div></a>' % (
+                esc(url_for(a["slug"])), esc(img), esc(cat_label(a.get("categorySlug"), lang)),
+                esc(a.get("title")), esc(T[lang]["by"]), esc(a.get("author") or "Italians.ch")))
+
+
+def write_home():
+    """Inietta una home statica (IT) crawlabile fra i marcatori in index.html.
+    La SPA la sostituisce al caricamento; i crawler senza JS (molte AI) la leggono."""
+    lang = "it"
+    p = os.path.join(SITE, "data", "index.it.json")
+    if not os.path.exists(p):
+        return 0
+    arr = [a for a in load_json(p) if a.get("slug") and a.get("title")]
+    arr.sort(key=lambda x: x.get("date") or "", reverse=True)
+    if not arr:
+        return 0
+    hero = next((a for a in arr if a.get("featured")), arr[0])
+    rest = [a for a in arr if a["slug"] != hero["slug"]][:29]
+    cards = "".join(home_card(a, lang) for a in rest)
+    block = ("<!--HOME_START-->" + home_hero(hero, lang) +
+             '<section class="container" style="margin-top:52px">'
+             '<div class="block-head"><h2>Ultime notizie</h2></div>'
+             '<div class="cards3">' + cards + "</div></section>" +
+             "<!--HOME_END-->")
+    idx = os.path.join(SITE, "index.html")
+    txt = open(idx, encoding="utf-8").read()
+    new = re.sub(r"<!--HOME_START-->.*?<!--HOME_END-->", lambda m: block, txt, flags=re.S)
+    with open(idx, "w", encoding="utf-8", newline="") as fh:
+        fh.write(new)
+    return len(rest) + 1
+
+
+def load_json(p):
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def write_sitemap(arts):
     urls = ['<url><loc>%s/</loc><changefreq>hourly</changefreq><priority>1.0</priority></url>' % BASE]
     for slug, a in sorted(arts.items(), key=lambda kv: kv[1].get("date") or "", reverse=True):
@@ -491,7 +547,9 @@ def main():
     sm = write_sitemap(arts)
     write_robots()
     write_llms(n)
+    hc = write_home()
     print("Sitemap:", sm, "url + robots.txt + llms.txt scritti in", SITE)
+    print("Home statica:", hc, "articoli iniettati in index.html")
 
 
 if __name__ == "__main__":

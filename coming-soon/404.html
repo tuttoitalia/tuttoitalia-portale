@@ -8,7 +8,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://italians.ch/">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self' https://gc.zgo.at; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://italiansch.goatcounter.com; connect-src https://media.italians.ch https://italiansch.goatcounter.com; base-uri 'self'; form-action 'self'">
+        content="default-src 'none'; script-src 'self' https://gc.zgo.at https://www.googletagmanager.com; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://italiansch.goatcounter.com https://www.google-analytics.com https://www.googletagmanager.com; connect-src https://media.italians.ch https://italiansch.goatcounter.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'">
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website">
@@ -33,6 +33,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics 4 (Consent Mode v2) — analytics negato finché l'utente non accetta -->
+  <script src="./ga.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0ZSY0STP7"></script>
 
   <script type="application/ld+json">
   {
@@ -100,6 +104,18 @@
     #err{ display:none; margin-top:9px; font-size:13px; color:#e88; }
     .foot{ position:fixed; left:0; right:0; bottom:20px; font-size:12px; letter-spacing:.14em;
       text-transform:uppercase; color:rgba(255,255,255,.32); padding:0 16px; }
+
+    /* ---- banner cookie (GA4 consent) ---- */
+    #cookie{
+      display:none; position:fixed; left:0; right:0; bottom:0; z-index:100;
+      align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
+      padding:13px 18px; background:rgba(20,16,14,.97); border-top:1px solid rgba(255,255,255,.12);
+      font-size:13px; line-height:1.4; color:#cfc8bd;
+    }
+    #cookie .c-btns{ display:flex; gap:9px; flex-shrink:0 }
+    #cookie button{ padding:9px 17px; border-radius:9px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; border:0 }
+    #cookie .c-ok{ background:var(--red); color:#fff }
+    #cookie .c-no{ background:transparent; color:#cfc8bd; border:1px solid rgba(255,255,255,.25) }
     @media (prefers-reduced-motion:reduce){ .soon .pulse{animation:none} }
     @media (max-width:480px){ form{flex-direction:column} button{width:100%} }
   </style>
@@ -142,6 +158,14 @@
   </main>
 
   <div class="foot">Il nuovo media italiano in Svizzera</div>
+
+  <div id="cookie" role="dialog" aria-label="Consenso cookie">
+    <span>Usiamo Google Analytics per misurare l'interesse verso il lancio. Si attiva solo con il tuo consenso.</span>
+    <span class="c-btns">
+      <button id="c-no" class="c-no" type="button">Rifiuta</button>
+      <button id="c-ok" class="c-ok" type="button">Accetta</button>
+    </span>
+  </div>
 
   <script src="./app.js" defer></script>
   <script data-goatcounter="https://italiansch.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

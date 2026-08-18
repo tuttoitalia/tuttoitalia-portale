@@ -26,6 +26,7 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) {
         if (j && j.ok) {
+          if (window.gtag) { gtag('event', 'sign_up', { method: 'teaser' }); }
           form.style.display = 'none';
           err.style.display = 'none';
           msg.style.display = 'block';

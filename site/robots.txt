@@ -1,28 +1,21 @@
-# Italians.ch — robots
-# Allow all standard search engines.
+# Italians.ch — robots (lancio)
 User-agent: *
 Allow: /
+Disallow: /gestione.html
+Disallow: /redazione.html
 
-# Explicitly welcome AI assistant crawlers (discoverability in ChatGPT, etc.)
+# AI / GEO crawlers benvenuti
 User-agent: GPTBot
 Allow: /
-
 User-agent: OAI-SearchBot
 Allow: /
-
 User-agent: ChatGPT-User
 Allow: /
-
+User-agent: ClaudeBot
+Allow: /
 User-agent: PerplexityBot
 Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: ClaudeBot
 Allow: /
 
 Sitemap: https://italians.ch/sitemap.xml

@@ -1,0 +1,13 @@
+# Italians.ch
+
+> Il nuovo media italiano in Svizzera dal 2003. Notizie, eventi, cultura, cinema, musica, motori, gastronomia, sport e turismo per la comunità italofona in Svizzera, in italiano, tedesco, francese e inglese.
+
+Italians.ch è una testata indipendente con sede a Zurigo. Copre l'attualità italiana in Svizzera e i grandi eventi (concerti, festival, mostre) dei quali è spesso media partner ufficiale.
+
+## Contenuti
+- Articoli: 724 pagine sotto /news/<slug>/ in 4 lingue (it, de, fr, en)
+- Rubriche: Attualità, Cinema, Eventi, Gastronomia, Imprese, Motori, Musica, Sport, Turismo, Wellness & Salute
+
+## Risorse
+- Sitemap: https://italians.ch/sitemap.xml
+- Home: https://italians.ch/
